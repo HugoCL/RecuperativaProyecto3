@@ -1,8 +1,7 @@
-package salvando_walle;
+package WallECodigo;
 
 /***
  * En esta clase de Walle se comprueban sus movimientos, se guardan y se ejectutan sus instrucciones, ademas se guarda el destino al que debe llegar.
- * @author Hugo
  * @version 1.1
  *
  */
@@ -14,9 +13,7 @@ public class WallE {
 
     private Instrucciones[] instruccion = new Instrucciones[40];
 
-    private int destinoX;
-
-    private int destinoY;
+    private Posicion posicionDestino;
 
 
     public WallE() {
@@ -29,7 +26,7 @@ public class WallE {
      * @return Se retorna true si ya se ha llegado al destino y false en caso contrario
      */
     public boolean comprobarDestino(int x , int y) {
-        if (x == getDestinoX() && y == getDestinoY()){
+        if (x == posicionDestino.getPosicionColumna() && y == posicionDestino.getPosicionFila()){
             return isDestino;
         }
         else{
@@ -71,35 +68,12 @@ public class WallE {
         instruccion[orden] = new Instrucciones(accion);
     }
 
-    /***
-     * Setter de la coordenada X del destino
-     * @param pX Int con la coordenada X a cambiar
-     */
-    public void setDestinoX(int pX){
-        this.destinoX = pX;
+
+    public Posicion getPosicionDestino() {
+        return posicionDestino;
     }
 
-    /***
-     * Setter de la coordenada Y del destino
-     * @param pY Int con la coordenada Y a cambiar
-     */
-    public void setDestinoY(int pY){
-        this.destinoY = pY;
-    }
-
-    /***
-     * Getter de la coordenada X del destino
-     * @return Retorna la coordenada X del destino
-     */
-    public int getDestinoX(){
-        return destinoX;
-    }
-
-    /***
-     * Getter de la coordenada Y del destino
-     * @return Retorna la coordenada Y del destino
-     */
-    public int getDestinoY(){
-        return  destinoY;
+    public void setPosicionDestino(Posicion posicionDestino) {
+        this.posicionDestino = posicionDestino;
     }
 }

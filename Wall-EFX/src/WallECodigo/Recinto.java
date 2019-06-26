@@ -1,9 +1,8 @@
-package salvando_walle;
+package WallECodigo;
 
 /***
  *
  * Esta clase es la que se encarga de manejar la matriz en la que se mueve WallE, modificando su posicion y orientacion.
- * @author Hugo
  * @version 1.1
  *
  */
@@ -13,11 +12,9 @@ public class Recinto {
 
     private int limiteColumnas;
 
-    private int[][] recintoCompleto = new int [100][100];
+    private int[][] recintoCompleto = new int [50][50];
 
-    private int posicionWEx;
-
-    private int posicionWEy;
+    private Posicion posicionActual;
 
     private char orientacion;
 
@@ -39,12 +36,14 @@ public class Recinto {
 
     /***
      * Este metodo le ajusta el destino a WallE, usando el setter de la clase WallE
-     * @param m Int que tiene la coordenada X del destino
-     * @param n Int que tiene la coordenada Y del destino
+     * @param fila Int que tiene la coordenada de la fila del destino
+     * @param columna Int que tiene la coordenada de la columna del destino
      */
-    public void newWallE(int m , int n){
-        walle.setDestinoX(n);
-        walle.setDestinoY(m);
+    public void newWallE(int fila, int columna){
+        Posicion posicionD = new Posicion();
+        posicionD.setPosicionColumna(columna);
+        posicionD.setPosicionFila(fila);
+        walle.setPosicionDestino(posicionD);
     }
 
     /***
@@ -67,18 +66,18 @@ public class Recinto {
             if (orientacion == 'N' && instruccionActual == 'A'){
 
                 // Se comprueba que el movimiento siguiente no salga de los limites de la matriz
-                valido = walle.comprobarValidez(posicionWEx - 1 , getlimiteColumnas());
+                valido = walle.comprobarValidez(posicionActual.getPosicionColumna() - 1 , getlimiteColumnas());
                 if (valido) {
 
                     // Si ya se verifico que no sale de los limites, se comprueba que no se llegue a una bomba
-                    if (recintoCompleto[posicionWEx - 1][posicionWEy] == 0){
-                        int nPx = posicionWEx - 1;
-                        nuevaPosicionX(nPx);
+                    if (recintoCompleto[posicionActual.getPosicionColumna() - 1][posicionActual.getPosicionFila()] == 0){
+                        int nPx = posicionActual.getPosicionColumna() - 1;
+                        posicionActual.setPosicionFila(nPx);
                     }
                     // Si lleva a una bomba, se informa del error y se termina la ejecucion
                     else{
                         System.out.println("X");
-                        System.out.println("Datos de la falla: ¡Bomba! en la coordenada "+(posicionWEx-1)+" "+(posicionWEy));
+                        System.out.println("Datos de la falla: ¡Bomba! en la coordenada "+(posicionActual.getPosicionColumna()-1)+" "+(posicionActual.getPosicionFila()));
                         System.exit(0);
                     }
                 }
@@ -92,18 +91,18 @@ public class Recinto {
             else if (orientacion == 'E' && instruccionActual == 'A'){
 
                 // Se comprueba que el movimiento siguiente no salga de los limites de la matriz
-                valido = walle.comprobarValidez(posicionWEy + 1 , getlimiteFilas());
+                valido = walle.comprobarValidez(posicionActual.getPosicionFila() + 1 , getlimiteFilas());
 
                 // Si ya se verifico que no sale de los limites, se comprueba que no se llegue a una bomba
                 if (valido) {
-                    if (recintoCompleto[posicionWEx][posicionWEy + 1] == 0) {
-                        int nPy = posicionWEy + 1;
-                        nuevaPosicionY(nPy);
+                    if (recintoCompleto[posicionActual.getPosicionColumna()][posicionActual.getPosicionFila() + 1] == 0) {
+                        int nPy = posicionActual.getPosicionFila() + 1;
+                        posicionActual.setPosicionFila(nPy);
                     }
                     // Si lleva a una bomba, se informa del error y se termina la ejecucion
                     else {
                         System.out.println("X");
-                        System.out.println("Datos de la falla: ¡Bomba! en la coordenada "+(posicionWEx)+" "+(posicionWEy+1));
+                        System.out.println("Datos de la falla: ¡Bomba! en la coordenada "+(posicionActual.getPosicionColumna())+" "+(posicionActual.getPosicionFila()+1));
                         System.exit(0);
                     }
                 }
@@ -117,18 +116,18 @@ public class Recinto {
             else if (orientacion == 'S' && instruccionActual == 'A'){
 
                 // Se comprueba que el movimiento siguiente no salga de los limites de la matriz
-                valido = walle.comprobarValidez(posicionWEx + 1 , getlimiteColumnas());
+                valido = walle.comprobarValidez(posicionActual.getPosicionColumna() + 1 , getlimiteColumnas());
 
                 // Si ya se verifico que no sale de los limites, se comprueba que no se llegue a una bomba
                 if (valido) {
-                    if (recintoCompleto[posicionWEx + 1][posicionWEy] == 0){
-                        int nPx = posicionWEx + 1;
-                        nuevaPosicionX(nPx);
+                    if (recintoCompleto[posicionActual.getPosicionColumna() + 1][posicionActual.getPosicionFila()] == 0){
+                        int nPx = posicionActual.getPosicionColumna() + 1;
+                        posicionActual.setPosicionColumna(nPx);
                     }
                     // Si lleva a una bomba, se informa del error y se termina la ejecucion
                     else{
                         System.out.println("X");
-                        System.out.println("Datos de la falla: ¡Bomba! en la coordenada "+(posicionWEx+1)+" "+(posicionWEy));
+                        System.out.println("Datos de la falla: ¡Bomba! en la coordenada "+(posicionActual.getPosicionColumna()+1)+" "+(posicionActual.getPosicionFila()));
                         System.exit(0);
                     }
                 }
@@ -142,18 +141,18 @@ public class Recinto {
             else if (orientacion == 'O' && instruccionActual == 'A'){
 
                 // Se comprueba que el movimiento siguiente no salga de los limites de la matriz
-                valido = walle.comprobarValidez(posicionWEy - 1 , getlimiteFilas());
+                valido = walle.comprobarValidez(posicionActual.getPosicionFila() - 1 , getlimiteFilas());
 
                 // Si ya se verifico que no sale de los limites, se comprueba que no se llegue a una bomba
                 if (valido) {
-                    if (recintoCompleto[posicionWEx][posicionWEy - 1] == 0) {
-                        int nPy = posicionWEy - 1;
-                        nuevaPosicionY(nPy);
+                    if (recintoCompleto[posicionActual.getPosicionColumna()][posicionActual.getPosicionFila() - 1] == 0) {
+                        int nPy = posicionActual.getPosicionFila() - 1;
+                        posicionActual.setPosicionFila(nPy);
                     }
                     // Si lleva a una bomba, se informa del error y se termina la ejecucion
                     else {
                         System.out.println("X");
-                        System.out.println("Datos de la falla: ¡Bomba! en la coordenada "+(posicionWEx)+" "+(posicionWEy-1));
+                        System.out.println("Datos de la falla: ¡Bomba! en la coordenada "+(posicionActual.getPosicionColumna())+" "+(posicionActual.getPosicionFila()-1));
                         System.exit(0);
                     }
                 }
@@ -167,7 +166,7 @@ public class Recinto {
         }
 
         // Una vez realizadas todas las instrucciones, se revisa si se llego al destino
-        boolean isDestino = walle.comprobarDestino(posicionWEy, posicionWEx);
+        boolean isDestino = walle.comprobarDestino(posicionActual.getPosicionFila(), posicionActual.getPosicionColumna());
         if (isDestino){
             System.out.println("E");
             System.exit(0);
@@ -210,20 +209,6 @@ public class Recinto {
         this.orientacion = orientacion;
     }
 
-    /***
-     * Metodo que asigna la nueva ubicacion en el eje Y de WallE en la matriz
-     * @param pY Es un int que posee la ubicacion en Y luego de un movimiento, proviente de la clase WallE
-     */
-    public void nuevaPosicionY(int pY) {
-        this.posicionWEy = pY;
-    }
-    /***
-     * Metodo que asigna la nueva ubicacion en el eje X de WallE en la matriz
-     * @param pX Es un int que posee la ubicacion en X luego de un movimiento, proviente de la clase WallE
-     */
-    public void nuevaPosicionX(int pX) {
-        this.posicionWEx = pX;
-    }
 
     /***
      * Es el getter que entrega el limite de las filas
@@ -249,18 +234,4 @@ public class Recinto {
         return orientacion;
     }
 
-    /***
-     * Getter que entrega la posicion actual en X de WallE
-     * @return Retornal la posicion X de WallE
-     */
-    public int getPosicionWEx() {
-        return posicionWEx;
-    }
-    /***
-     * Getter que entrega la posicion actual en Y de WallE
-     * @return Retornal la posicion Y de WallE
-     */
-    public int getPosicionWEy(){
-        return  posicionWEy;
-    }
 }

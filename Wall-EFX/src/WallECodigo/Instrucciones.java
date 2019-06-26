@@ -1,8 +1,8 @@
-package salvando_walle;
+package WallECodigo;
 
 /***
  * Esta clase se encarga de guardar una instruccion y de retornarla.
- * @author Hugo
+ *
  * @version 1.1
  *
  */
