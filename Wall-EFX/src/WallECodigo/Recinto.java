@@ -16,6 +16,10 @@ public class Recinto {
 
     private Posicion posicionActual;
 
+    private int tamañoFilas;
+
+    private int tamañaColumnas;
+
     private char orientacion;
 
     private WallE walle = new WallE();
@@ -25,13 +29,13 @@ public class Recinto {
     }
 
     /***
-     * Es el metodo que se encarga de construir la matriz que conforma al recinto en el que se mueve WallE
-     * @param coordX Coordenada x  de donde se ubicará el valor correspondiente a la informacion del archivo
-     * @param coordY Coordenada y  de donde se ubicará el valor correspondiente a la informacion del archivo
+     * Es el metodo que se encarga de construir la matriz que conforma al recinto en el que se mueve Wall-E
      * @param valor Es el valor que poseerá la celda en la matriz, ya sea un 0 (Nada) o un 1 (Si es una bomba)
      */
-    public void crearRecinto(int coordX, int coordY, int valor){
-        recintoCompleto[coordX][coordY] = valor;
+    public void crearRecinto(int Filas, int Columnas, int valor){
+        recintoCompleto[Filas][Columnas] = valor;
+        tamañoFilas = Filas;
+        tamañaColumnas = Columnas;
     }
 
     /***
@@ -40,12 +44,29 @@ public class Recinto {
      * @param columna Int que tiene la coordenada de la columna del destino
      */
     public void newWallE(int fila, int columna){
-        Posicion posicionD = new Posicion();
+        Posicion posicionD = new Posicion(fila, columna);
         posicionD.setPosicionColumna(columna);
         posicionD.setPosicionFila(fila);
         walle.setPosicionDestino(posicionD);
+        getRecintoCompleto()[fila][columna] = 3;
     }
 
+    boolean esMuroBomba(Recinto recinto, int fila, int columna){
+        return (recinto.getRecintoCompleto()[fila][columna] == 1);
+    }
+    boolean esSeguro(int [][] recintoCompleto, int fila, int columna)
+    {
+        return (fila >= 0 && fila < limiteFilas && columna >= 0 && columna < limiteColumnas && recintoCompleto[fila][columna] != 1);
+    }
+
+    boolean yaExplorado (Recinto recinto, int fila, int columna){
+        return (recinto.getRecintoCompleto()[fila][columna] == 5);
+    }
+
+    boolean esDestino (Recinto recinto, int fila, int columna){
+        return (getWalle().getPosicionDestino().getPosicionFila() == fila &&
+                getWalle().getPosicionDestino().getPosicionColumna() == columna);
+    }
     /***
      * Es el metodo que hace que WallE realice sus instrucciones y se comprueba su correcto funcionamiento
      * @param nInstruc Es el int que contiene el numero de instrucciones a realizar
@@ -234,4 +255,19 @@ public class Recinto {
         return orientacion;
     }
 
+    public int[][] getRecintoCompleto() {
+        return recintoCompleto;
+    }
+
+    public Posicion getPosicionActual() {
+        return posicionActual;
+    }
+
+    public void setPosicionActual(Posicion posicionActual) {
+        this.posicionActual = posicionActual;
+    }
+
+    public WallE getWalle() {
+        return walle;
+    }
 }

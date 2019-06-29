@@ -7,9 +7,9 @@ package WallECodigo;
  */
 public class WallE {
 
-    private boolean isDestino = true;
+    private boolean isDestino;
 
-    private boolean isMovimientoValido = true;
+    private boolean isMovimientoValido;
 
     private Instrucciones[] instruccion = new Instrucciones[40];
 

@@ -5,6 +5,11 @@ public class Posicion {
     public int posicionFila;
     public int posicionColumna;
 
+    Posicion(int fila, int columna){
+        this.posicionFila = fila;
+        this.posicionColumna = columna;
+    }
+
     public int getPosicionFila() {
         return posicionFila;
     }
