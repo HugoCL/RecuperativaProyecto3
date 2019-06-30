@@ -9,6 +9,7 @@ package WallECodigo;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,22 +40,25 @@ public class Main {
         Recorredor recorrer = new Recorredor();
         recinto.setLimiteColumnas(5);
         recinto.setLimiteFilas(5);
+        recinto.nuevaOrientacion('O');
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 System.out.print(recinto.getRecintoCompleto()[i][j]);
             }
             System.out.println("");
         }
+        recinto.crearRecinto(0, 1, 1);
         List<Posicion> ruta = recorrer.resolver(recinto);
         System.out.println(ruta);
 
-
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 System.out.print(recinto.getRecintoCompleto()[i][j]);
             }
             System.out.println("");
         }
+        ArrayList<Character> instruc = recorrer.traductorInstrucciones(ruta, recinto);
+        System.out.println(instruc);
     }
     // FIN TEST HUGO
 }

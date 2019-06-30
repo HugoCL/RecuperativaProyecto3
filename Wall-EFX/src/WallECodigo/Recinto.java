@@ -48,7 +48,6 @@ public class Recinto {
         posicionD.setPosicionColumna(columna);
         posicionD.setPosicionFila(fila);
         walle.setPosicionDestino(posicionD);
-        getRecintoCompleto()[fila][columna] = 3;
     }
 
     boolean esMuroBomba(Recinto recinto, int fila, int columna){
