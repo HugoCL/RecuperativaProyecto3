@@ -4,11 +4,18 @@
     <list default="true" id="2298c38c-970f-4dab-a790-2f636e67054e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Posicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Posicion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recinto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recinto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/WallE.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/WallE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/WallECodigo/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wall-EFX/WallECodigo/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/WallECodigo/Posicion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wall-EFX/WallECodigo/Posicion.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/WallECodigo/Recinto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wall-EFX/WallECodigo/Recinto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/WallECodigo/Recorredor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wall-EFX/WallECodigo/Recorredor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/WallECodigo/WallE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wall-EFX/WallECodigo/WallE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/FXMLDocument.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/FXMLDocumentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/WallEFX.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/WallEFX.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="119" column="44" selection-start-line="119" selection-start-column="44" selection-end-line="119" selection-end-column="44" />
+            <state relative-caret-position="376">
+              <caret line="57" column="55" selection-start-line="57" selection-start-column="55" selection-end-line="57" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,10 +42,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Posicion.java">
+        <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/WallEFX.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Posicion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+              <folding>
+                <element signature="e#882#883#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,8 +65,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/WallE.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-505">
-              <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+            <state relative-caret-position="612">
+              <caret line="42" column="52" selection-start-line="42" selection-start-column="52" selection-end-line="42" selection-end-column="52" />
+              <folding>
+                <element signature="e#1561#1562#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,10 +86,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recinto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-493">
-              <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+            <state relative-caret-position="1003">
+              <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="12" />
               <folding>
-                <element signature="method#empezarWallE#0;class#Recinto#0" />
                 <element signature="docComment;method#cargarInstrucciones#0;class#Recinto#0" />
                 <element signature="docComment;method#setLimiteFilas#0;class#Recinto#0" />
                 <element signature="docComment;method#setLimiteColumnas#0;class#Recinto#0" />
@@ -83,8 +104,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+            <state relative-caret-position="187">
+              <caret line="41" column="37" lean-forward="true" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -111,16 +132,16 @@
         <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Lectura.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/PosicionWallE.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/WallE.java" />
-        <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Posicion.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recinto.java" />
+        <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Posicion.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Main.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="833" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="676" />
+    <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
   <component name="ProjectView">
@@ -129,6 +150,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -145,13 +167,18 @@
               <item name="ProyectoProAva3" type="b2602c69:ProjectViewProjectNode" />
               <item name="Wall-EFX" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="efx" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProyectoProAva3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Wall-EFX" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="WallECodigo" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -178,7 +205,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="WallECodigo.Main" />
       <module name="Wall-EFX" />
@@ -192,9 +219,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WallEFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="wall.efx.WallEFX" />
+      <module name="Wall-EFX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="wall.efx.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.WallEFX" />
       </list>
     </recent_temporary>
   </component>
@@ -216,18 +257,20 @@
       <workItem from="1561841357577" duration="2405000" />
       <workItem from="1561847529855" duration="1488000" />
       <workItem from="1561857622414" duration="595000" />
-      <workItem from="1561868395574" duration="7111000" />
+      <workItem from="1561868395574" duration="7596000" />
+      <workItem from="1562016239895" duration="9258000" />
+      <workItem from="1562032712560" duration="947000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26946000" />
+    <option name="totallyTimeSpent" value="37636000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.204236" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21028744" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -303,10 +346,40 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Lectura.java" />
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Posicion.java">
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="57" column="55" selection-start-line="57" selection-start-column="55" selection-end-line="57" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/WallEFX.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Posicion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+          <folding>
+            <element signature="e#882#883#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/WallE.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="42" column="52" selection-start-line="42" selection-start-column="52" selection-end-line="42" selection-end-column="52" />
+          <folding>
+            <element signature="e#1561#1562#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -317,29 +390,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/WallE.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-505">
-          <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="119" column="44" selection-start-line="119" selection-start-column="44" selection-end-line="119" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recinto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-493">
-          <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+        <state relative-caret-position="1003">
+          <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="12" />
           <folding>
-            <element signature="method#empezarWallE#0;class#Recinto#0" />
             <element signature="docComment;method#cargarInstrucciones#0;class#Recinto#0" />
             <element signature="docComment;method#setLimiteFilas#0;class#Recinto#0" />
             <element signature="docComment;method#setLimiteColumnas#0;class#Recinto#0" />
@@ -353,8 +408,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+        <state relative-caret-position="187">
+          <caret line="41" column="37" lean-forward="true" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
         </state>
       </provider>
     </entry>

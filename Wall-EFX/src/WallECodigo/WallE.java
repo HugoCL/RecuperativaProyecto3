@@ -7,48 +7,11 @@ package WallECodigo;
  */
 public class WallE {
 
-    private boolean isDestino;
-
-    private boolean isMovimientoValido;
-
     private Instrucciones[] instruccion = new Instrucciones[40];
 
-    private Posicion posicionDestino;
+    private Posicion posicionDestinoPlanta;
 
-
-    public WallE() {
-    }
-
-    /***
-     * Este metodo tiene como objetivo el comprobar si el movimiento realizado llevo a WallE a su destino
-     * @param x Es un int que posee la coordenada X de la ultima posicion de WallE
-     * @param y Es un int que posee la coordenada Y de la ultima posicion de WallE
-     * @return Se retorna true si ya se ha llegado al destino y false en caso contrario
-     */
-    public boolean comprobarDestino(int x , int y) {
-        if (x == posicionDestino.getPosicionColumna() && y == posicionDestino.getPosicionFila()){
-            return isDestino;
-        }
-        else{
-            return false;
-        }
-    }
-
-    /***
-     * El metodo se encarga de realizar una comprobacion de la "integridad" de WallE, por si sale de los limites o
-     * si toco una bomba
-     * @return Se retorna true si el movimiento es valido (No es una bomba o limite) y false en caso contrario
-     * @param posicionWE Es un int que contiene la posicion en la que WallE estará despues del movimiento
-     * @param limite Es un int que contiene el limite de las columnas/filas
-     */
-    public boolean comprobarValidez(int posicionWE, int limite) {
-        if (posicionWE < 0 || posicionWE >= limite){
-            System.out.println("X");
-            System.out.println("Datos de la falla: Fuera de los limites");
-            System.exit(0);
-        }
-        return isMovimientoValido;
-    }
+    private Posicion posicionDestinoZonaSegura;
 
     /***
      * Este metodo se encarga de hacer las acciones dadas por el archivo, cambiando la posicion y/o orientacion de WallE
@@ -69,11 +32,19 @@ public class WallE {
     }
 
 
-    public Posicion getPosicionDestino() {
-        return posicionDestino;
+    public Posicion getPosicionDestinoPlanta() {
+        return posicionDestinoPlanta;
     }
 
-    public void setPosicionDestino(Posicion posicionDestino) {
-        this.posicionDestino = posicionDestino;
+    public void setPosicionDestinoPlanta(Posicion posicionDestinoPlanta) {
+        this.posicionDestinoPlanta = posicionDestinoPlanta;
+    }
+
+    public Posicion getPosicionDestinoZonaSegura() {
+        return posicionDestinoZonaSegura;
+    }
+
+    public void setPosicionDestinoZonaSegura(Posicion posicionDestinoZonaSegura) {
+        this.posicionDestinoZonaSegura = posicionDestinoZonaSegura;
     }
 }

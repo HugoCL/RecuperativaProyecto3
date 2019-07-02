@@ -47,14 +47,13 @@ public class Recinto {
         Posicion posicionD = new Posicion(fila, columna);
         posicionD.setPosicionColumna(columna);
         posicionD.setPosicionFila(fila);
-        walle.setPosicionDestino(posicionD);
+        walle.setPosicionDestinoPlanta(posicionD);
     }
 
     boolean esMuroBomba(Recinto recinto, int fila, int columna){
         return (recinto.getRecintoCompleto()[fila][columna] == 1);
     }
-    boolean esSeguro(int [][] recintoCompleto, int fila, int columna)
-    {
+    boolean esSeguro(int [][] recintoCompleto, int fila, int columna) {
         return (fila >= 0 && fila < limiteFilas && columna >= 0 && columna < limiteColumnas && recintoCompleto[fila][columna] != 1);
     }
 
@@ -62,140 +61,14 @@ public class Recinto {
         return (recinto.getRecintoCompleto()[fila][columna] == 5);
     }
 
-    boolean esDestino (Recinto recinto, int fila, int columna){
-        return (getWalle().getPosicionDestino().getPosicionFila() == fila &&
-                getWalle().getPosicionDestino().getPosicionColumna() == columna);
+    boolean esDestinoPlanta(int fila, int columna){
+        return (getWalle().getPosicionDestinoPlanta().getPosicionFila() == fila &&
+                getWalle().getPosicionDestinoPlanta().getPosicionColumna() == columna);
     }
-    /***
-     * Es el metodo que hace que WallE realice sus instrucciones y se comprueba su correcto funcionamiento
-     * @param nInstruc Es el int que contiene el numero de instrucciones a realizar
-     */
-    public void empezarWallE(int nInstruc){
-        char instruccionActual;
-        boolean valido;
 
-        // Ciclo for que lee cada una de las instrucciones con el numero de instrucciones dados en el input
-        for (int i = 0; i < nInstruc; i++) {
-
-            // Se extrae la instruccion
-            instruccionActual = walle.ejecutarInstruccion(i);
-
-            // Se realizan if/else if para ver que orientación tiene WallE y que instrucción hará
-            // Si la orientación e instrucción implica movimiento en la matriz, se verifica que el movimiento sea
-            // valido
-            if (orientacion == 'N' && instruccionActual == 'A'){
-
-                // Se comprueba que el movimiento siguiente no salga de los limites de la matriz
-                valido = walle.comprobarValidez(posicionActual.getPosicionColumna() - 1 , getlimiteColumnas());
-                if (valido) {
-
-                    // Si ya se verifico que no sale de los limites, se comprueba que no se llegue a una bomba
-                    if (recintoCompleto[posicionActual.getPosicionColumna() - 1][posicionActual.getPosicionFila()] == 0){
-                        int nPx = posicionActual.getPosicionColumna() - 1;
-                        posicionActual.setPosicionFila(nPx);
-                    }
-                    // Si lleva a una bomba, se informa del error y se termina la ejecucion
-                    else{
-                        System.out.println("X");
-                        System.out.println("Datos de la falla: ¡Bomba! en la coordenada "+(posicionActual.getPosicionColumna()-1)+" "+(posicionActual.getPosicionFila()));
-                        System.exit(0);
-                    }
-                }
-            }
-            else if (orientacion == 'N' && instruccionActual == 'I'){
-                nuevaOrientacion('O');
-            }
-            else if (orientacion == 'N' && instruccionActual == 'D'){
-                nuevaOrientacion('E');
-            }
-            else if (orientacion == 'E' && instruccionActual == 'A'){
-
-                // Se comprueba que el movimiento siguiente no salga de los limites de la matriz
-                valido = walle.comprobarValidez(posicionActual.getPosicionFila() + 1 , getlimiteFilas());
-
-                // Si ya se verifico que no sale de los limites, se comprueba que no se llegue a una bomba
-                if (valido) {
-                    if (recintoCompleto[posicionActual.getPosicionColumna()][posicionActual.getPosicionFila() + 1] == 0) {
-                        int nPy = posicionActual.getPosicionFila() + 1;
-                        posicionActual.setPosicionFila(nPy);
-                    }
-                    // Si lleva a una bomba, se informa del error y se termina la ejecucion
-                    else {
-                        System.out.println("X");
-                        System.out.println("Datos de la falla: ¡Bomba! en la coordenada "+(posicionActual.getPosicionColumna())+" "+(posicionActual.getPosicionFila()+1));
-                        System.exit(0);
-                    }
-                }
-            }
-            else if (orientacion == 'E' && instruccionActual == 'I'){
-                nuevaOrientacion('N');
-            }
-            else if (orientacion == 'E' && instruccionActual == 'D'){
-                nuevaOrientacion('S');
-            }
-            else if (orientacion == 'S' && instruccionActual == 'A'){
-
-                // Se comprueba que el movimiento siguiente no salga de los limites de la matriz
-                valido = walle.comprobarValidez(posicionActual.getPosicionColumna() + 1 , getlimiteColumnas());
-
-                // Si ya se verifico que no sale de los limites, se comprueba que no se llegue a una bomba
-                if (valido) {
-                    if (recintoCompleto[posicionActual.getPosicionColumna() + 1][posicionActual.getPosicionFila()] == 0){
-                        int nPx = posicionActual.getPosicionColumna() + 1;
-                        posicionActual.setPosicionColumna(nPx);
-                    }
-                    // Si lleva a una bomba, se informa del error y se termina la ejecucion
-                    else{
-                        System.out.println("X");
-                        System.out.println("Datos de la falla: ¡Bomba! en la coordenada "+(posicionActual.getPosicionColumna()+1)+" "+(posicionActual.getPosicionFila()));
-                        System.exit(0);
-                    }
-                }
-            }
-            else if (orientacion == 'S' && instruccionActual == 'I'){
-                nuevaOrientacion('E');
-            }
-            else if (orientacion == 'S' && instruccionActual == 'D'){
-                nuevaOrientacion('O');
-            }
-            else if (orientacion == 'O' && instruccionActual == 'A'){
-
-                // Se comprueba que el movimiento siguiente no salga de los limites de la matriz
-                valido = walle.comprobarValidez(posicionActual.getPosicionFila() - 1 , getlimiteFilas());
-
-                // Si ya se verifico que no sale de los limites, se comprueba que no se llegue a una bomba
-                if (valido) {
-                    if (recintoCompleto[posicionActual.getPosicionColumna()][posicionActual.getPosicionFila() - 1] == 0) {
-                        int nPy = posicionActual.getPosicionFila() - 1;
-                        posicionActual.setPosicionFila(nPy);
-                    }
-                    // Si lleva a una bomba, se informa del error y se termina la ejecucion
-                    else {
-                        System.out.println("X");
-                        System.out.println("Datos de la falla: ¡Bomba! en la coordenada "+(posicionActual.getPosicionColumna())+" "+(posicionActual.getPosicionFila()-1));
-                        System.exit(0);
-                    }
-                }
-            }
-            else if (orientacion == 'O' && instruccionActual == 'I'){
-                nuevaOrientacion('S');
-            }
-            else if (orientacion == 'O' && instruccionActual == 'D'){
-                nuevaOrientacion('N');
-            }
-        }
-
-        // Una vez realizadas todas las instrucciones, se revisa si se llego al destino
-        boolean isDestino = walle.comprobarDestino(posicionActual.getPosicionFila(), posicionActual.getPosicionColumna());
-        if (isDestino){
-            System.out.println("E");
-            System.exit(0);
-        }
-        // Si no hubo exito, se informa del fallo
-        else
-            System.out.println("X");
-            System.out.println("Datos de la falla: No se llego al destino");
-            System.exit(0);
+    boolean esDestinoZonaSegura (int fila, int columna){
+        return (getWalle().getPosicionDestinoZonaSegura().getPosicionFila() == fila &&
+                getWalle().getPosicionDestinoZonaSegura().getPosicionColumna() == columna);
     }
 
     /***

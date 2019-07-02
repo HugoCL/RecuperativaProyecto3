@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -40,7 +41,7 @@ public class Main {
         Recorredor recorrer = new Recorredor();
         recinto.setLimiteColumnas(5);
         recinto.setLimiteFilas(5);
-        recinto.nuevaOrientacion('O');
+        recinto.nuevaOrientacion('S');
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 System.out.print(recinto.getRecintoCompleto()[i][j]);
@@ -48,16 +49,18 @@ public class Main {
             System.out.println("");
         }
         recinto.crearRecinto(0, 1, 1);
-        List<Posicion> ruta = recorrer.resolver(recinto);
-        System.out.println(ruta);
-
+        //List<Posicion> ruta = recorrer.resolver(recinto,1);
+        List<Posicion> rutaRapida = recorrer.resolverRapido(recinto);
+        Collections.reverse(rutaRapida);
+        //System.out.println(ruta);
+        System.out.println(rutaRapida);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 System.out.print(recinto.getRecintoCompleto()[i][j]);
             }
             System.out.println("");
         }
-        ArrayList<Character> instruc = recorrer.traductorInstrucciones(ruta, recinto);
+        ArrayList<Character> instruc = recorrer.traductorInstrucciones(rutaRapida, recinto);
         System.out.println(instruc);
     }
     // FIN TEST HUGO

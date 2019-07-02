@@ -1,11 +1,7 @@
 package WallECodigo;
 
-import javafx.geometry.Pos;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import javax.xml.soap.Node;
+import java.util.*;
 
 import static java.lang.Math.abs;
 
@@ -29,19 +25,67 @@ public class Recorredor{
         orientacionesReversas.put(4, 'O');
     }
 
-
-    public List<Posicion> resolver(Recinto recinto){
+    /***
+     *
+     * @param recinto Es el recinto en el que se esta trabajando
+     * @param flag Flag de tipo int que indica que tipo de recursion se hara. 1 para recursion Wall-E a Planta, 2 para
+     *             recursion Planta a Zona Segura
+     * @return Retorna la lista con las posiciones que debe recorrer Wall-E para llegar a la posicion seleccionada
+     */
+    public List<Posicion> resolver(Recinto recinto, int flag){
         ArrayList<Posicion> ruta = new ArrayList<>();
         if (explorar(recinto, recinto.getPosicionActual().getPosicionFila(),
-                recinto.getPosicionActual().getPosicionColumna(), ruta)){
+                recinto.getPosicionActual().getPosicionColumna(), ruta, 1)){
             return ruta;
         }
         return Collections.emptyList();
     }
 
+    public List<Posicion> resolverRapido(Recinto recinto) {
+        LinkedList<Posicion> sigVisitar = new LinkedList<>();
+        Posicion inicio = recinto.getPosicionActual();
+        sigVisitar.add(inicio);
 
+        while (!sigVisitar.isEmpty()) {
+            Posicion cur = sigVisitar.remove();
 
-    private boolean explorar(Recinto recinto, int fila, int columna, List<Posicion> ruta){
+            if (!recinto.esSeguro(recinto.getRecintoCompleto(), cur.getPosicionFila(), cur.getPosicionColumna())
+                    || recinto.yaExplorado(recinto, cur.getPosicionFila(), cur.getPosicionColumna())
+            ) {
+                continue;
+            }
+
+            if (recinto.esMuroBomba(recinto, cur.getPosicionFila(), cur.getPosicionColumna())) {
+                recinto.getRecintoCompleto()[cur.getPosicionFila()][cur.getPosicionColumna()] = 5;
+                continue;
+            }
+
+            if (recinto.esDestinoPlanta(cur.getPosicionFila(), cur.getPosicionColumna())) {
+                return rutaBacktracking(cur);
+            }
+
+            for (int[] direccion : DIRECCIONES) {
+                Posicion posicion = new Posicion (cur.getPosicionFila() + direccion[0],
+                        cur.getPosicionColumna() + direccion[1], cur);
+                sigVisitar.add(posicion);
+                recinto.getRecintoCompleto()[cur.getPosicionFila()][cur.getPosicionColumna()] = 5;
+            }
+        }
+        return Collections.emptyList();
+    }
+
+    private List<Posicion> rutaBacktracking(Posicion cur) {
+        List<Posicion> path = new ArrayList<>();
+        Posicion iter = cur;
+
+        while (iter != null) {
+            path.add(iter);
+            iter = iter.getPosicionPasada();
+        }
+
+        return path;
+    }
+    private boolean explorar(Recinto recinto, int fila, int columna, List<Posicion> ruta, int flag){
         if (!recinto.esSeguro(recinto.getRecintoCompleto(), fila, columna) ||
                 recinto.esMuroBomba(recinto, fila, columna) ||  recinto.yaExplorado(recinto, fila, columna)){
             return false;
@@ -49,12 +93,20 @@ public class Recorredor{
         ruta.add(new Posicion(fila, columna));
         // SE MARCA COMO VISITADA LA CASILLA
         recinto.getRecintoCompleto()[fila][columna] = 5;
-        if (recinto.esDestino(recinto, fila, columna)){
-            return true;
+        if (flag == 1){
+            if (recinto.esDestinoPlanta(fila, columna)){
+                return true;
+            }
         }
+        else if (flag == 2){
+            if (recinto.esDestinoZonaSegura(fila, columna)){
+                return true;
+            }
+        }
+
         for (int [] direccion: DIRECCIONES){
             Posicion posicion2 = getSiguientePosicion(fila, columna, direccion[0], direccion[1]);
-            if (explorar(recinto, posicion2.getPosicionFila(), posicion2.getPosicionColumna(), ruta)){
+            if (explorar(recinto, posicion2.getPosicionFila(), posicion2.getPosicionColumna(), ruta, flag)){
                 return true;
             }
         }
