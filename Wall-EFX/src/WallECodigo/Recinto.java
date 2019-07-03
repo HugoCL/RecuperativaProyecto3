@@ -130,7 +130,7 @@ public class Recinto {
     public int[][] getRecintoCompleto() {
         return recintoCompleto;
     }
-
+ 
     public Posicion getPosicionActual() {
         return posicionActual;
     }
@@ -141,5 +141,5 @@ public class Recinto {
 
     public WallE getWalle() {
         return walle;
-    }
+    }   
 }
