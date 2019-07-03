@@ -41,8 +41,8 @@ public class Recorredor{
     public List<List<Posicion>> resolverTodas (Recinto recinto, int flag){
         // if destination (bottom-rightmost cell) is found,
         // increment the path count
-        if (recinto.getpActual().getpFila() == recinto.getWalle().getPosicionDestinoPlanta().getpFila() &&
-                recinto.getpActual().getpColumna() == recinto.getWalle().getPosicionDestinoPlanta().getpColumna() &&
+        if (recinto.getpActual().getpFila() == recinto.getWalle().getPDPlanta().getpFila() &&
+                recinto.getpActual().getpColumna() == recinto.getWalle().getPDPlanta().getpColumna() &&
                 flag == 1)
         {
             count++;

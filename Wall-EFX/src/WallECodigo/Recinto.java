@@ -59,23 +59,15 @@ public class Recinto {
     }
 
     boolean esDestinoPlanta(int fila, int columna){
-        return (getWalle().getPosicionDestinoPlanta().getpFila() == fila &&
-                getWalle().getPosicionDestinoPlanta().getpColumna() == columna);
+        return (getWalle().getPDPlanta().getpFila() == fila &&
+                getWalle().getPDPlanta().getpColumna() == columna);
     }
 
     boolean esDestinoZonaSegura (int fila, int columna){
-        return (getWalle().getPosicionDestinoZonaSegura().getpFila() == fila &&
-                getWalle().getPosicionDestinoZonaSegura().getpColumna() == columna);
+        return (getWalle().getpDZonaSegura().getpFila() == fila &&
+                getWalle().getpDZonaSegura().getpColumna() == columna);
     }
 
-    /***
-     * Este metodo se encarga de cargar las instrucciones en la collecion de instrucciones
-     * @param orden Es un int que indica el orden numerico actual de la orden a cargar
-     * @param accion Es el char que contiene la instruccion (I, D o A)
-     */
-    public void cargarInstrucciones(int orden, char accion){
-        walle.cargarInstrucciones(orden, accion);
-    }
     /***
      * Este metodo define cual es el limite de las filas y para iterar a lo largo de la matriz
      * @param limiF Numero entero que posee el limite de las filas, obtenido del archivo
