@@ -41,19 +41,10 @@ public class FXMLDatosController implements Initializable {
             bombas.clear();
         }
         else{
-            cantFilas=Integer.parseInt(filas.getText());
-            if(cantFilas<10 || cantFilas>20){
-                textoError1="LA CANTIDAD DE FILAS";
-                textoError2="INGRESADAS NO ES VALIDA.";
-                filas.clear();
-                columnas.clear();
-                bombas.clear();
-                alerta(textoError1, textoError2);
-            }
-            else{
-                cantColumnas=Integer.parseInt(columnas.getText());
-                if(cantColumnas<10 || cantColumnas>30){
-                    textoError1="LA CANTIDAD DE COLUMNAS";
+            if(validarTipo(filas.getText())){
+                cantFilas=Integer.parseInt(filas.getText());
+                if(cantFilas<10 || cantFilas>20){
+                    textoError1="LA CANTIDAD DE FILAS";
                     textoError2="INGRESADAS NO ES VALIDA.";
                     filas.clear();
                     columnas.clear();
@@ -61,23 +52,36 @@ public class FXMLDatosController implements Initializable {
                     alerta(textoError1, textoError2);
                 }
                 else{
-                    cantBombas=Integer.parseInt(bombas.getText());
-                    if(cantBombas<0 || cantBombas>((cantFilas*cantColumnas)-3)){
-                        textoError1="LA CANTIDAD DE BOMBAS";
-                        textoError2="INGRESADAS NO ES VALIDA.";
-                        filas.clear();
-                        columnas.clear();
-                        bombas.clear();
-                        alerta(textoError1, textoError2);
-                    }
-                    else{
-                        System.out.println("filas "+cantFilas+"columnas "+ cantColumnas+ "bombas "+cantBombas);
-                        FXMLDatosController.f=cantFilas;
-                        FXMLDatosController.c=cantColumnas;
-                        FXMLDatosController.b=cantBombas;
-                        SceneHandler.CargarVista(root, getClass().getResource("FXMLPantallaPrincipal.fxml"));
-                        
-                        
+                    if(validarTipo(columnas.getText())){
+                        cantColumnas=Integer.parseInt(columnas.getText());
+                        if(cantColumnas<10 || cantColumnas>30){
+                            textoError1="LA CANTIDAD DE COLUMNAS";
+                            textoError2="INGRESADAS NO ES VALIDA.";
+                            filas.clear();
+                            columnas.clear();
+                            bombas.clear();
+                            alerta(textoError1, textoError2);
+                        }
+                        else{
+                            if(validarTipo(bombas.getText())){
+                                cantBombas=Integer.parseInt(bombas.getText());
+                                if(cantBombas<0 || cantBombas>((cantFilas*cantColumnas)-3)){
+                                    textoError1="LA CANTIDAD DE BOMBAS";
+                                    textoError2="INGRESADAS NO ES VALIDA.";
+                                    filas.clear();
+                                    columnas.clear();
+                                    bombas.clear();
+                                    alerta(textoError1, textoError2);
+                                }
+                                else{
+                                    System.out.println("filas "+cantFilas+"columnas "+ cantColumnas+ "bombas "+cantBombas);
+                                    FXMLDatosController.f=cantFilas;
+                                    FXMLDatosController.c=cantColumnas;
+                                    FXMLDatosController.b=cantBombas;
+                                    SceneHandler.CargarVista(root, getClass().getResource("FXMLPantallaPrincipal.fxml"));
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -113,13 +117,18 @@ public class FXMLDatosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-//REVISAR
+
     public boolean validarTipo(String cadena){
         try{
-            
+            Integer.parseInt(cadena);
             return true;
         }
         catch(NumberFormatException nfe){
+            filas.clear();
+            columnas.clear();
+            bombas.clear();
+            alerta("LOS DATOS INGRESADOS", "NO SON COMPATIBLES.");
+            System.out.println("ERROR DE TIPO DE DATO: LOS DATOS INGRESADOS NO CORRESPONDEN POR COMPLETO A NUMEROS.");
             return false;
         }
     }

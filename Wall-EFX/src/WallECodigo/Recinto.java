@@ -138,5 +138,5 @@ public class Recinto {
 
     public WallE getWalle() {
         return walle;
-    }
+    }   
 }

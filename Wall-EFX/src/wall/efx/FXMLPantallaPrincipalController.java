@@ -2,9 +2,12 @@ package wall.efx;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
@@ -26,6 +29,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
     private final int filas=FXMLDatosController.f;
     private final int columnas=FXMLDatosController.c;
     private final int bombas=FXMLDatosController.b;
+    private boolean walle=true, planta=true, punto=true, bomba=true;
     
     public void crearTablero(){
         //System.out.println(filas + "-"+columnas);
@@ -77,10 +81,81 @@ public class FXMLPantallaPrincipalController implements Initializable {
                 AnchorPane an=new AnchorPane();
                 an.setStyle("-fx-background-color: brown;");
                 an.setPrefSize(1000/(columnas-1), 550/(filas-1));
+                an.setId("anchor "+i+" "+j);
+                //System.out.println(an.getId());
                 grid.add(an, j, i);
             }
         }
     }
+    
+    @FXML
+    public void mostrarRutas(){
+        
+    }
+    
+    @FXML
+    public void ubicarWalle(ActionEvent e) throws InterruptedException{
+        if(walle){  //SI AUN ESTA DISPONIBLE AGREGAR A WALL E
+            walle=false;
+            agregarWalle.setDisable(true);
+            agregarPlanta.setDisable(true);
+            agregarPunto.setDisable(true);
+            agregarBombas.setDisable(true);
+            System.out.println("BOTON CLICKEADO");
+            //AGREGAR EL CLICK DEL MOUSE
+            //Thread.sleep(3000);
+            //VUELVO A PONER DISPONIBLES LOS BOTONES QUE AUN LO ESTABAN
+            if(planta){
+                agregarPlanta.setDisable(false);
+            }
+            if(punto){
+                agregarPunto.setDisable(false);
+            }
+            if(bomba){
+                agregarBombas.setDisable(false);
+            }
+        }
+        
+    }
+    
+    @FXML
+    public void click(MouseEvent evento){
+        Node source=(Node)evento.getSource();
+        Integer columna=GridPane.getColumnIndex(source);
+        Integer fila=GridPane.getRowIndex(source);        
+        System.out.println(columna +" "+fila);
+
+        boolean bandera=true;
+        
+        if (!walle && bandera) {
+            // colocar imagen de walle
+            System.out.print("walle colocado en la posicion: ");
+            System.out.println(columna+" "+fila);
+            bandera=false;
+        }
+        
+        if (!planta && bandera) {
+            // colocar imagen de planta
+            System.out.print("planta colocado en la posicion: ");
+            System.out.println(columna +" "+fila);
+            bandera=false;
+        }
+        
+        if (!punto && bandera) {
+            // colocar imagen de punto
+            System.out.print("punto colocado en la posicion: ");
+            System.out.println(columna +" "+fila);
+            bandera=false;
+        }
+        
+        if (!bomba && bandera) {
+            // colocar imagen de bomba
+            System.out.print("bomba colocado en la posicion: ");
+            System.out.println(columna +" "+fila);
+            bandera=false;
+        }
+    }
+    
     
     /**
      * Initializes the controller class.
@@ -88,6 +163,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         crearTablero();
+        MouseEvent event;
     }    
     
 }
