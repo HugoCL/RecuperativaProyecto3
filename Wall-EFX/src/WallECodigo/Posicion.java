@@ -6,12 +6,12 @@ public class Posicion {
     public int pColumna;
     public Posicion pPasada;
 
-    Posicion(int fila, int columna){
+    public Posicion(int fila, int columna){
         this.pFila = fila;
         this.pColumna = columna;
     }
 
-    Posicion (int fila, int columna, Posicion PosPasada){
+    public Posicion (int fila, int columna, Posicion PosPasada){
         this.pPasada = PosPasada;
         this.pFila = fila;
         this.pColumna = columna;

@@ -1,7 +1,9 @@
 package wall.efx;
 
 import WallECodigo.Main;
+import static WallECodigo.Main.recinto;
 import WallECodigo.Posicion;
+import WallECodigo.Recinto;
 import WallECodigo.Recorredor;
 import java.io.File;
 import java.net.URL;
@@ -45,6 +47,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
     private final int columnas=FXMLDatosController.c;
     private final int bombas=FXMLDatosController.b;
     private boolean walle=true, planta=true, punto=true, bomba=true;
+    public static Recinto recinto = new Recinto();
     
     @FXML
     public void crearTablero(){
@@ -180,14 +183,15 @@ public class FXMLPantallaPrincipalController implements Initializable {
         boolean bandera=true;
         if (!walle && bandera) {
             walle=true;
+            Posicion posicion = new Posicion(fila, columna);
+            recinto.setpActual(posicion);
+            recinto.getRecintoCompleto()[fila][columna]=2;
             // colocar imagen de walle
             walleImagen.setX(x);
             walleImagen.setY(y);
             walleImagen.setFitHeight(550/(filas-1));
             walleImagen.setFitWidth(1000/(columnas-1));
             walleImagen.setVisible(true);
-            System.out.print("walle colocado en la posicion: x"+x+" y:"+y);
-            //System.out.println(columna+" "+fila);
             bandera=false;
             agregarWalle.setVisible(true);
             agregarPlanta.setVisible(true);
@@ -197,6 +201,9 @@ public class FXMLPantallaPrincipalController implements Initializable {
         
         if (!planta && bandera) {
             planta=true;
+            Posicion posicion = new Posicion(fila, columna);
+            recinto.setpActual(posicion);
+            recinto.getRecintoCompleto()[fila][columna]=2;
             // colocar imagen de planta
             plantaImagen.setX(x);
             plantaImagen.setY(y);
@@ -214,6 +221,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
         
         if (!punto && bandera) {
             punto=true;
+            Main.recinto.getRecintoCompleto()[fila][columna]=4;
             // colocar imagen de punto
             puntoImagen.setX(x);
             puntoImagen.setY(y);
@@ -231,6 +239,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
         
         if (!bomba && bandera) {
             bomba=true;
+            Main.recinto.getRecintoCompleto()[fila][columna]=1;
             // colocar imagen de bomba
             bombaImagen.setX(x);
             bombaImagen.setY(y);
@@ -257,6 +266,22 @@ public class FXMLPantallaPrincipalController implements Initializable {
         MouseEvent event;
     }    
 
+    public void crearMatriz(){
+        //CREA LA MATRIZ CON 0
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                recinto.crearRecinto(i, j, 0);
+            }
+        }
+        //IMPRIMO EL RECINTO
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                System.out.println(recinto.getRecintoCompleto()[i][j]);
+            }
+            System.out.println("");
+        }
+    }
+    
     public int getFilas() {
         return filas;
     }

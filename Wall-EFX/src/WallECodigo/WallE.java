@@ -9,7 +9,7 @@ public class WallE {
 
     private Instrucciones[] instruccion = new Instrucciones[40];
 
-    private Posicion posicionDestinoPlanta;
+    private Posicion pDPlanta;
 
     private Posicion posicionDestinoZonaSegura;
 
@@ -33,11 +33,11 @@ public class WallE {
 
 
     public Posicion getPosicionDestinoPlanta() {
-        return posicionDestinoPlanta;
+        return pDPlanta;
     }
 
     public void setPosicionDestinoPlanta(Posicion posicionDestinoPlanta) {
-        this.posicionDestinoPlanta = posicionDestinoPlanta;
+        this.pDPlanta = posicionDestinoPlanta;
     }
 
     public Posicion getPosicionDestinoZonaSegura() {

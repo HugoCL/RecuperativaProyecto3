@@ -35,8 +35,6 @@ public class Main {
             }
         }
 
-
-
         recinto.newWallE(4,4);
         Posicion posicionA = new Posicion(0,0);
         recinto.setpActual(posicionA);
@@ -44,8 +42,8 @@ public class Main {
         recinto.setLimiteColumnas(5);
         recinto.setLimiteFilas(5);
         recinto.nuevaOrientacion('S');
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
+        for (int i = 0; i < pp.getFilas(); i++) {
+            for (int j = 0; j < pp.getColumnas(); j++) {
                 System.out.print(recinto.getRecintoCompleto()[i][j]);
             }
             System.out.println("");
@@ -56,8 +54,8 @@ public class Main {
         Collections.reverse(rutaRapida);
         //System.out.println(ruta);
         System.out.println(rutaRapida);
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
+        for (int i = 0; i < pp.getFilas(); i++) {
+            for (int j = 0; j < pp.getColumnas(); j++) {
                 System.out.print(recinto.getRecintoCompleto()[i][j]);
             }
             System.out.println("");

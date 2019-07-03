@@ -118,6 +118,8 @@ public class FXMLDatosController implements Initializable {
         // TODO
     }    
 
+    
+    
     public boolean validarTipo(String cadena){
         try{
             Integer.parseInt(cadena);
