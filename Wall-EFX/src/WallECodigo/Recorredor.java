@@ -11,7 +11,7 @@ public class Recorredor{
 
     private static HashMap<Integer, Character> orientacionesReversas = new HashMap<>();
 
-    Recorredor(){
+    public Recorredor(){
         orientaciones.put('N', 1);
         orientaciones.put('E', 2);
         orientaciones.put('S', 3);
@@ -37,7 +37,7 @@ public class Recorredor{
         }
         return Collections.emptyList();
     }
-
+/*
     public List<List<Posicion>> resolverTodas (Recinto recinto, int flag){
         // if destination (bottom-rightmost cell) is found,
         // increment the path count
@@ -79,7 +79,7 @@ public class Recorredor{
 
         return count;
     }
-
+*/
     public List<Posicion> resolverRapido(Recinto recinto) {
         LinkedList<Posicion> sigVisitar = new LinkedList<>();
         Posicion inicio = recinto.getpActual();

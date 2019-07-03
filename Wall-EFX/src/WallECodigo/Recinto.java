@@ -24,7 +24,7 @@ public class Recinto {
 
     private WallE walle = new WallE();
 
-
+    
     /***
      * Es el metodo que se encarga de construir la matriz que conforma al recinto en el que se mueve Wall-E
      * @param valor Es el valor que poseerá la celda en la matriz, ya sea un 0 (Nada) o un 1 (Si es una bomba)

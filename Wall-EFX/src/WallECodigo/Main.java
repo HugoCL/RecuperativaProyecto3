@@ -7,9 +7,12 @@ package WallECodigo;
 
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import wall.efx.FXMLPantallaPrincipalController;
 
 
 /**
@@ -18,15 +21,16 @@ import java.util.List;
  */
 public class Main {
 
+    public static Recinto recinto = new Recinto();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException {
 
         //TEST HUGO
-        Recinto recinto = new Recinto();
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
+        FXMLPantallaPrincipalController pp=new FXMLPantallaPrincipalController();
+        for (int i = 0; i < pp.getFilas(); i++) {
+            for (int j = 0; j <pp.getColumnas(); j++) {
                 recinto.crearRecinto(i, j, 0);
             }
         }
