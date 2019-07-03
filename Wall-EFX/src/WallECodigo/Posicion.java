@@ -2,38 +2,38 @@ package WallECodigo;
 
 public class Posicion {
 
-    public int posicionFila;
-    public int posicionColumna;
-    public Posicion PosicionPasada;
+    public int pFila;
+    public int pColumna;
+    public Posicion pPasada;
 
     Posicion(int fila, int columna){
-        this.posicionFila = fila;
-        this.posicionColumna = columna;
+        this.pFila = fila;
+        this.pColumna = columna;
     }
 
     Posicion (int fila, int columna, Posicion PosPasada){
-        this.PosicionPasada = PosPasada;
-        this.posicionFila = fila;
-        this.posicionColumna = columna;
+        this.pPasada = PosPasada;
+        this.pFila = fila;
+        this.pColumna = columna;
     }
 
-    public int getPosicionFila() {
-        return posicionFila;
+    public int getpFila() {
+        return pFila;
     }
 
-    public void setPosicionFila(int posicionFila) {
-        this.posicionFila = posicionFila;
+    public void setpFila(int pFila) {
+        this.pFila = pFila;
     }
 
-    public int getPosicionColumna() {
-        return posicionColumna;
+    public int getpColumna() {
+        return pColumna;
     }
 
-    public void setPosicionColumna(int posicionColumna) {
-        this.posicionColumna = posicionColumna;
+    public void setpColumna(int pColumna) {
+        this.pColumna = pColumna;
     }
 
-    public Posicion getPosicionPasada() {
-        return PosicionPasada;
+    public Posicion getpPasada() {
+        return pPasada;
     }
 }

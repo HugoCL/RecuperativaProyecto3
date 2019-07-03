@@ -7,8 +7,6 @@ package WallECodigo;
 
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -37,7 +35,7 @@ public class Main {
 
         recinto.newWallE(4,4);
         Posicion posicionA = new Posicion(0,0);
-        recinto.setPosicionActual(posicionA);
+        recinto.setpActual(posicionA);
         Recorredor recorrer = new Recorredor();
         recinto.setLimiteColumnas(5);
         recinto.setLimiteFilas(5);

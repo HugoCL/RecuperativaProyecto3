@@ -14,7 +14,7 @@ public class Recinto {
 
     private int[][] recintoCompleto = new int [50][50];
 
-    private Posicion posicionActual;
+    private Posicion pActual;
 
     private int tamañoFilas;
 
@@ -24,9 +24,6 @@ public class Recinto {
 
     private WallE walle = new WallE();
 
-    public Recinto() {
-
-    }
 
     /***
      * Es el metodo que se encarga de construir la matriz que conforma al recinto en el que se mueve Wall-E
@@ -45,8 +42,8 @@ public class Recinto {
      */
     public void newWallE(int fila, int columna){
         Posicion posicionD = new Posicion(fila, columna);
-        posicionD.setPosicionColumna(columna);
-        posicionD.setPosicionFila(fila);
+        posicionD.setpColumna(columna);
+        posicionD.setpFila(fila);
         walle.setPosicionDestinoPlanta(posicionD);
     }
 
@@ -62,13 +59,13 @@ public class Recinto {
     }
 
     boolean esDestinoPlanta(int fila, int columna){
-        return (getWalle().getPosicionDestinoPlanta().getPosicionFila() == fila &&
-                getWalle().getPosicionDestinoPlanta().getPosicionColumna() == columna);
+        return (getWalle().getPosicionDestinoPlanta().getpFila() == fila &&
+                getWalle().getPosicionDestinoPlanta().getpColumna() == columna);
     }
 
     boolean esDestinoZonaSegura (int fila, int columna){
-        return (getWalle().getPosicionDestinoZonaSegura().getPosicionFila() == fila &&
-                getWalle().getPosicionDestinoZonaSegura().getPosicionColumna() == columna);
+        return (getWalle().getPosicionDestinoZonaSegura().getpFila() == fila &&
+                getWalle().getPosicionDestinoZonaSegura().getpColumna() == columna);
     }
 
     /***
@@ -131,12 +128,12 @@ public class Recinto {
         return recintoCompleto;
     }
 
-    public Posicion getPosicionActual() {
-        return posicionActual;
+    public Posicion getpActual() {
+        return pActual;
     }
 
-    public void setPosicionActual(Posicion posicionActual) {
-        this.posicionActual = posicionActual;
+    public void setpActual(Posicion pActual) {
+        this.pActual = pActual;
     }
 
     public WallE getWalle() {

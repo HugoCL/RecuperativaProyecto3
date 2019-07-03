@@ -1,13 +1,10 @@
 package WallECodigo;
 
-import javax.xml.soap.Node;
 import java.util.*;
-
-import static java.lang.Math.abs;
 
 public class Recorredor{
 
-    //                                       1: ESTE; 2:SUR ; 3:OESTE ; 4: NORTE
+    //                                             1: ESTE; 2:SUR ; 3:OESTE ; 4: NORTE
     private static final int[][] DIRECCIONES = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
 
     private static HashMap<Character, Integer> orientaciones = new HashMap<>();
@@ -34,41 +31,83 @@ public class Recorredor{
      */
     public List<Posicion> resolver(Recinto recinto, int flag){
         ArrayList<Posicion> ruta = new ArrayList<>();
-        if (explorar(recinto, recinto.getPosicionActual().getPosicionFila(),
-                recinto.getPosicionActual().getPosicionColumna(), ruta, 1)){
+        if (explorar(recinto, recinto.getpActual().getpFila(),
+                recinto.getpActual().getpColumna(), ruta, 1)){
             return ruta;
         }
         return Collections.emptyList();
     }
 
+    public List<List<Posicion>> resolverTodas (Recinto recinto, int flag){
+        // if destination (bottom-rightmost cell) is found,
+        // increment the path count
+        if (recinto.getpActual().getpFila() == recinto.getWalle().getPosicionDestinoPlanta().getpFila() &&
+                recinto.getpActual().getpColumna() == recinto.getWalle().getPosicionDestinoPlanta().getpColumna() &&
+                flag == 1)
+        {
+            count++;
+            return count;
+        }
+
+        // mark current cell as visited
+        recinto.getRecintoCompleto()[recinto.getpActual().getpFila()][recinto.getpActual().getpColumna()] = 5;
+
+        // if current cell is a valid and open cell
+        if (recinto.esSeguro(recinto.getRecintoCompleto(), recinto.getpActual().getpFila(), recinto.getpActual().getpColumna()) &&
+                !recinto.esMuroBomba(recinto, recinto.getpActual().getpFila(), recinto.getpActual().getpColumna()) &&
+                !recinto.yaExplorado(recinto, recinto.getpActual().getpFila(), recinto.getpActual().getpColumna()))
+        {
+            // go down (x, y) --> (x + 1, y)
+            if (recinto.getpActual().getpFila() + 1 < recinto.getlimiteFilas() && !recinto.yaExplorado(recinto, recinto.getpActual().getpFila() + 1, recinto.getpActual().getpColumna()))
+                count = resolverTodas(maze, recinto.getpActual().getpFila() + 1, recinto.getpActual().getpColumna(), recinto.yaExplorado(), count);
+
+            // go up (x, y) --> (x - 1, y)
+            if (recinto.getpActual().getpFila() - 1 >= 0 && !recinto.yaExplorado()[recinto.getpActual().getpFila() - 1][recinto.getpActual().getpColumna()])
+                count = resolverTodas(maze, recinto.getpActual().getpFila() - 1, recinto.getpActual().getpColumna(), recinto.yaExplorado(), count);
+
+            // go right (x, y) --> (x, y + 1)
+            if (recinto.getpActual().getpColumna() + 1 < N && !recinto.yaExplorado()[recinto.getpActual().getpFila()][recinto.getpActual().getpColumna() + 1])
+                count = resolverTodas(maze, recinto.getpActual().getpFila(), recinto.getpActual().getpColumna() + 1, recinto.yaExplorado(), count);
+
+            // go left (x, y) --> (x, y - 1)
+            if (recinto.getpActual().getpColumna() - 1 >= 0 && !recinto.yaExplorado()[recinto.getpActual().getpFila()][recinto.getpActual().getpColumna() - 1])
+                count = resolverTodas(maze, recinto.getpActual().getpFila(), recinto.getpActual().getpColumna() - 1, recinto.yaExplorado(), count);
+        }
+
+        // backtrack from current cell and remove it from current path
+        recinto.getRecintoCompleto()[recinto.getpActual().getpFila()][recinto.getpActual().getpColumna()] = 5;
+
+        return count;
+    }
+
     public List<Posicion> resolverRapido(Recinto recinto) {
         LinkedList<Posicion> sigVisitar = new LinkedList<>();
-        Posicion inicio = recinto.getPosicionActual();
+        Posicion inicio = recinto.getpActual();
         sigVisitar.add(inicio);
 
         while (!sigVisitar.isEmpty()) {
             Posicion cur = sigVisitar.remove();
 
-            if (!recinto.esSeguro(recinto.getRecintoCompleto(), cur.getPosicionFila(), cur.getPosicionColumna())
-                    || recinto.yaExplorado(recinto, cur.getPosicionFila(), cur.getPosicionColumna())
+            if (!recinto.esSeguro(recinto.getRecintoCompleto(), cur.getpFila(), cur.getpColumna())
+                    || recinto.yaExplorado(recinto, cur.getpFila(), cur.getpColumna())
             ) {
                 continue;
             }
 
-            if (recinto.esMuroBomba(recinto, cur.getPosicionFila(), cur.getPosicionColumna())) {
-                recinto.getRecintoCompleto()[cur.getPosicionFila()][cur.getPosicionColumna()] = 5;
+            if (recinto.esMuroBomba(recinto, cur.getpFila(), cur.getpColumna())) {
+                recinto.getRecintoCompleto()[cur.getpFila()][cur.getpColumna()] = 5;
                 continue;
             }
 
-            if (recinto.esDestinoPlanta(cur.getPosicionFila(), cur.getPosicionColumna())) {
+            if (recinto.esDestinoPlanta(cur.getpFila(), cur.getpColumna())) {
                 return rutaBacktracking(cur);
             }
 
             for (int[] direccion : DIRECCIONES) {
-                Posicion posicion = new Posicion (cur.getPosicionFila() + direccion[0],
-                        cur.getPosicionColumna() + direccion[1], cur);
+                Posicion posicion = new Posicion (cur.getpFila() + direccion[0],
+                        cur.getpColumna() + direccion[1], cur);
                 sigVisitar.add(posicion);
-                recinto.getRecintoCompleto()[cur.getPosicionFila()][cur.getPosicionColumna()] = 5;
+                recinto.getRecintoCompleto()[cur.getpFila()][cur.getpColumna()] = 5;
             }
         }
         return Collections.emptyList();
@@ -80,7 +119,7 @@ public class Recorredor{
 
         while (iter != null) {
             path.add(iter);
-            iter = iter.getPosicionPasada();
+            iter = iter.getpPasada();
         }
 
         return path;
@@ -106,7 +145,7 @@ public class Recorredor{
 
         for (int [] direccion: DIRECCIONES){
             Posicion posicion2 = getSiguientePosicion(fila, columna, direccion[0], direccion[1]);
-            if (explorar(recinto, posicion2.getPosicionFila(), posicion2.getPosicionColumna(), ruta, flag)){
+            if (explorar(recinto, posicion2.getpFila(), posicion2.getpColumna(), ruta, flag)){
                 return true;
             }
         }
@@ -117,7 +156,6 @@ public class Recorredor{
     private Posicion getSiguientePosicion(int fila, int columna, int i, int j){
         return new Posicion((fila+i), (columna+j));
     }
-
     public ArrayList<Character> traductorInstrucciones(List<Posicion> ruta, Recinto recinto){
 
         char orientacion = recinto.getOrientacion();
@@ -126,17 +164,17 @@ public class Recorredor{
         for (int i = 1; i < ruta.size(); i++) {
             Posicion posicionI = ruta.get(i-1);
             Posicion posicionS = ruta.get(i);
-            if (posicionI.getPosicionColumna() == posicionS.getPosicionColumna()) {
-                if (posicionI.getPosicionFila() > posicionS.getPosicionFila()) {
+            if (posicionI.getpColumna() == posicionS.getpColumna()) {
+                if (posicionI.getpFila() > posicionS.getpFila()) {
                     nextMovimiento = 'N';
-                } else if (posicionI.getPosicionFila() < posicionS.getPosicionFila()) {
+                } else if (posicionI.getpFila() < posicionS.getpFila()) {
                     nextMovimiento = 'S';
                 }
             }
-            else if (posicionI.getPosicionFila() == posicionS.getPosicionFila()) {
-                if (posicionI.getPosicionColumna() > posicionS.getPosicionColumna()) {
+            else if (posicionI.getpFila() == posicionS.getpFila()) {
+                if (posicionI.getpColumna() > posicionS.getpColumna()) {
                     nextMovimiento = 'O';
-                } else if (posicionI.getPosicionColumna() < posicionS.getPosicionColumna()) {
+                } else if (posicionI.getpColumna() < posicionS.getpColumna()) {
                     nextMovimiento = 'E';
                 }
             }
