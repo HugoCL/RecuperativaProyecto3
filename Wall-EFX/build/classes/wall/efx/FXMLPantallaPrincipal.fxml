@@ -38,11 +38,7 @@
          <right>
             <Accordion fx:id="acordeon" prefHeight="75.0" prefWidth="230.0" BorderPane.alignment="CENTER">
               <panes>
-<<<<<<< HEAD
-                <TitledPane fx:id="rutaAleatoria" animated="false" text="RUTA ALEATORIA">
-=======
                 <TitledPane animated="false" text="RUTA ALEATORIA">
->>>>>>> f4f604ad9f993873e95f2bd3b6de843653d40351
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
@@ -50,11 +46,7 @@
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
                 </TitledPane>
-<<<<<<< HEAD
-                <TitledPane fx:id="rutaMejor" animated="false" text="MEJOR RUTA">
-=======
                 <TitledPane animated="false" text="MEJOR RUTA">
->>>>>>> f4f604ad9f993873e95f2bd3b6de843653d40351
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
@@ -62,11 +54,7 @@
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
                 </TitledPane>
-<<<<<<< HEAD
-                <TitledPane fx:id="rutaTodas" animated="false" text="TODAS LAS RUTAS">
-=======
                 <TitledPane animated="false" text="TODAS LAS RUTAS">
->>>>>>> f4f604ad9f993873e95f2bd3b6de843653d40351
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
@@ -83,11 +71,7 @@
          <bottom>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-<<<<<<< HEAD
-                  <Button fx:id="agregarWalle" mnemonicParsing="false" onAction="#ubicarWalle" prefHeight="30.0" prefWidth="230.0" text="UBICAR A WALL-E">
-=======
                   <Button fx:id="agregarWalle" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="230.0" text="UBICAR A WALL-E">
->>>>>>> f4f604ad9f993873e95f2bd3b6de843653d40351
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
@@ -95,11 +79,7 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </Button>
-<<<<<<< HEAD
-                  <Button fx:id="agregarPlanta" mnemonicParsing="false" onAction="#ubicarPlanta" prefHeight="30.0" prefWidth="230.0" text="UBICAR LA PLANTA">
-=======
                   <Button fx:id="agregarPlanta" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="230.0" text="UBICAR LA PLANTA">
->>>>>>> f4f604ad9f993873e95f2bd3b6de843653d40351
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
@@ -107,11 +87,7 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </Button>
-<<<<<<< HEAD
-                  <Button fx:id="agregarBombas" mnemonicParsing="false" onAction="#ubicarBombas" prefHeight="30.0" prefWidth="230.0" text="UBICAR LAS BOMBAS">
-=======
                   <Button fx:id="agregarBombas" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="230.0" text="UBICAR LAS BOMBAS">
->>>>>>> f4f604ad9f993873e95f2bd3b6de843653d40351
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
@@ -119,11 +95,7 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </Button>
-<<<<<<< HEAD
-                  <Button fx:id="agregarPunto" mnemonicParsing="false" onAction="#ubicarPunto" prefHeight="30.0" prefWidth="230.0" text="UBICAR EL PUNTO SEGURO">
-=======
                   <Button fx:id="agregarPunto" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="230.0" text="UBICAR EL PUNTO SEGURO">
->>>>>>> f4f604ad9f993873e95f2bd3b6de843653d40351
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
@@ -138,28 +110,5 @@
             </HBox>
          </bottom>
       </BorderPane>
-<<<<<<< HEAD
-      <ImageView fx:id="walleImagen" fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../../imagenes/walle.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="plantaImagen" fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../../imagenes/planta.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="puntoImagen" fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../../imagenes/punto.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="bombaImagen" fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../../imagenes/bomba.png" />
-         </image>
-      </ImageView>
-=======
->>>>>>> f4f604ad9f993873e95f2bd3b6de843653d40351
    </children>
 </AnchorPane>
