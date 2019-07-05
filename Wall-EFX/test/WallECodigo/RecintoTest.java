@@ -25,8 +25,8 @@ public class RecintoTest {
         instance.newWallE(fila, columna);
         
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals(0, instance.getWalle().getPosicionDestinoPlanta().getPosicionFila());
-        assertEquals(0, instance.getWalle().getPosicionDestinoPlanta().getPosicionColumna());
+        assertEquals(0, instance.getWalle().getPDPlanta().getpFila());
+        assertEquals(0, instance.getWalle().getPDPlanta().getpColumna());
     }
 
     /**
@@ -95,7 +95,7 @@ public class RecintoTest {
         int columna = 1;
         Recinto instance = new Recinto();
         Posicion pos = new Posicion(1,1);
-        instance.getWalle().setPosicionDestinoZonaSegura(pos);
+        instance.getWalle().setpDZonaSegura(pos);
         boolean result = instance.esDestinoZonaSegura(fila, columna);
         assertTrue(result);
     }
