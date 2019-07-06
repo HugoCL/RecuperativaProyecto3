@@ -66,7 +66,7 @@ public class Main {
             System.out.println("");
         }
         // LO MISMO QUE ARRIBA
-        // recinto2.newWallE(3,3);
+        recinto2.newWallE(new Posicion (3,3), new Posicion(5,5));
         Posicion posicionA2 = new Posicion(0,0);
         recinto2.setpActual(posicionA2);
         recinto2.setLimiteColumnas(4);
