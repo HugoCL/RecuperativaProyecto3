@@ -128,7 +128,6 @@ public class FXMLPantallaPrincipalController implements Initializable {
                 puntoImagen.setFitWidth(2*((1000/(columnas-1)))/3);
                 puntoImagen.setVisible(true);
                 puntoImagen.setDisable(true);
-                System.out.print("punto colocado en la posicion: ");
                 //System.out.println(columna +" "+fila);
                 bandera=false;
                 agregarWalle.setVisible(true);
@@ -268,16 +267,21 @@ public class FXMLPantallaPrincipalController implements Initializable {
         Recorredor r=new Recorredor();
         List<Posicion> instrucciones=new ArrayList<>();
         ArrayList<Character> inst=new ArrayList<>();
-        instrucciones=r.resolver(Main.recinto, 1);
+        instrucciones=r.resolver(recinto, 1);
+        System.out.println(instrucciones);
         inst=r.traductorInstrucciones(instrucciones, recinto);
+        System.out.println("tamaño "+inst.size());
         for (int i = 0; i < inst.size(); i++) {
+            System.out.println("entra al for");
             System.out.println(inst.get(i).charValue());
         }
         if(inst.isEmpty()){
+            System.out.println("no hay ruta");
             rutaAleatoria.setText("NO HAY RUTA.");
         }
         else{
             for (int i = 0; i < inst.size(); i++) {
+                System.out.println(inst.get(i).charValue());
                 rutaAleatoria.setText(inst.get(i).toString()+"\n");
             }
         }
