@@ -61,8 +61,14 @@ public class Recorredor{
                 List<Posicion> rutaFinal = new ArrayList<>();
                 rutaFinal.addAll(rutaFaltante);
                 rutaFinal.addAll(ruta);
-                copiarRutasAll(rutaFinal);
-                ruta.clear();
+                if (repetidoChecker(rutaFinal)){
+                    ruta.clear();
+                    count--;
+                }
+                else{
+                    copiarRutasAll(rutaFinal);
+                    ruta.clear();
+                }
             }
             else if (count > 15){
                 ruta.clear();
@@ -84,8 +90,14 @@ public class Recorredor{
                 List<Posicion> rutaFinal = new ArrayList<>();
                 rutaFinal.addAll(rutaFaltante);
                 rutaFinal.addAll(ruta);
-                copiarRutasAll(rutaFinal);
-                ruta.clear();
+                if (repetidoChecker(rutaFinal)){
+                    ruta.clear();
+                    count--;
+                }
+                else{
+                    copiarRutasAll(rutaFinal);
+                    ruta.clear();
+                }
             }
             else if (count > 15){
                 ruta.clear();
@@ -281,6 +293,33 @@ public class Recorredor{
         return instrucciones;
     }
 
+    /***
+     *
+     * @param ruta Objeto de tipo posicion que contiene la ruta a comprobar
+     * @return Retorna True si la ruta encontrada ya existe, False en caso contrario
+     */
+    public boolean repetidoChecker (List<Posicion> ruta){
+        int repetidoCont = 0;
+        if (!todasLasRutas.isEmpty()){
+            for (List<Posicion> listaActual : todasLasRutas) {
+                if (listaActual.size() == ruta.size()) {
+                    for (int j = 0; j < listaActual.size(); j++) {
+                        Posicion pActual = listaActual.get(j);
+                        if (pActual.getpFila() == ruta.get(j).getpFila() && pActual.getpColumna() == ruta.get(j).getpColumna()) {
+                            repetidoCont++;
+                        }
+                    }
+                    if (repetidoCont == listaActual.size()) {
+                        return true;
+                    }
+                    else{
+                        repetidoCont = 0;
+                    }
+                }
+            }
+        }
+        return false;
+    }
     public List<List<Posicion>> getTodasLasRutas() {
         return todasLasRutas;
     }
