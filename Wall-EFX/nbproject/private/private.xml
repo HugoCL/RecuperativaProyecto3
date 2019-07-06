@@ -3,15 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Fi_an/OneDrive/Documentos/GitHub/ProyectoProAva3/Wall-EFX/src/WallECodigo/WallE.java</file>
-            <file>file:/C:/Users/Fi_an/OneDrive/Documentos/GitHub/ProyectoProAva3/Wall-EFX/src/WallECodigo/Recorredor.java</file>
-            <file>file:/C:/Users/Fi_an/OneDrive/Documentos/GitHub/ProyectoProAva3/Wall-EFX/test/WallECodigo/RecintoTest.java</file>
-            <file>file:/C:/Users/Fi_an/OneDrive/Documentos/GitHub/ProyectoProAva3/Wall-EFX/src/WallECodigo/Serializable.java</file>
-            <file>file:/C:/Users/Fi_an/OneDrive/Documentos/GitHub/ProyectoProAva3/Wall-EFX/src/WallECodigo/Recinto.java</file>
-            <file>file:/C:/Users/Fi_an/OneDrive/Documentos/GitHub/ProyectoProAva3/Wall-EFX/test/WallECodigo/RecorredorTest.java</file>
-            <file>file:/C:/Users/Fi_an/OneDrive/Documentos/GitHub/ProyectoProAva3/Wall-EFX/src/wall/efx/SceneHandler.java</file>
-            <file>file:/C:/Users/Fi_an/OneDrive/Documentos/GitHub/ProyectoProAva3/Wall-EFX/src/WallECodigo/Posicion.java</file>
-            <file>file:/C:/Users/Fi_an/OneDrive/Documentos/GitHub/ProyectoProAva3/Wall-EFX/src/wall/efx/FXMLPantallaPrincipalController.java</file>
+            <file>file:/C:/Users/Carolyn/Documents/GitHub/ProyectoProAva3/Wall-EFX/src/wall/efx/FXMLDatosController.java</file>
+            <file>file:/C:/Users/Carolyn/Documents/GitHub/ProyectoProAva3/Wall-EFX/src/WallECodigo/Posicion.java</file>
+            <file>file:/C:/Users/Carolyn/Documents/GitHub/ProyectoProAva3/Wall-EFX/src/WallECodigo/Recinto.java</file>
+            <file>file:/C:/Users/Carolyn/Documents/GitHub/ProyectoProAva3/Wall-EFX/src/WallECodigo/WallE.java</file>
+            <file>file:/C:/Users/Carolyn/Documents/GitHub/ProyectoProAva3/Wall-EFX/src/WallECodigo/Main.java</file>
+            <file>file:/C:/Users/Carolyn/Documents/GitHub/ProyectoProAva3/Wall-EFX/src/wall/efx/FXMLPantallaPrincipal.fxml</file>
+            <file>file:/C:/Users/Carolyn/Documents/GitHub/ProyectoProAva3/Wall-EFX/src/WallECodigo/Recorredor.java</file>
+            <file>file:/C:/Users/Carolyn/Documents/GitHub/ProyectoProAva3/Wall-EFX/src/wall/efx/FXMLPantallaPrincipalController.java</file>
         </group>
     </open-files>
 </project-private>
