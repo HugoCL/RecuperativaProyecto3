@@ -17,6 +17,10 @@ public class Posicion {
         this.pColumna = columna;
     }
 
+    public Posicion clonarPosicion(){
+        return new Posicion(this.pFila, this.pColumna);
+    }
+
     public int getpFila() {
         return pFila;
     }

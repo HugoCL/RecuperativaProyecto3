@@ -130,5 +130,9 @@ public class Recinto {
 
     public WallE getWalle() {
         return walle;
-    }   
+    }
+
+    public void setRecintoCompleto(int[][] recintoCompleto) {
+        this.recintoCompleto = recintoCompleto;
+    }
 }

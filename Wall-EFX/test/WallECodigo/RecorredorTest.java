@@ -28,7 +28,7 @@ public class RecorredorTest {
         Recinto instance = new Recinto();        
         instance.newWallE(2, 0);
         Posicion posActual = new Posicion(0,0);
-        instance.setPosicionActual(posActual);
+        instance.setpActual(posActual);
         
         Recorredor recorredor = new Recorredor();
         List<Posicion> result = recorredor.resolver(instance, 1);
@@ -41,8 +41,8 @@ public class RecorredorTest {
         posicionesDePrueba.add(pos1);
         posicionesDePrueba.add(pos2);
         for (int i = 0; i < result.size(); i++) {
-            assertEquals(posicionesDePrueba.get(i).getPosicionColumna(), result.get(i).getPosicionColumna());
-            assertEquals(posicionesDePrueba.get(i).getPosicionFila(), result.get(i).getPosicionFila());
+            assertEquals(posicionesDePrueba.get(i).getpColumna(), result.get(i).getpColumna());
+            assertEquals(posicionesDePrueba.get(i).getpFila(), result.get(i).getpFila());
         }
         //resultado esperado arraylist(posiciones) en una matriz 3*1
         //for   compar posiciones (asserEquals)
@@ -62,7 +62,7 @@ public class RecorredorTest {
         
         instance.newWallE(4, 1);
         Posicion posActual = new Posicion(0,1);
-        instance.setPosicionActual(posActual);
+        instance.setpActual(posActual);
         
         Recorredor recorredor = new Recorredor();
         
@@ -80,8 +80,8 @@ public class RecorredorTest {
         
         List<Posicion> resul = recorredor.resolverRapido(instance);
         for (int i = 0; i < resul.size(); i++) {
-            assertEquals(posicionesDePrueba.get(i).getPosicionColumna(), resul.get(i).getPosicionColumna());
-            assertEquals(posicionesDePrueba.get(i).getPosicionFila(), resul.get(i).getPosicionFila());
+            assertEquals(posicionesDePrueba.get(i).getpColumna(), resul.get(i).getpColumna());
+            assertEquals(posicionesDePrueba.get(i).getpFila(), resul.get(i).getpFila());
         }
         //resultado esperado arraylist(posiciones mas rapidas) en una matriz 4*2
         //for(for   compar posiciones (asserEquals))

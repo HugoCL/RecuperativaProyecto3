@@ -16,14 +16,14 @@
 
 <AnchorPane id="AnchorPane" fx:id="root" prefHeight="650.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wall.efx.FXMLPantallaPrincipalController">
    <children>
-      <ImageView fitHeight="726.0" fitWidth="1350.0" opacity="0.33" AnchorPane.bottomAnchor="-36.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="700.0" fitWidth="1350.0" opacity="0.33" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../imagenes/fondo.jpg" />
          </image>
       </ImageView>
       <BorderPane layoutX="114.0" layoutY="100.0" prefHeight="690.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <GridPane fx:id="grid" gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+            <GridPane fx:id="grid" gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#click" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
               </columnConstraints>
@@ -71,7 +71,7 @@
          <bottom>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="agregarWalle" mnemonicParsing="false" prefHeight="30.0" prefWidth="230.0" text="UBICAR A WALL-E">
+                  <Button fx:id="agregarWalle" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="230.0" text="UBICAR A WALL-E">
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
@@ -79,7 +79,7 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="agregarPlanta" mnemonicParsing="false" prefHeight="30.0" prefWidth="230.0" text="UBICAR LA PLANTA">
+                  <Button fx:id="agregarPlanta" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="230.0" text="UBICAR LA PLANTA">
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
@@ -87,7 +87,7 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="agregarBombas" mnemonicParsing="false" prefHeight="30.0" prefWidth="230.0" text="UBICAR LAS BOMBAS">
+                  <Button fx:id="agregarBombas" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="230.0" text="UBICAR LAS BOMBAS">
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
@@ -95,7 +95,7 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="agregarPunto" mnemonicParsing="false" prefHeight="30.0" prefWidth="230.0" text="UBICAR EL PUNTO SEGURO">
+                  <Button fx:id="agregarPunto" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="230.0" text="UBICAR EL PUNTO SEGURO">
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
