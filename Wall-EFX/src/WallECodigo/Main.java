@@ -36,8 +36,8 @@ public class Main {
                 recinto.crearRecinto(i, j, 0);
             }
         }
-
-        recinto.newWallE(4,4);
+        // ERROR PORQUE AUN NO SE MODIFICA. SE NECESITA MANDAR LAS POSICIONES DE LA PLANTA Y DE LA ZONA SEGURA
+        //recinto.newWallE(4,4);
         Posicion posicionA = new Posicion(0,0);
         recinto.setpActual(posicionA);
         Recorredor recorrer = new Recorredor();
@@ -65,7 +65,8 @@ public class Main {
             }
             System.out.println("");
         }
-        recinto2.newWallE(3,3);
+        // LO MISMO QUE ARRIBA
+        // recinto2.newWallE(3,3);
         Posicion posicionA2 = new Posicion(0,0);
         recinto2.setpActual(posicionA2);
         recinto2.setLimiteColumnas(4);
@@ -73,7 +74,7 @@ public class Main {
         recinto2.nuevaOrientacion('S');
         List<Posicion> rutaPrototipo = new ArrayList<>();
         boolean[][] visitado = new boolean[4][4];
-        System.out.println(recorrer.allRutas(recinto2, 0, 0, 0,visitado, rutaPrototipo));
+        System.out.println(recorrer.allRutas(recinto2, 0, 0, 0,visitado, rutaPrototipo, 1));
         //System.out.println(Recorredor.getTodasLasRutas());
         List<List<Posicion>> rutasTotales = recorrer.getTodasLasRutas();
         for (List<Posicion> lista: rutasTotales){

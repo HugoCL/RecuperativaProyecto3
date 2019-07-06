@@ -16,13 +16,11 @@ public class Recinto {
 
     private Posicion pActual;
 
-    private int tamañoFilas;
+    private int sizeFilas;
 
-    private int tamañaColumnas;
+    private int sizeColumnas;
 
     private char orientacion;
-
-    private WallE walle = new WallE();
 
     
     /***
@@ -31,20 +29,21 @@ public class Recinto {
      */
     public void crearRecinto(int Filas, int Columnas, int valor){
         recintoCompleto[Filas][Columnas] = valor;
-        tamañoFilas = Filas;
-        tamañaColumnas = Columnas;
+        sizeFilas = Filas;
+        sizeColumnas = Columnas;
     }
 
     /***
-     * Este metodo le ajusta el destino a WallE, usando el setter de la clase WallE
-     * @param fila Int que tiene la coordenada de la fila del destino
-     * @param columna Int que tiene la coordenada de la columna del destino
+     * Este metodo crea un Wall-E (Singleton) con sus destinos
+     * @param destinoPlanta Objeto de tipo Posicion que contiene la ubicacion de la planta
+     * @param destinoZonaSegura Objeto de tipo Posicion que contiene la ubicacion de la zona segura
      */
-    public void newWallE(int fila, int columna){
-        Posicion posicionD = new Posicion(fila, columna);
-        posicionD.setpColumna(columna);
-        posicionD.setpFila(fila);
-        walle.setPosicionDestinoPlanta(posicionD);
+    public void newWallE(Posicion destinoPlanta, Posicion destinoZonaSegura){
+        WallE.getWallE(destinoPlanta, destinoZonaSegura);
+    }
+
+    public WallE returnWallE(){
+        return WallE.getWallE();
     }
 
     boolean esMuroBomba(Recinto recinto, int fila, int columna){
@@ -59,13 +58,13 @@ public class Recinto {
     }
 
     boolean esDestinoPlanta(int fila, int columna){
-        return (getWalle().getPDPlanta().getpFila() == fila &&
-                getWalle().getPDPlanta().getpColumna() == columna);
+        return (returnWallE().getpDPlanta().getpFila() == fila &&
+                returnWallE().getpDPlanta().getpColumna() == columna);
     }
 
     boolean esDestinoZonaSegura (int fila, int columna){
-        return (getWalle().getpDZonaSegura().getpFila() == fila &&
-                getWalle().getpDZonaSegura().getpColumna() == columna);
+        return (returnWallE().getpDZonaSegura().getpFila() == fila &&
+                returnWallE().getpDZonaSegura().getpColumna() == columna);
     }
 
     /***
@@ -128,9 +127,6 @@ public class Recinto {
         this.pActual = pActual;
     }
 
-    public WallE getWalle() {
-        return walle;
-    }
 
     public void setRecintoCompleto(int[][] recintoCompleto) {
         this.recintoCompleto = recintoCompleto;

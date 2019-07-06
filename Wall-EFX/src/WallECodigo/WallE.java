@@ -1,22 +1,39 @@
 package WallECodigo;
 
-/***
- * En esta clase de Walle se comprueban sus movimientos, se guardan y se ejectutan sus instrucciones, ademas se guarda el destino al que debe llegar.
- * @version 1.1
- *
- */
 public class WallE {
 
     private Posicion pDPlanta;
 
     private Posicion pDZonaSegura;
 
-    public Posicion getPDPlanta() {
+    private static WallE myWallE;
+
+    public static WallE getWallE (Posicion planta, Posicion zonaSegura){
+        if (myWallE == null){
+            myWallE = new WallE(planta, zonaSegura);
+        }
+        return myWallE;
+    }
+
+    public static WallE getWallE(){
+        if (myWallE == null){
+            return null;
+        }
+        return myWallE;
+    }
+
+    private WallE(Posicion planta, Posicion zonaSegura){
+        this.pDPlanta = planta;
+        this.pDZonaSegura = zonaSegura;
+    }
+
+
+    public Posicion getpDPlanta() {
         return pDPlanta;
     }
 
-    public void setPosicionDestinoPlanta(Posicion posicionDestinoPlanta) {
-        this.pDPlanta = posicionDestinoPlanta;
+    public void setpDPlanta(Posicion pDPlanta) {
+        this.pDPlanta = pDPlanta;
     }
 
     public Posicion getpDZonaSegura() {

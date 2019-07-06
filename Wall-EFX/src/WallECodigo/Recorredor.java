@@ -35,6 +35,7 @@ public class Recorredor{
      */
     public List<Posicion> resolver(Recinto recinto, int flag){
         ArrayList<Posicion> ruta = new ArrayList<>();
+        // REVISAR CARO VARIABLES DE LIMITE
         boolean[][] visitado = new boolean[recinto.getlimiteFilas()][recinto.getlimiteColumnas()];
         if (explorar(recinto, recinto.getpActual().getpFila(),
                 recinto.getpActual().getpColumna(), ruta, flag, visitado)){
@@ -135,6 +136,7 @@ public class Recorredor{
         }
         todasLasRutas.add(listaAux);
     }
+
     public List<Posicion> resolverRapido(Recinto recinto, boolean [][] visitado ,int flag) {
         LinkedList<Posicion> sigVisitar = new LinkedList<>();
         Posicion inicio = recinto.getpActual();
