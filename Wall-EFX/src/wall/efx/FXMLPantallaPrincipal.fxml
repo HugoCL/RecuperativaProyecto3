@@ -71,7 +71,7 @@
          <bottom>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="agregarWalle" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="230.0" text="UBICAR A WALL-E">
+                  <Button fx:id="agregarWalle" mnemonicParsing="false" onAction="#ubicarWalle" prefHeight="30.0" prefWidth="230.0" text="UBICAR A WALL-E">
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
@@ -79,7 +79,7 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="agregarPlanta" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="230.0" text="UBICAR LA PLANTA">
+                  <Button fx:id="agregarPlanta" mnemonicParsing="false" onAction="#ubicarPlanta" prefHeight="30.0" prefWidth="230.0" text="UBICAR LA PLANTA">
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
@@ -87,7 +87,7 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="agregarBombas" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="230.0" text="UBICAR LAS BOMBAS">
+                  <Button fx:id="agregarBombas" mnemonicParsing="false" onAction="#ubicarBombas" prefHeight="30.0" prefWidth="230.0" text="UBICAR LAS BOMBAS">
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
@@ -95,7 +95,15 @@
                         <Insets left="70.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="agregarPunto" mnemonicParsing="false" onAction="#click" prefHeight="30.0" prefWidth="230.0" text="UBICAR EL PUNTO SEGURO">
+                  <Button fx:id="agregarPunto" mnemonicParsing="false" onAction="#ubicarPunto" prefHeight="31.0" prefWidth="293.0" text="UBICAR EL PUNTO SEGURO">
+                     <font>
+                        <Font name="Berlin Sans FB" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="70.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="iniciar" disable="true" mnemonicParsing="false" onAction="#botonIniciar" prefHeight="30.0" prefWidth="230.0" text="INICIAR">
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
@@ -110,5 +118,25 @@
             </HBox>
          </bottom>
       </BorderPane>
+      <ImageView fx:id="walleImagen" fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../imagenes/walle.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="plantaImagen" fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../imagenes/planta.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="puntoImagen" fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../imagenes/eva.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bombaImagen" fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../imagenes/bomba.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
