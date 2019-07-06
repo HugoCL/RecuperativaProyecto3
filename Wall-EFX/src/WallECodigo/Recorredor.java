@@ -11,6 +11,10 @@ public class Recorredor{
 
     private static HashMap<Integer, Character> orientacionesReversas = new HashMap<>();
 
+    private List<List<Posicion>> todasLasRutas = new ArrayList<>();
+
+    private Posicion destinoProvisorio;
+
     public Recorredor(){
         orientaciones.put('N', 1);
         orientaciones.put('E', 2);
@@ -26,88 +30,142 @@ public class Recorredor{
      *
      * @param recinto Es el recinto en el que se esta trabajando
      * @param flag Flag de tipo int que indica que tipo de recursion se hara. 1 para recursion Wall-E a Planta, 2 para
-     *             recursion Planta a Zona Segura
+     *             recursion Planta a Zona Segura, 3 reservado para busquedas faltantes
      * @return Retorna la lista con las posiciones que debe recorrer Wall-E para llegar a la posicion seleccionada
      */
     public List<Posicion> resolver(Recinto recinto, int flag){
         ArrayList<Posicion> ruta = new ArrayList<>();
+        boolean[][] visitado = new boolean[recinto.getlimiteFilas()][recinto.getlimiteColumnas()];
         if (explorar(recinto, recinto.getpActual().getpFila(),
-                recinto.getpActual().getpColumna(), ruta, 1)){
+                recinto.getpActual().getpColumna(), ruta, flag, visitado)){
             return ruta;
         }
         return Collections.emptyList();
     }
-/*
-    public List<List<Posicion>> resolverTodas (Recinto recinto, int flag){
+
+
+    public int allRutas(Recinto recinto, int fila, int columna, int count, boolean[][] visitado, List<Posicion> ruta, int flag)
+    {
         // if destination (bottom-rightmost cell) is found,
         // increment the path count
-        if (recinto.getpActual().getpFila() == recinto.getWalle().getPDPlanta().getpFila() &&
-                recinto.getpActual().getpColumna() == recinto.getWalle().getPDPlanta().getpColumna() &&
-                flag == 1)
+        if (recinto.esDestinoPlanta(fila,columna) && flag == 1)
         {
+            ruta.add(new Posicion(fila, columna));
+
+            if (count >= 1 && count < 15){
+                destinoProvisorio = ruta.get(0);
+                List<Posicion> rutaFaltante = resolver(recinto, 3);
+                rutaFaltante.remove(rutaFaltante.size()-1);
+                List<Posicion> rutaFinal = new ArrayList<>();
+                rutaFinal.addAll(rutaFaltante);
+                rutaFinal.addAll(ruta);
+                copiarRutasAll(rutaFinal);
+                ruta.clear();
+            }
+            else if (count > 15){
+                ruta.clear();
+            }
+            else{
+                copiarRutasAll(ruta);
+                ruta.clear();
+            }
+            count++;
+            return count;
+        }
+        else if (recinto.esDestinoZonaSegura(fila,columna) && flag == 2){
+            ruta.add(new Posicion(fila, columna));
+
+            if (count >= 1 && count < 15){
+                destinoProvisorio = ruta.get(0);
+                List<Posicion> rutaFaltante = resolver(recinto, 3);
+                rutaFaltante.remove(rutaFaltante.size()-1);
+                List<Posicion> rutaFinal = new ArrayList<>();
+                rutaFinal.addAll(rutaFaltante);
+                rutaFinal.addAll(ruta);
+                copiarRutasAll(rutaFinal);
+                ruta.clear();
+            }
+            else if (count > 15){
+                ruta.clear();
+            }
+            else{
+                copiarRutasAll(ruta);
+                ruta.clear();
+            }
             count++;
             return count;
         }
 
         // mark current cell as visited
-        recinto.getRecintoCompleto()[recinto.getpActual().getpFila()][recinto.getpActual().getpColumna()] = 5;
-
+        visitado[fila][columna] = true;
+        ruta.add(new Posicion(fila,columna));
         // if current cell is a valid and open cell
-        if (recinto.esSeguro(recinto.getRecintoCompleto(), recinto.getpActual().getpFila(), recinto.getpActual().getpColumna()) &&
-                !recinto.esMuroBomba(recinto, recinto.getpActual().getpFila(), recinto.getpActual().getpColumna()) &&
-                !recinto.yaExplorado(recinto, recinto.getpActual().getpFila(), recinto.getpActual().getpColumna()))
+        if (recinto.esSeguro(recinto.getRecintoCompleto(), fila, columna) && !recinto.esMuroBomba(recinto, fila, columna))
         {
             // go down (x, y) --> (x + 1, y)
-            if (recinto.getpActual().getpFila() + 1 < recinto.getlimiteFilas() && !recinto.yaExplorado(recinto, recinto.getpActual().getpFila() + 1, recinto.getpActual().getpColumna()))
-                count = resolverTodas(maze, recinto.getpActual().getpFila() + 1, recinto.getpActual().getpColumna(), recinto.yaExplorado(), count);
+            if (fila + 1 < recinto.getlimiteFilas() && !visitado[fila + 1][columna])
+                count = allRutas(recinto, fila + 1,columna, count, visitado, ruta, flag);
 
             // go up (x, y) --> (x - 1, y)
-            if (recinto.getpActual().getpFila() - 1 >= 0 && !recinto.yaExplorado()[recinto.getpActual().getpFila() - 1][recinto.getpActual().getpColumna()])
-                count = resolverTodas(maze, recinto.getpActual().getpFila() - 1, recinto.getpActual().getpColumna(), recinto.yaExplorado(), count);
+            if (fila - 1 >= 0 && !visitado[fila - 1][columna])
+                count = allRutas(recinto, fila - 1, columna, count, visitado, ruta, flag);
 
             // go right (x, y) --> (x, y + 1)
-            if (recinto.getpActual().getpColumna() + 1 < N && !recinto.yaExplorado()[recinto.getpActual().getpFila()][recinto.getpActual().getpColumna() + 1])
-                count = resolverTodas(maze, recinto.getpActual().getpFila(), recinto.getpActual().getpColumna() + 1, recinto.yaExplorado(), count);
+            if (columna + 1 < recinto.getlimiteColumnas() && !visitado[fila][columna + 1])
+                count = allRutas(recinto, fila, columna + 1, count, visitado, ruta, flag);
 
             // go left (x, y) --> (x, y - 1)
-            if (recinto.getpActual().getpColumna() - 1 >= 0 && !recinto.yaExplorado()[recinto.getpActual().getpFila()][recinto.getpActual().getpColumna() - 1])
-                count = resolverTodas(maze, recinto.getpActual().getpFila(), recinto.getpActual().getpColumna() - 1, recinto.yaExplorado(), count);
+            if (columna - 1 >= 0 && !visitado[fila][columna - 1])
+                count = allRutas(recinto, fila, columna - 1, count, visitado, ruta, flag);
         }
 
         // backtrack from current cell and remove it from current path
-        recinto.getRecintoCompleto()[recinto.getpActual().getpFila()][recinto.getpActual().getpColumna()] = 5;
+        visitado[fila][columna] = false;
+        if (!ruta.isEmpty()){
+            ruta.remove(ruta.size()-1);
+        }
 
         return count;
     }
-*/
-    public List<Posicion> resolverRapido(Recinto recinto) {
+
+    public void copiarRutasAll(List<Posicion> rutaCopiar){
+        List<Posicion> listaAux = new ArrayList<>();
+        for (Posicion posicion : rutaCopiar){
+            listaAux.add(posicion.clonarPosicion());
+        }
+        todasLasRutas.add(listaAux);
+    }
+    public List<Posicion> resolverRapido(Recinto recinto, boolean [][] visitado ,int flag) {
         LinkedList<Posicion> sigVisitar = new LinkedList<>();
         Posicion inicio = recinto.getpActual();
         sigVisitar.add(inicio);
 
         while (!sigVisitar.isEmpty()) {
-            Posicion cur = sigVisitar.remove();
+            Posicion posActual = sigVisitar.remove();
 
-            if (!recinto.esSeguro(recinto.getRecintoCompleto(), cur.getpFila(), cur.getpColumna())
-                    || recinto.yaExplorado(recinto, cur.getpFila(), cur.getpColumna())
+            if (!recinto.esSeguro(recinto.getRecintoCompleto(), posActual.getpFila(), posActual.getpColumna())
+                    || recinto.yaExplorado(recinto, posActual.getpFila(), posActual.getpColumna())
             ) {
                 continue;
             }
 
-            if (recinto.esMuroBomba(recinto, cur.getpFila(), cur.getpColumna())) {
-                recinto.getRecintoCompleto()[cur.getpFila()][cur.getpColumna()] = 5;
+            if (recinto.esMuroBomba(recinto, posActual.getpFila(), posActual.getpColumna())) {
+                visitado[posActual.getpFila()][posActual.getpColumna()] = true;
                 continue;
             }
 
-            if (recinto.esDestinoPlanta(cur.getpFila(), cur.getpColumna())) {
-                return rutaBacktracking(cur);
+            if (recinto.esDestinoPlanta(posActual.getpFila(), posActual.getpColumna()) && flag == 1) {
+                return rutaBacktracking(posActual);
+            }
+            else if (recinto.esDestinoZonaSegura(posActual.getpFila(), posActual.getpColumna()) && flag == 2){
+                return rutaBacktracking(posActual);
             }
 
             for (int[] direccion : DIRECCIONES) {
-                Posicion posicion = new Posicion (cur.getpFila() + direccion[0],
-                        cur.getpColumna() + direccion[1], cur);
+                Posicion posicion = new Posicion (posActual.getpFila() + direccion[0],
+                        posActual.getpColumna() + direccion[1], posActual);
                 sigVisitar.add(posicion);
-                recinto.getRecintoCompleto()[cur.getpFila()][cur.getpColumna()] = 5;
+                recinto.getRecintoCompleto()[posActual.getpFila()][posActual.getpColumna()] = 5;
             }
         }
         return Collections.emptyList();
@@ -124,14 +182,14 @@ public class Recorredor{
 
         return path;
     }
-    private boolean explorar(Recinto recinto, int fila, int columna, List<Posicion> ruta, int flag){
+    private boolean explorar(Recinto recinto, int fila, int columna, List<Posicion> ruta, int flag, boolean[][] visitado){
         if (!recinto.esSeguro(recinto.getRecintoCompleto(), fila, columna) ||
-                recinto.esMuroBomba(recinto, fila, columna) ||  recinto.yaExplorado(recinto, fila, columna)){
+                recinto.esMuroBomba(recinto, fila, columna) ||  visitado[fila][columna]){
             return false;
         }
         ruta.add(new Posicion(fila, columna));
         // SE MARCA COMO VISITADA LA CASILLA
-        recinto.getRecintoCompleto()[fila][columna] = 5;
+        visitado[fila][columna] = true;
         if (flag == 1){
             if (recinto.esDestinoPlanta(fila, columna)){
                 return true;
@@ -142,10 +200,15 @@ public class Recorredor{
                 return true;
             }
         }
+        else if (flag == 3){
+            if (destinoProvisorio.getpFila() == fila && destinoProvisorio.getpColumna() == columna){
+                return true;
+            }
+        }
 
         for (int [] direccion: DIRECCIONES){
             Posicion posicion2 = getSiguientePosicion(fila, columna, direccion[0], direccion[1]);
-            if (explorar(recinto, posicion2.getpFila(), posicion2.getpColumna(), ruta, flag)){
+            if (explorar(recinto, posicion2.getpFila(), posicion2.getpColumna(), ruta, flag, visitado)){
                 return true;
             }
         }
@@ -214,4 +277,9 @@ public class Recorredor{
         }
         return instrucciones;
     }
+
+    public List<List<Posicion>> getTodasLasRutas() {
+        return todasLasRutas;
+    }
+    
 }

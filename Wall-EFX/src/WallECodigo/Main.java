@@ -15,6 +15,7 @@ import java.util.List;
 import wall.efx.FXMLPantallaPrincipalController;
 
 
+
 /**
  * El main se encarga de iniciar el programa,  al dar el comienzo a la lectura y las instrucciones subsecuentes
  * @version 1.1
@@ -28,6 +29,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
         //TEST HUGO
+
         FXMLPantallaPrincipalController pp=new FXMLPantallaPrincipalController();
         for (int i = 0; i < pp.getFilas(); i++) {
             for (int j = 0; j <pp.getColumnas(); j++) {
@@ -48,20 +50,53 @@ public class Main {
             }
             System.out.println("");
         }
-        recinto.crearRecinto(0, 1, 1);
+        Recinto recinto2 = new Recinto();
+        int[][] maze =
+                {
+                        {0, 0, 0, 1},
+                        {0, 0, 0, 1},
+                        {0, 0, 0, 0},
+                        {1, 1, 1, 0}
+                };
+        recinto2.setRecintoCompleto(maze);
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                System.out.print(recinto2.getRecintoCompleto()[i][j]);
+            }
+            System.out.println("");
+        }
+        recinto2.newWallE(3,3);
+        Posicion posicionA2 = new Posicion(0,0);
+        recinto2.setpActual(posicionA2);
+        recinto2.setLimiteColumnas(4);
+        recinto2.setLimiteFilas(4);
+        recinto2.nuevaOrientacion('S');
+        List<Posicion> rutaPrototipo = new ArrayList<>();
+        boolean[][] visitado = new boolean[4][4];
+        System.out.println(recorrer.allRutas(recinto2, 0, 0, 0,visitado, rutaPrototipo));
+        //System.out.println(Recorredor.getTodasLasRutas());
+        List<List<Posicion>> rutasTotales = recorrer.getTodasLasRutas();
+        for (List<Posicion> lista: rutasTotales){
+            for (Posicion posicionAc : lista){
+                System.out.print(posicionAc.pFila+","+posicionAc.pColumna+" || ");
+            }
+            System.out.println("");
+        }
         //List<Posicion> ruta = recorrer.resolver(recinto,1);
-        List<Posicion> rutaRapida = recorrer.resolverRapido(recinto);
-        Collections.reverse(rutaRapida);
+        //List<Posicion> rutaRapida = recorrer.resolverRapido(recinto);
+        //Collections.reverse(rutaRapida);
         //System.out.println(ruta);
-        System.out.println(rutaRapida);
+
+        /*
         for (int i = 0; i < pp.getFilas(); i++) {
             for (int j = 0; j < pp.getColumnas(); j++) {
                 System.out.print(recinto.getRecintoCompleto()[i][j]);
             }
             System.out.println("");
-        }
-        ArrayList<Character> instruc = recorrer.traductorInstrucciones(rutaRapida, recinto);
-        System.out.println(instruc);
+        }*/
+
+        //ArrayList<Character> instruc = recorrer.traductorInstrucciones(rutaRapida, recinto);
+        //System.out.println(instruc);
     }
     // FIN TEST HUGO
 }
