@@ -1,6 +1,7 @@
 package WallECodigo;
 
 import java.util.*;
+import wall.efx.FXMLPantallaPrincipalController;
 
 public class Recorredor{
 
@@ -35,8 +36,8 @@ public class Recorredor{
      */
     public List<Posicion> resolver(Recinto recinto, int flag){
         ArrayList<Posicion> ruta = new ArrayList<>();
-        // REVISAR CARO VARIABLES DE LIMITE
-        boolean[][] visitado = new boolean[recinto.getlimiteFilas()][recinto.getlimiteColumnas()];
+        FXMLPantallaPrincipalController pp=new FXMLPantallaPrincipalController();
+        boolean[][] visitado = new boolean[pp.getFilas()][pp.getColumnas()];
         if (explorar(recinto, recinto.getpActual().getpFila(),
                 recinto.getpActual().getpColumna(), ruta, flag, visitado)){
             return ruta;

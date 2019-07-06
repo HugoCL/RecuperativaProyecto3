@@ -5,6 +5,7 @@ import static WallECodigo.Main.recinto;
 import WallECodigo.Posicion;
 import WallECodigo.Recinto;
 import WallECodigo.Recorredor;
+import WallECodigo.WallE;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -333,6 +334,28 @@ public class FXMLPantallaPrincipalController implements Initializable {
     
     @FXML
     public void botonIniciar(){
+        Recinto r=new Recinto();
+        Posicion destinoPlanta=new Posicion();
+        Posicion destinoZonaSegura=new Posicion();
+        Posicion wallePosicion=new Posicion();
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                if(recinto.getRecintoCompleto()[i][j]==2){
+                    wallePosicion.setpFila(i);
+                    wallePosicion.setpColumna(j);
+                }
+                if(recinto.getRecintoCompleto()[i][j]==3){
+                    destinoPlanta.setpFila(i);
+                    destinoPlanta.setpColumna(j);
+                }
+                if(recinto.getRecintoCompleto()[i][j]==4){
+                    destinoZonaSegura.setpFila(i);
+                    destinoZonaSegura.setpColumna(j);
+                }
+            }
+        }
+        r.newWallE(destinoPlanta, destinoZonaSegura);
+        r.setpActual(wallePosicion);
         mostrarRutas();
     }
     
