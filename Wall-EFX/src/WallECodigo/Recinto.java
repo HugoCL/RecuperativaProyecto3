@@ -61,7 +61,7 @@ public class Recinto implements Serializable {
      * @param columna Int que indica la columna en la que se encuentra Wall-E
      * @return Retorna True si la posicion tiene una bomba, False en caso contrario
      */
-    boolean esMuroBomba(Recinto recinto, int fila, int columna){
+    public boolean esMuroBomba(Recinto recinto, int fila, int columna){
         return (recinto.getRecintoCompleto()[fila][columna] == 1);
     }
 
@@ -72,7 +72,7 @@ public class Recinto implements Serializable {
      * @param columna Int que indica la columna en la que se encuentra Wall-E
      * @return Retorna True si la posicion es segura, False en caso contrario.
      */
-    boolean esSeguro(int [][] recintoCompleto, int fila, int columna) {
+    public boolean esSeguro(int [][] recintoCompleto, int fila, int columna) {
         return (fila >= 0 && fila < limiteFilas && columna >= 0 && columna < limiteColumnas && recintoCompleto[fila][columna] != 1);
     }
 
@@ -83,7 +83,7 @@ public class Recinto implements Serializable {
      * @param columna Int que indica la columna en la que se encuentra Wall-E
      * @return Retorna True si la posicion ya fue visitada, False en caso contrario
      */
-    boolean yaExplorado (Recinto recinto, int fila, int columna){
+    public boolean yaExplorado (Recinto recinto, int fila, int columna){
         return (recinto.getRecintoCompleto()[fila][columna] == 5);
     }
 
@@ -93,7 +93,7 @@ public class Recinto implements Serializable {
      * @param columna Int que indica la columna en la que se encuentra Wall-E
      * @return Retorna True si la posición coincide con la planta, False en caso contrario
      */
-    boolean esDestinoPlanta(int fila, int columna){
+    public boolean esDestinoPlanta(int fila, int columna){
         return (returnWallE().getpDPlanta().getpFila() == fila &&
                 returnWallE().getpDPlanta().getpColumna() == columna);
     }
@@ -104,7 +104,7 @@ public class Recinto implements Serializable {
      * @param columna Int que indica la columna en la que se encuentra Wall-E
      * @return Retorna True si la posición coincide con la Zona Segura, False en caso contrario
      */
-    boolean esDestinoZonaSegura (int fila, int columna){
+    public boolean esDestinoZonaSegura (int fila, int columna){
         return (returnWallE().getpDZonaSegura().getpFila() == fila &&
                 returnWallE().getpDZonaSegura().getpColumna() == columna);
     }

@@ -22,6 +22,10 @@ public class Posicion implements Serializable {
         this.pColumna = columna;
     }
 
+    public Posicion (){
+
+    }
+
     /***
      * Método que realiza una copia de esta posición
      * @return Retorna un Objeto de tipo Posicion con los mismos atributos
