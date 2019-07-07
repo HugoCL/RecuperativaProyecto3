@@ -9,6 +9,7 @@ package WallECodigo;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -66,7 +67,7 @@ public class Main {
             System.out.println("");
         }
         // LO MISMO QUE ARRIBA
-        recinto2.newWallE(new Posicion (3,3), new Posicion(5,5));
+        recinto2.newWallE(new Posicion (3,3), new Posicion(3,3));
         Posicion posicionA2 = new Posicion(0,0);
         recinto2.setpActual(posicionA2);
         recinto2.setLimiteColumnas(4);
@@ -74,12 +75,16 @@ public class Main {
         recinto2.nuevaOrientacion('S');
         List<Posicion> rutaPrototipo = new ArrayList<>();
         boolean[][] visitado = new boolean[4][4];
-        System.out.println(recorrer.allRutas(recinto2, 0, 0, 0,visitado, rutaPrototipo, 1));
+        Serializador serial = new Serializador();
+        serial.serializar(recinto2);
+        serial.desSerializar();
+        List <Posicion> ruta = recorrer.resolverRapido(recinto2, visitado, 2);
         //System.out.println(Recorredor.getTodasLasRutas());
+
         List<List<Posicion>> rutasTotales = recorrer.getTodasLasRutas();
         for (List<Posicion> lista: rutasTotales){
             for (Posicion posicionAc : lista){
-                System.out.print(posicionAc.pFila+","+posicionAc.pColumna+" || ");
+                System.out.print(posicionAc.getpFila()+","+posicionAc.getpColumna()+" || ");
             }
             System.out.println("");
         }

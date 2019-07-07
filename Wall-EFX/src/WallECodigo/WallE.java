@@ -1,6 +1,8 @@
 package WallECodigo;
 
-public class WallE {
+import java.io.Serializable;
+
+public class WallE implements Serializable {
 
     private Posicion pDPlanta;
 
@@ -32,15 +34,8 @@ public class WallE {
         return pDPlanta;
     }
 
-    public void setpDPlanta(Posicion pDPlanta) {
-        this.pDPlanta = pDPlanta;
-    }
-
     public Posicion getpDZonaSegura() {
         return pDZonaSegura;
     }
 
-    public void setpDZonaSegura(Posicion pDZonaSegura) {
-        this.pDZonaSegura = pDZonaSegura;
-    }
 }
