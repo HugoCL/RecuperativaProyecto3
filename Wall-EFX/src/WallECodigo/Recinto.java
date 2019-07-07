@@ -1,12 +1,14 @@
 package WallECodigo;
 
+import java.io.Serializable;
+
 /***
  *
  * Esta clase es la que se encarga de manejar la matriz en la que se mueve WallE, modificando su posicion y orientacion.
  * @version 1.1
  *
  */
-public class Recinto {
+public class Recinto implements Serializable {
 
     private int limiteFilas;
 

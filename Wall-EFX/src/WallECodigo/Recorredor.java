@@ -1,9 +1,10 @@
 package WallECodigo;
 
+import java.io.Serializable;
 import java.util.*;
 import wall.efx.FXMLPantallaPrincipalController;
 
-public class Recorredor{
+public class Recorredor implements Serializable {
 
     //                                             1: ESTE; 2:SUR ; 3:OESTE ; 4: NORTE
     private static final int[][] DIRECCIONES = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };

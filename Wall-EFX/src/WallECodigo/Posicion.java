@@ -1,10 +1,12 @@
 package WallECodigo;
 
-public class Posicion {
+import java.io.Serializable;
 
-    public int pFila;
-    public int pColumna;
-    public Posicion pPasada;
+public class Posicion implements Serializable {
+
+    private int pFila;
+    private int pColumna;
+    private Posicion pPasada;
 
     public Posicion(int fila, int columna){
         this.pFila = fila;
@@ -43,4 +45,6 @@ public class Posicion {
     public Posicion getpPasada() {
         return pPasada;
     }
+
+
 }
