@@ -6,12 +6,14 @@ import WallECodigo.Posicion;
 import WallECodigo.Recinto;
 import WallECodigo.Recorredor;
 import WallECodigo.WallE;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,6 +24,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javax.swing.plaf.basic.BasicSplitPaneUI;
 
 /**
  * FXML Controller class
@@ -439,7 +442,6 @@ public class FXMLPantallaPrincipalController implements Initializable {
         }
         recinto.newWallE(destinoPlanta, destinoZonaSegura);
     }
-    
     
     /**
      * Initializes the controller class.
