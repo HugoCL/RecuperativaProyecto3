@@ -26,7 +26,7 @@ public class RecorredorTest {
         System.out.println("resolver");
         
         Recinto instance = new Recinto();        
-        instance.newWallE(2, 0);
+        instance.newWallE(new Posicion(2,0), new Posicion(10,10));
         Posicion posActual = new Posicion(0,0);
         instance.setpActual(posActual);
         
@@ -60,7 +60,7 @@ public class RecorredorTest {
         
         Recinto instance = new Recinto();
         
-        instance.newWallE(4, 1);
+        instance.newWallE(new Posicion(4,1), new Posicion(10,10));
         Posicion posActual = new Posicion(0,1);
         instance.setpActual(posActual);
         
@@ -77,8 +77,8 @@ public class RecorredorTest {
         posicionesDePrueba.add(pos2);
         posicionesDePrueba.add(pos3);
         posicionesDePrueba.add(pos4);
-        
-        List<Posicion> resul = recorredor.resolverRapido(instance);
+        boolean[][] visitado = new boolean[4][4];
+        List<Posicion> resul = recorredor.resolverRapido(instance,visitado,1);
         for (int i = 0; i < resul.size(); i++) {
             assertEquals(posicionesDePrueba.get(i).getpColumna(), resul.get(i).getpColumna());
             assertEquals(posicionesDePrueba.get(i).getpFila(), resul.get(i).getpFila());

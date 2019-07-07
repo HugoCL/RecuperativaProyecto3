@@ -19,14 +19,14 @@ public class RecintoTest {
     @Test
     public void testNewWallE() {
         System.out.println("newWallE");
-        int fila = 0;
-        int columna = 0;
         Recinto instance = new Recinto();
-        instance.newWallE(fila, columna);
+        instance.newWallE(new Posicion(1,1),new Posicion(5,5));
         
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals(0, instance.getWalle().getPDPlanta().getpFila());
-        assertEquals(0, instance.getWalle().getPDPlanta().getpColumna());
+        assertEquals(1, WallE.getWallE().getpDPlanta().getpFila());
+        assertEquals(1, WallE.getWallE().getpDPlanta().getpColumna());
+        assertEquals(5, WallE.getWallE().getpDZonaSegura().getpFila());
+        assertEquals(5, WallE.getWallE().getpDZonaSegura().getpColumna());
     }
 
     /**
@@ -80,7 +80,7 @@ public class RecintoTest {
         int fila = 1;
         int columna = 1;
         Recinto instance = new Recinto();
-        instance.newWallE(1, 1);
+        instance.newWallE(new Posicion(1,1), new Posicion(5,5));
         boolean result = instance.esDestinoPlanta(fila, columna);
         assertTrue(result);
     }
@@ -90,13 +90,11 @@ public class RecintoTest {
      */
     @Test
     public void testEsDestinoZonaSegura() {
+        WallE walle = null;
         System.out.println("esDestinoZonaSegura");
-        int fila = 1;
-        int columna = 1;
         Recinto instance = new Recinto();
-        Posicion pos = new Posicion(1,1);
-        instance.getWalle().setpDZonaSegura(pos);
-        boolean result = instance.esDestinoZonaSegura(fila, columna);
+        instance.newWallE(new Posicion(1,1),new Posicion(5,5) );
+        boolean result = instance.esDestinoZonaSegura(5, 5);
         assertTrue(result);
     }
 
