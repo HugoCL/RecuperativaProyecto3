@@ -52,6 +52,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
     private final int filas=FXMLDatosController.f;
     private final int columnas=FXMLDatosController.c;
     private final int bombas=FXMLDatosController.b;
+    private int flag = 1;
     public Recinto recinto = new Recinto(filas, columnas, 'N');
     private int bombasPuestas=0;
     private boolean walle=true, planta=true, punto=true, bomba=true;
@@ -270,8 +271,11 @@ public class FXMLPantallaPrincipalController implements Initializable {
         Recorredor r=new Recorredor();
         List<Posicion> instrucciones;
         ArrayList<Character> inst;
+        if (recinto.esDestinoPlanta(recinto.getpActual().getpFila(), recinto.getpActual().getpColumna())){
+            flag = 2;
+        }
         boolean[][] visitado = new boolean[filas][columnas];
-        instrucciones=r.resolverRapido(recinto, visitado, 1);
+        instrucciones=r.resolverRapido(recinto, visitado, flag);
         inst=r.traductorInstrucciones(instrucciones, recinto);        
         if(inst.isEmpty()){
             Label label=new Label();
@@ -291,8 +295,11 @@ public class FXMLPantallaPrincipalController implements Initializable {
         Recorredor r=new Recorredor();
         List<Posicion> instrucciones;
         ArrayList<Character> inst;
-        instrucciones=r.resolver(recinto, 1);
-        inst=r.traductorInstrucciones(instrucciones, recinto);        
+        if (recinto.esDestinoPlanta(recinto.getpActual().getpFila(), recinto.getpActual().getpColumna())){
+            flag = 2;
+        }
+        instrucciones=r.resolver(recinto, flag);
+        inst=r.traductorInstrucciones(instrucciones, recinto);
         if(inst.isEmpty()){
             Label label=new Label();
             label.setText("NO HAY RUTA.");
@@ -309,38 +316,36 @@ public class FXMLPantallaPrincipalController implements Initializable {
     @FXML
     public void mostrarTodasRuta(){
         Recorredor r=new Recorredor();
-        Recinto re=new Recinto();
-        List<List<Posicion>> instrucciones=new ArrayList<>();
-        List<Posicion> ruta;
-        ArrayList<Character> inst;
+        List<List<Character>> rutasTraducidas = new ArrayList<>();
+        if (recinto.esDestinoPlanta(recinto.getpActual().getpFila(), recinto.getpActual().getpColumna())){
+            flag = 2;
+        }
         boolean[][] visitado = new boolean[filas][columnas];
-        int flag=0;
-        if(re.esDestinoPlanta(recinto.getpActual().getpFila(), recinto.getpActual().getpColumna())){
-            flag=2;
+        List<Posicion> rutaPrototipo = new ArrayList<>();
+        r.allRutas(recinto, recinto.getpActual().getpFila(),
+                    recinto.getpActual().getpColumna(), 0, visitado, rutaPrototipo , flag);
+        List<List<Posicion>> rutas;
+        rutas = r.getTodasLasRutas();
+        r.getTodasLasRutas().clear();
+        for (List<Posicion> lista: rutas){
+            rutasTraducidas.add(r.traductorInstrucciones(lista, recinto));
         }
-        else{
-            flag=1;
-        }
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                if(recinto.getRecintoCompleto()[i][j]==2){
-                    instrucciones=r.getTodasLasRutas();
-                }
-            }
-        }
-        if(instrucciones.isEmpty()){
+
+            //AQUI DEBES AGREGAR LA FORMA DE VER LAS RUTAS, VERIFICA QUE TODO ESTA BIEN
+
+        if(rutasTraducidas.isEmpty()){
             Label label=new Label();
             label.setText("NO HAY RUTAS.");
             anchorAleatoria.getChildren().add(label);
         }
         else{
-            for (int i = 0; i < instrucciones.size(); i++) {
-                inst=r.traductorInstrucciones(instrucciones.get(i), recinto);
+            for (int i = 0; i < rutasTraducidas.size(); i++) {
+                List<Character> inst = rutasTraducidas.get(i);
                 Label label=new Label();
                 label.setText("RUTA "+i);
                 anchorAleatoria.getChildren().add(label);
-                for (int j = 0; j < inst.size(); j++) {
-                    label.setText(Character.toString(inst.get(j)));
+                for (Character character : inst) {
+                    label.setText(Character.toString(character));
                     anchorAleatoria.getChildren().add(label);
                 }
             }
