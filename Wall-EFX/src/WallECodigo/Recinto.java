@@ -14,25 +14,27 @@ public class Recinto implements Serializable {
 
     private int limiteColumnas;
 
-    private int[][] recintoCompleto = new int [50][50];
+    private int[][] recintoCompleto = new int [20][30];
 
     private Posicion pActual;
 
-    private int sizeFilas;
-
-    private int sizeColumnas;
-
     private char orientacion;
 
+    public Recinto(int limiteFilas, int limiteColumnas, char orientacion) {
+        this.limiteFilas = limiteFilas;
+        this.limiteColumnas = limiteColumnas;
+        this.orientacion = orientacion;
+    }
+
+    public Recinto(){        
+    }
     
     /***
      * Es el metodo que se encarga de construir la matriz que conforma al recinto en el que se mueve Wall-E
      * @param valor Es el valor que poseerá la celda en la matriz, ya sea un 0 (Nada) o un 1 (Si es una bomba)
      */
     public void crearRecinto(int Filas, int Columnas, int valor){
-        recintoCompleto[Filas][Columnas] = valor;
-        sizeFilas = Filas;
-        sizeColumnas = Columnas;
+        recintoCompleto[Filas][Columnas] = valor;        
     }
 
     /***
@@ -171,4 +173,5 @@ public class Recinto implements Serializable {
     public void setRecintoCompleto(int[][] recintoCompleto) {
         this.recintoCompleto = recintoCompleto;
     }
+    
 }

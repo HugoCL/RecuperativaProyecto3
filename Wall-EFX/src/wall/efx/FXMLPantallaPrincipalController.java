@@ -31,6 +31,9 @@ import javafx.scene.paint.Color;
 public class FXMLPantallaPrincipalController implements Initializable {
 
     @FXML private AnchorPane root;
+    @FXML private VBox anchorMejor;
+    @FXML private VBox anchorTodas;
+    @FXML private VBox anchorAleatoria;
     @FXML private Accordion acordeon;
     @FXML private TitledPane rutaAleatoria;
     @FXML private TitledPane rutaTodas;
@@ -46,10 +49,10 @@ public class FXMLPantallaPrincipalController implements Initializable {
     @FXML private ImageView puntoImagen;
     @FXML private ImageView bombaImagen;
     private final FXMLDatosController datosController=new FXMLDatosController();
-    public static Recinto recinto = new Recinto();
     private final int filas=FXMLDatosController.f;
     private final int columnas=FXMLDatosController.c;
     private final int bombas=FXMLDatosController.b;
+    public Recinto recinto = new Recinto(filas, columnas, 'N');
     private int bombasPuestas=0;
     private boolean walle=true, planta=true, punto=true, bomba=true;
     
@@ -69,7 +72,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
                 Posicion posicion = new Posicion(fila, columna);
                 recinto.setpActual(posicion);
                 recinto.getRecintoCompleto()[fila][columna]=2;
-                mostrarMatriz();
+                //mostrarMatriz();
                 // colocar imagen de walle
                 //System.out.println("x"+x+" y"+y);
                 walleImagen.setX((columna * (1000/(columnas-1))) + 8 + ((1000/(columnas-1)/3)));
@@ -94,7 +97,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
             if(recinto.getRecintoCompleto()[fila][columna]==0){
                 planta=true;
                 recinto.getRecintoCompleto()[fila][columna]=3;
-                mostrarMatriz();
+                //mostrarMatriz();
                 // colocar imagen de planta
                 plantaImagen.setX((columna * (1000/(columnas-1))) + 8 + ((1000/(columnas-1)/3)));
                 plantaImagen.setY((fila*(550/(filas-1)))+8 + ((550/(filas-1)/3)));
@@ -120,7 +123,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
             if(recinto.getRecintoCompleto()[fila][columna]==0){
                 punto=true;
                 recinto.getRecintoCompleto()[fila][columna]=4;
-                mostrarMatriz();
+                //mostrarMatriz();
                 // colocar imagen de punto
                 puntoImagen.setX((columna * (1000/(columnas-1))) + 8 + ((1000/(columnas-1)/3)));
                 puntoImagen.setY((fila*(550/(filas-1)))+8 + ((550/(filas-1)/3)));
@@ -146,7 +149,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
                 if(bombasPuestas<bombas){
                     if(bombasPuestas>=1){
                         recinto.getRecintoCompleto()[fila][columna]=1;
-                        mostrarMatriz();
+                        //mostrarMatriz();
                         ImageView imagen2=new ImageView();
                         imagen2.setImage(bombaImagen.getImage());
                         imagen2.setX((columna * (1000/(columnas-1))) + 8 + ((1000/(columnas-1)/3)));
@@ -168,7 +171,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
                     }
                     else{
                         recinto.getRecintoCompleto()[fila][columna]=1;
-                        mostrarMatriz();
+                        //mostrarMatriz();
                         // colocar imagen de bomba
                         bombaImagen.setX((columna * (1000/(columnas-1))) + 8 + ((1000/(columnas-1)/3)));
                         bombaImagen.setY((fila*(550/(filas-1)))+8 + ((550/(filas-1)/3)));
@@ -263,26 +266,83 @@ public class FXMLPantallaPrincipalController implements Initializable {
     }
     
     @FXML
-    public void mostrarRutas(){
+    public void mostrarMejorRuta(){
         Recorredor r=new Recorredor();
-        List<Posicion> instrucciones=new ArrayList<>();
-        ArrayList<Character> inst=new ArrayList<>();
-        instrucciones=r.resolver(recinto, 1);
-        System.out.println(instrucciones);
-        inst=r.traductorInstrucciones(instrucciones, recinto);
-        System.out.println("tamaño "+inst.size());
-        for (int i = 0; i < inst.size(); i++) {
-            System.out.println("entra al for");
-            System.out.println(inst.get(i).charValue());
-        }
+        List<Posicion> instrucciones;
+        ArrayList<Character> inst;
+        boolean[][] visitado = new boolean[filas][columnas];
+        instrucciones=r.resolverRapido(recinto, visitado, 1);
+        inst=r.traductorInstrucciones(instrucciones, recinto);        
         if(inst.isEmpty()){
-            System.out.println("no hay ruta");
-            rutaAleatoria.setText("NO HAY RUTA.");
+            Label label=new Label();
+            label.setText("NO HAY RUTA.");
+            anchorMejor.getChildren().add(label);
         }
         else{
             for (int i = 0; i < inst.size(); i++) {
-                System.out.println(inst.get(i).charValue());
-                rutaAleatoria.setText(inst.get(i).toString()+"\n");
+                Label label=new Label();
+                label.setText(Character.toString(inst.get(i)));
+                anchorMejor.getChildren().add(label);
+            }
+        }
+    }
+    @FXML
+    public void mostrarAleatoriaRuta(){
+        Recorredor r=new Recorredor();
+        List<Posicion> instrucciones;
+        ArrayList<Character> inst;
+        instrucciones=r.resolver(recinto, 1);
+        inst=r.traductorInstrucciones(instrucciones, recinto);        
+        if(inst.isEmpty()){
+            Label label=new Label();
+            label.setText("NO HAY RUTA.");
+            anchorAleatoria.getChildren().add(label);
+        }
+        else{
+            for (int i = 0; i < inst.size(); i++) {
+                Label label=new Label();
+                label.setText(Character.toString(inst.get(i)));
+                anchorAleatoria.getChildren().add(label);
+            }
+        }
+    }
+    @FXML
+    public void mostrarTodasRuta(){
+        Recorredor r=new Recorredor();
+        Recinto re=new Recinto();
+        List<List<Posicion>> instrucciones=new ArrayList<>();
+        List<Posicion> ruta;
+        ArrayList<Character> inst;
+        boolean[][] visitado = new boolean[filas][columnas];
+        int flag=0;
+        if(re.esDestinoPlanta(recinto.getpActual().getpFila(), recinto.getpActual().getpColumna())){
+            flag=2;
+        }
+        else{
+            flag=1;
+        }
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                if(recinto.getRecintoCompleto()[i][j]==2){
+                    instrucciones=r.getTodasLasRutas();
+                }
+            }
+        }
+        if(instrucciones.isEmpty()){
+            Label label=new Label();
+            label.setText("NO HAY RUTAS.");
+            anchorAleatoria.getChildren().add(label);
+        }
+        else{
+            for (int i = 0; i < instrucciones.size(); i++) {
+                inst=r.traductorInstrucciones(instrucciones.get(i), recinto);
+                Label label=new Label();
+                label.setText("RUTA "+i);
+                anchorAleatoria.getChildren().add(label);
+                for (int j = 0; j < inst.size(); j++) {
+                    label.setText(Character.toString(inst.get(j)));
+                    anchorAleatoria.getChildren().add(label);
+                }
             }
         }
     }
@@ -338,7 +398,11 @@ public class FXMLPantallaPrincipalController implements Initializable {
     
     @FXML
     public void botonIniciar(){
-        Recinto r=new Recinto();
+        //INICIALIZO EL RECINTO
+        mostrarMatriz();
+        recinto.setLimiteFilas(filas);
+        recinto.setLimiteColumnas(columnas);
+        //
         Posicion destinoPlanta=new Posicion();
         Posicion destinoZonaSegura=new Posicion();
         Posicion wallePosicion=new Posicion();
@@ -347,6 +411,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
                 if(recinto.getRecintoCompleto()[i][j]==2){
                     wallePosicion.setpFila(i);
                     wallePosicion.setpColumna(j);
+                    recinto.setpActual(wallePosicion);
                 }
                 if(recinto.getRecintoCompleto()[i][j]==3){
                     destinoPlanta.setpFila(i);
@@ -358,9 +423,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
                 }
             }
         }
-        r.newWallE(destinoPlanta, destinoZonaSegura);
-        r.setpActual(wallePosicion);
-        mostrarRutas();
+        recinto.newWallE(destinoPlanta, destinoZonaSegura);
     }
     
     
@@ -373,6 +436,11 @@ public class FXMLPantallaPrincipalController implements Initializable {
         plantaImagen.setVisible(false);
         bombaImagen.setVisible(false);
         puntoImagen.setVisible(false);
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                recinto.getRecintoCompleto()[i][j]=0;
+            }
+        }
         crearMatriz();
         crearTablero();
         MouseEvent event;
