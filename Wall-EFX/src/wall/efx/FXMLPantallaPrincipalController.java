@@ -269,10 +269,17 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void mostrarMejorRuta(){
         Recorredor r=new Recorredor();
         List<Posicion> instrucciones;
+        List<Posicion> instrucciones2;
         ArrayList<Character> inst;
+        ArrayList<Character> inst2;
         boolean[][] visitado = new boolean[filas][columnas];
+        boolean[][] visitado2 = new boolean[filas][columnas];
         instrucciones=r.resolverRapido(recinto, visitado, 1);
-        inst=r.traductorInstrucciones(instrucciones, recinto);        
+        instrucciones2=r.resolverRapido(recinto, visitado2, 2);
+        for (int i = 0; i < instrucciones2.size(); i++) {
+            instrucciones.add(instrucciones2.get(i));
+        }
+        inst=r.traductorInstrucciones(instrucciones, recinto);   
         if(inst.isEmpty()){
             Label label=new Label();
             label.setText("NO HAY RUTA.");
@@ -290,8 +297,13 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void mostrarAleatoriaRuta(){
         Recorredor r=new Recorredor();
         List<Posicion> instrucciones;
+        List<Posicion> instrucciones2;
         ArrayList<Character> inst;
         instrucciones=r.resolver(recinto, 1);
+        instrucciones2=r.resolver(recinto, 2);
+        for (int i = 0; i < instrucciones2.size(); i++) {
+            instrucciones.add(instrucciones2.get(i));
+        }
         inst=r.traductorInstrucciones(instrucciones, recinto);        
         if(inst.isEmpty()){
             Label label=new Label();
@@ -399,6 +411,8 @@ public class FXMLPantallaPrincipalController implements Initializable {
     @FXML
     public void botonIniciar(){
         //INICIALIZO EL RECINTO
+        iniciar.setDisable(true);
+        iniciar.setVisible(false);
         mostrarMatriz();
         recinto.setLimiteFilas(filas);
         recinto.setLimiteColumnas(columnas);
