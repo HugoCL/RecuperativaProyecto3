@@ -270,6 +270,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void mostrarMejorRuta(){
         Recorredor r=new Recorredor();
         List<Posicion> instrucciones;
+        List<Posicion> instrucciones2;
         ArrayList<Character> inst;
         if (recinto.esDestinoPlanta(recinto.getpActual().getpFila(), recinto.getpActual().getpColumna())){
             flag = 2;
@@ -294,6 +295,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
     public void mostrarAleatoriaRuta(){
         Recorredor r=new Recorredor();
         List<Posicion> instrucciones;
+        List<Posicion> instrucciones2;
         ArrayList<Character> inst;
         if (recinto.esDestinoPlanta(recinto.getpActual().getpFila(), recinto.getpActual().getpColumna())){
             flag = 2;
@@ -404,6 +406,8 @@ public class FXMLPantallaPrincipalController implements Initializable {
     @FXML
     public void botonIniciar(){
         //INICIALIZO EL RECINTO
+        iniciar.setDisable(true);
+        iniciar.setVisible(false);
         mostrarMatriz();
         recinto.setLimiteFilas(filas);
         recinto.setLimiteColumnas(columnas);
