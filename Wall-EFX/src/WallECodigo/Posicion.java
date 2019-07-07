@@ -2,6 +2,9 @@ package WallECodigo;
 
 import java.io.Serializable;
 
+/***
+ * Clase que se encarga del manejo de las coordenadas (Filas y columnas) del programa
+ */
 public class Posicion implements Serializable {
 
     private int pFila;
@@ -19,9 +22,14 @@ public class Posicion implements Serializable {
         this.pColumna = columna;
     }
 
-    public Posicion() {
+    public Posicion (){
+
     }
 
+    /***
+     * Método que realiza una copia de esta posición
+     * @return Retorna un Objeto de tipo Posicion con los mismos atributos
+     */
     public Posicion clonarPosicion(){
         return new Posicion(this.pFila, this.pColumna);
     }

@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="root" prefHeight="650.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wall.efx.FXMLPantallaPrincipalController">
@@ -38,25 +39,34 @@
          <right>
             <Accordion fx:id="acordeon" prefHeight="75.0" prefWidth="230.0" BorderPane.alignment="CENTER">
               <panes>
-                <TitledPane animated="false" text="RUTA ALEATORIA">
+                <TitledPane fx:id="rutaAleatoria" animated="false" onMouseClicked="#mostrarAleatoriaRuta" text="RUTA ALEATORIA">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox fx:id="anchorAleatoria" onMouseClicked="#mostrarAleatoriaRuta" prefHeight="476.0" prefWidth="208.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children></AnchorPane>
                   </content>
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
                 </TitledPane>
-                <TitledPane animated="false" text="MEJOR RUTA">
+                <TitledPane fx:id="rutaMejor" animated="false" onMouseClicked="#mostrarMejorRuta" text="MEJOR RUTA">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox fx:id="anchorMejor" prefHeight="476.0" prefWidth="208.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children></AnchorPane>
                   </content>
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
                 </TitledPane>
-                <TitledPane animated="false" text="TODAS LAS RUTAS">
+                <TitledPane fx:id="rutaTodas" animated="false" onMouseClicked="#mostrarTodasRuta" text="TODAS LAS RUTAS">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox fx:id="anchorTodas" prefHeight="476.0" prefWidth="208.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children></AnchorPane>
                   </content>
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />

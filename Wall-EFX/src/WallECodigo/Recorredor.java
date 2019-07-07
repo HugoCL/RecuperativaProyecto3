@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.*;
 import wall.efx.FXMLPantallaPrincipalController;
 
+/***
+ * Clase encargada de la búsqueda y manejo de las rutas que deberá seguir Wall-E para llegar a sus objetivos
+ */
 public class Recorredor implements Serializable {
 
-    //                                             1: ESTE; 2:SUR ; 3:OESTE ; 4: NORTE
+    //                                            1: ESTE; 2:SUR ; 3:OESTE ; 4: NORTE
     private static final int[][] DIRECCIONES = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
 
     private static HashMap<Character, Integer> orientaciones = new HashMap<>();
@@ -29,7 +32,7 @@ public class Recorredor implements Serializable {
     }
 
     /***
-     *
+     * Metodo que se encargada de buscar una ruta aleatoria hacia el destino establecido por el flag
      * @param recinto Es el recinto en el que se esta trabajando
      * @param flag Flag de tipo int que indica que tipo de recursion se hara. 1 para recursion Wall-E a Planta, 2 para
      *             recursion Planta a Zona Segura, 3 reservado para busquedas faltantes
@@ -46,7 +49,17 @@ public class Recorredor implements Serializable {
         return Collections.emptyList();
     }
 
-
+    /***
+     * Metodo que se encarga de retornar todas las rutas disponilbles para llegar al destino señalado por el flag (Planta o Zona segura)
+     * @param recinto Objeto de tipo Recinto que contiene el laberinto en el que se mueve Wall-E
+     * @param fila Fila inicial de Wall-E y que sirve para llevar el rastro de la posicion de Wall-E
+     * @param columna Fila inicial de Wall-E y que sirve para llevar el rastro de la posicion de Wall-E
+     * @param count Contador inicializado en 0 y que lleva la cuenta de las rutas encontradas mediante recursion
+     * @param visitado Matriz de booleanos que sirve para llevar el rastro de las rutas de Wall-E
+     * @param ruta Lista de Posiciones que posee la ruta en formación
+     * @param flag Flag que indica que clase de recursion se hará. 1 para Wall-E -> Planta, 2 para Planta -> Zona segura
+     * @return Retorna todas las rutas encontradas (Max 15) como una lista de listas de Posiciones.
+     */
     public int allRutas(Recinto recinto, int fila, int columna, int count, boolean[][] visitado, List<Posicion> ruta, int flag)
     {
         // if destination (bottom-rightmost cell) is found,
@@ -143,6 +156,10 @@ public class Recorredor implements Serializable {
         return count;
     }
 
+    /***
+     * Este metodo se encarga de clonar una lista para evitar errores de referencia, para luego añadir la lista a todaslasRutas
+     * @param rutaCopiar Lista a clonar
+     */
     public void copiarRutasAll(List<Posicion> rutaCopiar){
         List<Posicion> listaAux = new ArrayList<>();
         for (Posicion posicion : rutaCopiar){
@@ -151,6 +168,13 @@ public class Recorredor implements Serializable {
         todasLasRutas.add(listaAux);
     }
 
+    /***
+     * Metodo encargado de la búsqueda de la ruta más rapida hacia el destino deseado
+     * @param recinto Objeto de tipo Recinto que contiene el lugar donde se mueve Wall-E
+     * @param visitado Matriz de booleanos que sirve para llevar un registro de por donde se mueve Wall-E
+     * @param flag Int que sirve para indicar que tipo de recursión se hará 1 para Wall-E -> Planta, 2 para Planta -> Zona segura
+     * @return Retornal la ruta más rapida como una lista de Posiciones
+     */
     public List<Posicion> resolverRapido(Recinto recinto, boolean [][] visitado ,int flag) {
         LinkedList<Posicion> sigVisitar = new LinkedList<>();
         Posicion inicio = recinto.getpActual();
@@ -232,9 +256,25 @@ public class Recorredor implements Serializable {
         ruta.remove(ruta.size()-1);
         return false;
     }
+
+    /***
+     * Método utilitario para identificar el siguiente movimiento que hará Wall-E
+     * @param fila Fila actual de Wall-E
+     * @param columna Columna actual de Wall-E
+     * @param i Int que indica el movimiento de la fila
+     * @param j Int que indica el movimiento de la columna
+     * @return Retorna un objeto de tipo Posicion con la siguiente posicion deseada
+     */
     private Posicion getSiguientePosicion(int fila, int columna, int i, int j){
         return new Posicion((fila+i), (columna+j));
     }
+
+    /***
+     * Método que traduce una lista de Posiciones a una lista de Char con instrucciones del tipo "A, I o D"
+     * @param ruta Lista de Posiciones con la ruta a "traducir"
+     * @param recinto Objeto de tipo Recinto donde se mueve Wall-E
+     * @return Retorna una lista de Chars con las instrucciones a realizar por Wall-E
+     */
     public ArrayList<Character> traductorInstrucciones(List<Posicion> ruta, Recinto recinto){
 
         char orientacion = recinto.getOrientacion();
@@ -295,7 +335,7 @@ public class Recorredor implements Serializable {
     }
 
     /***
-     *
+     * Método que ayuda a detectar rutas repetidas obtenidas del metodo que otorga todas las rutas
      * @param ruta Objeto de tipo posicion que contiene la ruta a comprobar
      * @return Retorna True si la ruta encontrada ya existe, False en caso contrario
      */
