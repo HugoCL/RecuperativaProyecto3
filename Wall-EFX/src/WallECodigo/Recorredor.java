@@ -5,7 +5,8 @@ import java.util.*;
 import wall.efx.FXMLPantallaPrincipalController;
 
 /***
- * Clase encargada de la búsqueda y manejo de las rutas que deberá seguir Wall-E para llegar a sus objetivos
+ * Clase encargada de la búsqueda y manejo de las rutas que deberá seguir Wall-E para llegar a sus objetivos.
+ * Los algoritmos fueron  basados en ejemplos open source encontrados en internet.
  */
 public class Recorredor implements Serializable {
 

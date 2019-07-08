@@ -6,6 +6,7 @@ import WallECodigo.Posicion;
 import WallECodigo.Recinto;
 import WallECodigo.Recorredor;
 import WallECodigo.WallE;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javax.swing.plaf.basic.BasicSplitPaneUI;
 
 /**
  * FXML Controller class
@@ -58,6 +61,11 @@ public class FXMLPantallaPrincipalController implements Initializable {
     private int bombasPuestas=0;
     private boolean walle=true, planta=true, punto=true, bomba=true;
     
+    /**
+     * Metodo que posiciona las imagenes e inicializa algunos datos del recinto una vez que se selecciona un
+     * punto en el tablero.
+     * @param evento -> evento  que permite saber cuando se realiza click con el mouse.
+     */
     @FXML
     public void click(MouseEvent evento){
         double x=0,y=0;
@@ -210,6 +218,9 @@ public class FXMLPantallaPrincipalController implements Initializable {
         }
     }
     
+    /**
+     * Metodo que crea las filas y columnas del gridPane y las agrega, ademas de darles sus caracteristicas.
+     */
     @FXML
     public void crearTablero(){
         //System.out.println(filas + "-"+columnas);
@@ -266,7 +277,9 @@ public class FXMLPantallaPrincipalController implements Initializable {
             }
         }
     }
-    
+    /**
+     * Metodo que muestra en la pestaña del menu acordeon corresponsiente la ruta mas rapida para walle.
+     */
     @FXML
     public void mostrarMejorRuta(){
         Recorredor r=new Recorredor();
@@ -293,6 +306,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
             }
         }
     }
+    
     @FXML
     public void mostrarAleatoriaRuta(){
         Recorredor r=new Recorredor();
@@ -436,7 +450,6 @@ public class FXMLPantallaPrincipalController implements Initializable {
         }
         recinto.newWallE(destinoPlanta, destinoZonaSegura);
     }
-    
     
     /**
      * Initializes the controller class.

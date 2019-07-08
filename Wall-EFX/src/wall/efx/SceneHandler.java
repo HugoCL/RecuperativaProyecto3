@@ -16,7 +16,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- *
+ * Metodo que recibira como parametro la ruta de la escena que se mostrara en la interfaz.
+ * @author Carolyn
  */
 public class SceneHandler {
     
