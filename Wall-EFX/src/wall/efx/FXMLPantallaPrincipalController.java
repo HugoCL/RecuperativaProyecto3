@@ -9,6 +9,7 @@ import WallECodigo.WallE;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -277,6 +278,7 @@ public class FXMLPantallaPrincipalController implements Initializable {
         }
         boolean[][] visitado = new boolean[filas][columnas];
         instrucciones=r.resolverRapido(recinto, visitado, flag);
+        Collections.reverse(instrucciones);
         inst=r.traductorInstrucciones(instrucciones, recinto);        
         if(inst.isEmpty()){
             Label label=new Label();
