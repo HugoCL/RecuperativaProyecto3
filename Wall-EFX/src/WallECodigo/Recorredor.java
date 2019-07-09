@@ -2,7 +2,6 @@ package WallECodigo;
 
 import java.io.Serializable;
 import java.util.*;
-import wall.efx.FXMLPantallaPrincipalController;
 
 /***
  * Clase encargada de la búsqueda y manejo de las rutas que deberá seguir Wall-E para llegar a sus objetivos.
@@ -41,8 +40,7 @@ public class Recorredor implements Serializable {
      */
     public List<Posicion> resolver(Recinto recinto, int flag){
         ArrayList<Posicion> ruta = new ArrayList<>();
-        FXMLPantallaPrincipalController pp=new FXMLPantallaPrincipalController();
-        boolean[][] visitado = new boolean[pp.getFilas()][pp.getColumnas()];
+        boolean[][] visitado = new boolean[recinto.getlimiteFilas()][recinto.getlimiteColumnas()];
         if (explorar(recinto, recinto.getpActual().getpFila(),
                 recinto.getpActual().getpColumna(), ruta, flag, visitado)){
             return ruta;

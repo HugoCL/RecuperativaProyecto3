@@ -7,14 +7,8 @@ package WallECodigo;
 
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import wall.efx.FXMLPantallaPrincipalController;
-
 
 
 /**
@@ -31,26 +25,7 @@ public class Main {
 
         //TEST HUGO
 
-        FXMLPantallaPrincipalController pp=new FXMLPantallaPrincipalController();
-        for (int i = 0; i < pp.getFilas(); i++) {
-            for (int j = 0; j <pp.getColumnas(); j++) {
-                recinto.crearRecinto(i, j, 0);
-            }
-        }
-        // ERROR PORQUE AUN NO SE MODIFICA. SE NECESITA MANDAR LAS POSICIONES DE LA PLANTA Y DE LA ZONA SEGURA
-        //recinto.newWallE(4,4);
-        Posicion posicionA = new Posicion(0,0);
-        recinto.setpActual(posicionA);
-        Recorredor recorrer = new Recorredor();
-        recinto.setLimiteColumnas(5);
-        recinto.setLimiteFilas(5);
-        recinto.nuevaOrientacion('S');
-        for (int i = 0; i < pp.getFilas(); i++) {
-            for (int j = 0; j < pp.getColumnas(); j++) {
-                System.out.print(recinto.getRecintoCompleto()[i][j]);
-            }
-            System.out.println("");
-        }
+
         Recinto recinto2 = new Recinto();
         int[][] maze =
                 {
@@ -78,6 +53,7 @@ public class Main {
         Serializador serial = new Serializador();
         serial.serializar(recinto2);
         serial.desSerializar();
+        Recorredor recorrer = new Recorredor();
         List <Posicion> ruta = recorrer.resolverRapido(recinto2, visitado, 2);
         //System.out.println(Recorredor.getTodasLasRutas());
 
