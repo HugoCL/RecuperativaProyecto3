@@ -975,9 +975,9 @@
         </condition>
         <condition property="dimensions-available">
             <and>
-                <isset property="javafx.run.width"/>
+                <isset property="javafx.run.ancho"/>
                 <isset property="javafx.run.height"/>
-                <not><equals arg1="${javafx.run.width}" arg2=""/></not>
+                <not><equals arg1="${javafx.run.ancho}" arg2=""/></not>
                 <not><equals arg1="${javafx.run.height}" arg2=""/></not>
             </and>
         </condition>
@@ -1063,11 +1063,11 @@
     </target>
 
     <target name="-set-dimensions" depends="-check-project" if="dimensions-available">
-        <property name="javafx.width" value="${javafx.run.width}"/>
+        <property name="javafx.ancho" value="${javafx.run.ancho}"/>
         <property name="javafx.height" value="${javafx.run.height}"/>
     </target>
     <target name="-reset-dimensions" depends="-check-project" unless="dimensions-available">
-        <property name="javafx.width" value="800"/>
+        <property name="javafx.ancho" value="800"/>
         <property name="javafx.height" value="600"/>
     </target>
 
@@ -2140,7 +2140,7 @@
                     // fx:deploy
                     var deploy = project.createTask("fx_deploy");
                     deploy.setProject(project);
-                    var width = new String(project.getProperty("javafx.width"));
+                    var ancho = new String(project.getProperty("javafx.ancho"));
                     var height = new String(project.getProperty("javafx.height"));
                     var outdir = new String(project.getProperty("jfx.deployment.dir"));
                     var embedJNLP = new String(project.getProperty("javafx.deploy.embedJNLP"));
@@ -2148,11 +2148,11 @@
                     var outfile = new String(project.getProperty("application.title"));
                     var includeDT = new String(project.getProperty("javafx.deploy.includeDT"));
                     var offline = new String(project.getProperty("javafx.deploy.allowoffline"));
-                    if (width.indexOf("%") != -1) {
-                        deploy.setEmbeddedWidth(width);
+                    if (ancho.indexOf("%") != -1) {
+                        deploy.setEmbeddedWidth(ancho);
                         deploy.setWidth(800);
                     } else {
-                        deploy.setWidth(width);
+                        deploy.setWidth(ancho);
                     }
                     if (height.indexOf("%") != -1) {
                         deploy.setEmbeddedHeight(height);
@@ -2590,7 +2590,7 @@
                     <token key="VENDOR" value="${application.vendor}"/>
                     <token key="TITLE" value="${application.title}"/>
                     <token key="DESCRIPTION" value="${application.desc.processed}"/>
-                    <token key="WIDTH" value="${javafx.run.width}"/>
+                    <token key="WIDTH" value="${javafx.run.ancho}"/>
                     <token key="HEIGHT" value="${javafx.run.height}"/>
                     <token key="PERMISSIONS" value="${permissions-elevated-token}"/>
                     <token key="OFFLINE" value="${offline-allowed-token}"/>
@@ -2767,7 +2767,7 @@
         <sequential>
             <antcall target="-pre-jfx-deploy"/>
             <echo message="Warning: JVM Arguments and Callbacks (if any) not passed to &lt;fx:deploy&gt; in fallback build mode due to JDK missing JavaScript support."/>
-            <fx:deploy width="${javafx.width}" height="${javafx.height}"
+            <fx:deploy ancho="${javafx.ancho}" height="${javafx.height}"
                       outdir="${jfx.deployment.dir}" embedjnlp="true" updatemode="${update-mode}"
                       outfile="${application.title}" includeDT="${javafx.deploy.includeDT}">
                 <fx:application refid="fxApp"/>
@@ -2787,7 +2787,7 @@
             <antcall target="-pre-jfx-deploy"/>
             <echo message="Warning: JVM Arguments and Callbacks (if any) not passed to &lt;fx:deploy&gt; in fallback build mode due to JDK missing JavaScript support."/>
             <deploy-process-template/>
-            <fx:deploy width="${javafx.width}" height="${javafx.height}"
+            <fx:deploy ancho="${javafx.ancho}" height="${javafx.height}"
                       outdir="${jfx.deployment.dir}" embedjnlp="true" updatemode="${update-mode}"
                       outfile="${application.title}" includeDT="${javafx.deploy.includeDT}">
                 <fx:application refid="fxApp"/>

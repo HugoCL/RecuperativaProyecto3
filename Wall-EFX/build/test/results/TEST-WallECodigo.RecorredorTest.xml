@@ -51,7 +51,7 @@
     <property name="ap.supported.internal" value="true" />
     <property name="java.failonerror" value="true" />
     <property name="libs.jaxws21.javadoc" value="C:\Program Files\NetBeans 8.2\java\docs\jaxws-api-doc.zip" />
-    <property name="javafx.run.width" value="800" />
+    <property name="javafx.run.ancho" value="800" />
     <property name="includes" value="**" />
     <property name="user.country" value="US" />
     <property name="manifest.file" value="manifest.mf" />
