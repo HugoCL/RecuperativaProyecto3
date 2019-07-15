@@ -69,6 +69,8 @@ public class ControllerDatos {
     @FXML
     public Text alertaRecalcular;
     @FXML
+    public Text textMensajes;
+    @FXML
     private Slider sliderColumnas;
     @FXML
     private Slider sliderFilas;
@@ -104,15 +106,15 @@ public class ControllerDatos {
     private Recinto recinto = new Recinto();
     private Recorredor recorredor = new Recorredor();
     private Serializador serializador = new Serializador();
-    private WallE wallE;
     private boolean juegoComenzado = false;
     private List<Character> rutaAleatoriaT;
     private List<Character> rutaRapidaT;
     private List<List<Posicion>> todaslasRutas;
     private int rutaElegida = 0; //1 PARA LA RANDOM, 2 PARA LA RAPIDA, 3 PARA LA LISTA DE RUTAS
-    private int rutaAllElegida = 0;
     private ObservableList<Character> listaObs;
     private int flag = 1; // 1 para Wall-E -> Planta, 2 para Planta -> Zona Segura
+    private boolean noRutas = false;
+    private boolean falloGeneral = false;
 
     @FXML
     public void mostrarValorFilas() {
@@ -339,11 +341,6 @@ public class ControllerDatos {
     }
 
     @FXML
-    public void returnFocus(){
-        Platform.runLater(() -> Borderpane.requestFocus());
-    }
-
-    @FXML
     public void ocultarOpcionesRutas(){
         botonRandomRuta.setDisable(true);
         botonAllRutas.setDisable(true);
@@ -354,8 +351,19 @@ public class ControllerDatos {
         botonRandomRuta.setDisable(false);
         boolean[][] visitado = new boolean[filas][columnas];
         List<Posicion> rutaAleatoria = recorredor.resolver(recinto, flag, visitado);
-        rutaAleatoriaT = recorredor.traductorInstrucciones(rutaAleatoria, recinto);
-        Platform.runLater(() -> Borderpane.requestFocus());
+        if (rutaAleatoria.isEmpty()){
+            textMensajes.setText("No hay una ruta entre Wall-E hacia la Planta o EVA :(");
+            textMensajes.setVisible(true);
+            noRutas = true;
+            botonRandomRuta.setDisable(true);
+            Platform.runLater(() -> Borderpane.requestFocus());
+        }
+        else{
+            textMensajes.setVisible(false);
+            noRutas = false;
+            rutaAleatoriaT = recorredor.traductorInstrucciones(rutaAleatoria, recinto);
+            Platform.runLater(() -> Borderpane.requestFocus());
+        }
     }
 
     @FXML
@@ -372,9 +380,20 @@ public class ControllerDatos {
         botonRutaFast.setDisable(false);
         boolean[][] visitado = new boolean[filas][columnas];
         List<Posicion> rutaRapida = recorredor.resolverRapido(recinto, visitado, flag);
-        Collections.reverse(rutaRapida);
-        rutaRapidaT = recorredor.traductorInstrucciones(rutaRapida, recinto);
-        Platform.runLater(() -> Borderpane.requestFocus());
+        if (rutaRapida.isEmpty()){
+            textMensajes.setText("No hay una ruta entre Wall-E hacia la Planta o EVA :(");
+            textMensajes.setVisible(true);
+            noRutas = true;
+            botonRutaFast.setDisable(true);
+            Platform.runLater(() -> Borderpane.requestFocus());
+        }
+        else{
+            textMensajes.setVisible(false);
+            noRutas = false;
+            Collections.reverse(rutaRapida);
+            rutaRapidaT = recorredor.traductorInstrucciones(rutaRapida, recinto);
+            Platform.runLater(() -> Borderpane.requestFocus());
+        }
     }
 
     @FXML
@@ -388,17 +407,28 @@ public class ControllerDatos {
     }
 
     public void settearAllRutas(){
-        botonAllRutas.setDisable(false);
-        boolean[][] visitado = new boolean[filas][columnas];
-        List<Posicion> rutaPrototipo = new ArrayList<>();
-        int cantRutas = recorredor.allRutas(recinto, recinto.getpActual().getpFila(),
-                recinto.getpActual().getpColumna(), 0, visitado, rutaPrototipo, flag);
-        todaslasRutas = recorredor.getTodasLasRutas();
-        for (int i = 0; i < cantRutas; i++) {
-            MenuItem botonRuta = new MenuItem("Ruta "+(i+1));
-            int finalI = i;
-            botonRuta.setOnAction(a-> mostrarRutas(finalI));
-            botonAllRutas.getItems().add(botonRuta);
+        int cantRutas = 0;
+        if (noRutas){
+            textMensajes.setText("No hay una ruta entre Wall-E hacia la Planta o EVA :(");
+            textMensajes.setVisible(true);
+            noRutas = true;
+            Platform.runLater(() -> Borderpane.requestFocus());
+        }
+        else{
+            textMensajes.setVisible(false);
+            noRutas = false;
+            botonAllRutas.setDisable(false);
+            boolean[][] visitado = new boolean[filas][columnas];
+            List<Posicion> rutaPrototipo = new ArrayList<>();
+            cantRutas = recorredor.allRutas(recinto, recinto.getpActual().getpFila(),
+                    recinto.getpActual().getpColumna(), 0, visitado, rutaPrototipo, flag);
+            todaslasRutas = recorredor.getTodasLasRutas();
+            for (int i = 0; i < cantRutas; i++) {
+                MenuItem botonRuta = new MenuItem("Ruta "+(i+1));
+                int finalI = i;
+                botonRuta.setOnAction(a-> mostrarRutas(finalI));
+                botonAllRutas.getItems().add(botonRuta);
+            }
         }
         Platform.runLater(() -> Borderpane.requestFocus());
     }
@@ -411,7 +441,6 @@ public class ControllerDatos {
         listaRutas.setItems(listaObs);
         ocultarOpcionesRutas();
         rutaElegida = 3;
-        rutaAllElegida = ruta;
         alertaRecalcular.setVisible(false);
         Platform.runLater(() -> Borderpane.requestFocus());
     }
@@ -439,56 +468,65 @@ public class ControllerDatos {
             System.out.println("");
         }
         recinto.setpActual(posicionWallE);
-        wallE = WallE.getWallE();
+        WallE wallE = WallE.getWallE();
     }
 
     @FXML
     public void movimiento(KeyEvent ke) {
-        if (todoListo()) {
+        if (todoListo() && !falloGeneral) {
             switch (ke.getCode()) {
                 case SPACE:
-                    if (listaObs.size() != 0){
-                        if (listaObs.get(0) == 'A'){
+                    if (listaObs != null && listaObs.size() != 0) {
+                        if (listaObs.get(0) == 'A') {
                             listaObs.remove(0);
                             avanzar();
-                            if (listaObs.size() == 0){
+                            if (listaObs.size() == 0) {
                                 flag = 2;
+                                recalcular();
                             }
-                        }
-                        else{
+                        } else {
                             avanzar();
                             recalcular();
                         }
+                    } else {
+                        recalcular();
+                        avanzar();
                     }
                     break;
                 case LEFT:
-                    if (listaObs.size() != 0){
-                        if (listaObs.get(0) == 'I'){
+                    if (listaObs != null && listaObs.size() != 0) {
+                        if (listaObs.get(0) == 'I') {
                             listaObs.remove(0);
                             izquierda();
-                            if (listaObs.size() == 0){
+                            if (listaObs.size() == 0) {
                                 flag = 2;
+                                recalcular();
                             }
-                        }
-                        else {
+                        } else {
                             izquierda();
                             recalcular();
                         }
+                    } else {
+                        recalcular();
+                        izquierda();
                     }
                     break;
                 case RIGHT:
-                    if (listaObs.size() != 0){
-                        if (listaObs.get(0) == 'D'){
+                    if (listaObs != null && listaObs.size() != 0) {
+                        if (listaObs.get(0) == 'D') {
                             listaObs.remove(0);
                             derecha();
-                            if (listaObs.size() == 0){
+                            if (listaObs.size() == 0) {
                                 flag = 2;
+                                recalcular();
                             }
-                        }
-                        else{
+                        } else {
                             derecha();
                             recalcular();
                         }
+                    } else {
+                        recalcular();
+                        izquierda();
                     }
                     break;
             }
@@ -497,15 +535,19 @@ public class ControllerDatos {
 
     private void recalcular() {
         alertaRecalcular.setVisible(true);
-        listaObs.clear();
+        if (listaObs != null && !listaObs.isEmpty()){
+            listaObs.clear();
+        }
         settearRutaRandom();
         settearRutaRapida();
         clearAllRutas();
         settearAllRutas();
+        Platform.runLater(() -> Borderpane.requestFocus());
     }
 
     private void clearAllRutas() {
         botonAllRutas.getItems().clear();
+        todaslasRutas.clear();
     }
 
     public void avanzar() {
@@ -544,7 +586,11 @@ public class ControllerDatos {
             grid.add(label2, posicionActual.getpColumna(), posicionActual.getpFila());
         }
         else{
-            System.out.println("MORISTE, LA TIERRA ESTÁ CONDENADA");
+            textMensajes.setText("La tierra está condenada sin ti Wall-E. Reinicia el juego para salvar a la Tierra");
+            textMensajes.setVisible(true);
+            falloGeneral = true;
+            ocultarOpcionesRutas();
+            ocultarElementos();
         }
     }
 

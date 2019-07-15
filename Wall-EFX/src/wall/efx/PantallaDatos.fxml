@@ -103,6 +103,9 @@
          <left>
             <ListView fx:id="listaRutas" prefHeight="640.0" prefWidth="42.0" BorderPane.alignment="CENTER" />
          </left>
+         <right>
+            <Text fx:id="textMensajes"  fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="No hay rutas disponibles para la Planta y/o la Zona segura :(" visible="false" wrappingWidth="111.4375" BorderPane.alignment="CENTER" />
+         </right>
       </BorderPane>
    </children>
 </GridPane>

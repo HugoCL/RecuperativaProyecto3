@@ -75,7 +75,6 @@ public class Recorredor implements Serializable {
      */
     public int allRutas(Recinto recinto, int fila, int columna, int count, boolean[][] visitado, List<Posicion> ruta, int flag)
     {
-
         if (count < 10){
             if (recinto.esDestinoPlanta(fila,columna) && flag == 1)
             {
@@ -129,13 +128,13 @@ public class Recorredor implements Serializable {
                 count++;
                 return count;
             }
-
             // mark current cell as visited
             visitado[fila][columna] = true;
             ruta.add(new Posicion(fila,columna));
+
             // if current cell is a valid and open cell
             if (recinto.esSeguro(recinto.getRecintoCompleto(), fila, columna) && !recinto.esMuroBomba(recinto, fila, columna)
-                    && recinto.getRecintoCompleto()[fila][columna] != 4 && flag == 1)
+                    && ((recinto.getRecintoCompleto()[fila][columna] != 4 && flag == 1) || flag == 2))
             {
                 // go down (x, y) --> (x + 1, y)
                 if (fila + 1 < recinto.getlimiteFilas() && !visitado[fila + 1][columna])
@@ -203,11 +202,11 @@ public class Recorredor implements Serializable {
                 continue;
             }
 
-            if (recinto.esDestinoPlanta(posActual.getpFila(), posActual.getpColumna()) ||
+            if (recinto.esDestinoPlanta(posActual.getpFila(), posActual.getpColumna()) &&
                     recinto.getRecintoCompleto()[posActual.getpFila()][posActual.getpColumna()] == 3 && flag == 1) {
                 return rutaBacktracking(posActual);
             }
-            else if (recinto.esDestinoZonaSegura(posActual.getpFila(), posActual.getpColumna()) ||
+            else if (recinto.esDestinoZonaSegura(posActual.getpFila(), posActual.getpColumna()) &&
                     recinto.getRecintoCompleto()[posActual.getpFila()][posActual.getpColumna()] == 4 && flag == 2){
                 return rutaBacktracking(posActual);
             }
