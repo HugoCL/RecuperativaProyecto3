@@ -3,6 +3,9 @@ import WallECodigo.*;
 
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,15 +21,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.junit.experimental.theories.FromDataPoints;
 
 import java.beans.EventHandler;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.EventListener;
-import java.util.List;
-import java.util.Timer;
+import java.util.*;
 
 
 public class ControllerDatos {
@@ -60,7 +61,13 @@ public class ControllerDatos {
     @FXML
     public Text alertaRepetido;
     @FXML
-    public TableView tablaDatos;
+    public Button botonRandomRuta;
+    @FXML
+    public Button botonRutaFast;
+    @FXML
+    public MenuButton botonAllRutas;
+    @FXML
+    public Text alertaRecalcular;
     @FXML
     private Slider sliderColumnas;
     @FXML
@@ -69,7 +76,8 @@ public class ControllerDatos {
     private Text valorSFilas;
     @FXML
     private Text valorSColumnas;
-
+    @FXML
+    private ListView<Character> listaRutas;
     @FXML
     private GridPane grid;
 
@@ -98,7 +106,13 @@ public class ControllerDatos {
     private Serializador serializador = new Serializador();
     private WallE wallE;
     private boolean juegoComenzado = false;
-
+    private List<Character> rutaAleatoriaT;
+    private List<Character> rutaRapidaT;
+    private List<List<Posicion>> todaslasRutas;
+    private int rutaElegida = 0; //1 PARA LA RANDOM, 2 PARA LA RAPIDA, 3 PARA LA LISTA DE RUTAS
+    private int rutaAllElegida = 0;
+    private ObservableList<Character> listaObs;
+    private int flag = 1; // 1 para Wall-E -> Planta, 2 para Planta -> Zona Segura
 
     @FXML
     public void mostrarValorFilas() {
@@ -314,7 +328,92 @@ public class ControllerDatos {
         botonInicio.setDisable(true);
         setRecinto();
         Platform.runLater(() -> Borderpane.requestFocus());
+        listaRutas.setMouseTransparent(true);
+        listaRutas.setFocusTraversable(false);
         juegoComenzado = true;
+        listaRutas.setOnKeyPressed(null);
+        listaRutas.setOnKeyReleased(null);
+        settearRutaRandom();
+        settearRutaRapida();
+        settearAllRutas();
+    }
+
+    @FXML
+    public void returnFocus(){
+        Platform.runLater(() -> Borderpane.requestFocus());
+    }
+
+    @FXML
+    public void ocultarOpcionesRutas(){
+        botonRandomRuta.setDisable(true);
+        botonAllRutas.setDisable(true);
+        botonRutaFast.setDisable(true);
+    }
+    @FXML
+    public void settearRutaRandom(){
+        botonRandomRuta.setDisable(false);
+        boolean[][] visitado = new boolean[filas][columnas];
+        List<Posicion> rutaAleatoria = recorredor.resolver(recinto, flag, visitado);
+        rutaAleatoriaT = recorredor.traductorInstrucciones(rutaAleatoria, recinto);
+        Platform.runLater(() -> Borderpane.requestFocus());
+    }
+
+    @FXML
+    public void mostrarRutaRandom(){
+        listaObs = FXCollections.observableArrayList(rutaAleatoriaT);
+        listaRutas.setItems(listaObs);
+        Platform.runLater(() -> Borderpane.requestFocus());
+        ocultarOpcionesRutas();
+        rutaElegida = 1;
+        alertaRecalcular.setVisible(false);
+    }
+
+    public void settearRutaRapida(){
+        botonRutaFast.setDisable(false);
+        boolean[][] visitado = new boolean[filas][columnas];
+        List<Posicion> rutaRapida = recorredor.resolverRapido(recinto, visitado, flag);
+        Collections.reverse(rutaRapida);
+        rutaRapidaT = recorredor.traductorInstrucciones(rutaRapida, recinto);
+        Platform.runLater(() -> Borderpane.requestFocus());
+    }
+
+    @FXML
+    public void mostrarRutaRapida(){
+        listaObs = FXCollections.observableArrayList(rutaRapidaT);
+        listaRutas.setItems(listaObs);
+        Platform.runLater(() -> Borderpane.requestFocus());
+        ocultarOpcionesRutas();
+        rutaElegida = 2;
+        alertaRecalcular.setVisible(false);
+    }
+
+    public void settearAllRutas(){
+        botonAllRutas.setDisable(false);
+        boolean[][] visitado = new boolean[filas][columnas];
+        List<Posicion> rutaPrototipo = new ArrayList<>();
+        int cantRutas = recorredor.allRutas(recinto, recinto.getpActual().getpFila(),
+                recinto.getpActual().getpColumna(), 0, visitado, rutaPrototipo, flag);
+        todaslasRutas = recorredor.getTodasLasRutas();
+        for (int i = 0; i < cantRutas; i++) {
+            MenuItem botonRuta = new MenuItem("Ruta "+(i+1));
+            int finalI = i;
+            botonRuta.setOnAction(a-> mostrarRutas(finalI));
+            botonAllRutas.getItems().add(botonRuta);
+        }
+        Platform.runLater(() -> Borderpane.requestFocus());
+    }
+    @FXML
+    private void mostrarRutas(int ruta) {
+        List<Posicion> rutaSeleccionada = todaslasRutas.get(ruta);
+        recorredor.clearAllRutas();
+        List<Character> rutaElegidaT = recorredor.traductorInstrucciones(rutaSeleccionada, recinto);
+        listaObs = FXCollections.observableArrayList(rutaElegidaT);
+        listaRutas.setItems(listaObs);
+        ocultarOpcionesRutas();
+        rutaElegida = 3;
+        rutaAllElegida = ruta;
+        alertaRecalcular.setVisible(false);
+        Platform.runLater(() -> Borderpane.requestFocus());
     }
 
     public void setRecinto(){
@@ -325,6 +424,9 @@ public class ControllerDatos {
         }
         recinto.setLimiteFilas(filas);
         recinto.setLimiteColumnas(columnas);
+        recinto.getRecintoCompleto()[posicionZS.getpFila()][posicionZS.getpColumna()] = 4;
+        recinto.getRecintoCompleto()[posicionPlanta.getpFila()][posicionPlanta.getpColumna()] = 3;
+        recinto.getRecintoCompleto()[posicionWallE.getpFila()][posicionWallE.getpColumna()] = 2;
         recinto.newWallE(posicionPlanta, posicionZS);
         for (Posicion bomba : listBombas) {
             recinto.crearRecinto(bomba.getpFila(), bomba.getpColumna(), 1);
@@ -345,16 +447,65 @@ public class ControllerDatos {
         if (todoListo()) {
             switch (ke.getCode()) {
                 case SPACE:
-                    avanzar();
+                    if (listaObs.size() != 0){
+                        if (listaObs.get(0) == 'A'){
+                            listaObs.remove(0);
+                            avanzar();
+                            if (listaObs.size() == 0){
+                                flag = 2;
+                            }
+                        }
+                        else{
+                            avanzar();
+                            recalcular();
+                        }
+                    }
                     break;
                 case LEFT:
-                    izquierda();
+                    if (listaObs.size() != 0){
+                        if (listaObs.get(0) == 'I'){
+                            listaObs.remove(0);
+                            izquierda();
+                            if (listaObs.size() == 0){
+                                flag = 2;
+                            }
+                        }
+                        else {
+                            izquierda();
+                            recalcular();
+                        }
+                    }
                     break;
                 case RIGHT:
-                    derecha();
+                    if (listaObs.size() != 0){
+                        if (listaObs.get(0) == 'D'){
+                            listaObs.remove(0);
+                            derecha();
+                            if (listaObs.size() == 0){
+                                flag = 2;
+                            }
+                        }
+                        else{
+                            derecha();
+                            recalcular();
+                        }
+                    }
                     break;
             }
         }
+    }
+
+    private void recalcular() {
+        alertaRecalcular.setVisible(true);
+        listaObs.clear();
+        settearRutaRandom();
+        settearRutaRapida();
+        clearAllRutas();
+        settearAllRutas();
+    }
+
+    private void clearAllRutas() {
+        botonAllRutas.getItems().clear();
     }
 
     public void avanzar() {

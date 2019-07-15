@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" line="92" />
+    <bookmark url="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" line="100" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2298c38c-970f-4dab-a790-2f636e67054e" name="Default Changelist" comment="Se creó la base de la nueva interfaz. Ya funciona correctamente la solicitud de datos al inicio del programa.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serializacion.out" beforeDir="false" afterPath="$PROJECT_DIR$/Serializacion.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wall-EFX/build/test/results/TEST-WallECodigo.RecintoTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/build/test/results/TEST-WallECodigo.RecintoTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wall-EFX/build/test/results/TEST-WallECodigo.RecorredorTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/build/test/results/TEST-WallECodigo.RecorredorTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wall-EFX/dist/Wall-EFX.html" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/dist/Wall-EFX.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wall-EFX/dist/Wall-EFX.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/dist/Wall-EFX.jnlp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wall-EFX/nbproject/jfx-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/nbproject/jfx-impl.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wall-EFX/nbproject/jfx-impl_backup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/nbproject/jfx-impl_backup.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wall-EFX/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/WallECodigo/Recorredor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wall-EFX/WallECodigo/Recorredor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/ControllerDatos$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/ControllerDatos$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/ControllerDatos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/ControllerDatos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/PantallaDatos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/PantallaDatos.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+            <state relative-caret-position="70">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -42,11 +41,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="42" column="96" selection-start-line="42" selection-start-column="96" selection-end-line="42" selection-end-column="96" />
+            <state relative-caret-position="1116">
+              <caret line="354" column="69" selection-start-line="354" selection-start-column="69" selection-end-line="354" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#traductorInstrucciones#0;class#Recorredor#0" />
+                <element signature="method#repetidoChecker#0;class#Recorredor#0" />
+                <element signature="e#17896#17897#0" expanded="true" />
+                <element signature="e#14990#14991#0" expanded="true" />
+                <element signature="e#15027#15028#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,21 +56,23 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="86" column="43" selection-start-line="86" selection-start-column="43" selection-end-line="86" selection-end-column="43" />
+            <state relative-caret-position="1462">
+              <caret line="86" column="26" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="26" />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="226" column="5" lean-forward="true" selection-start-line="226" selection-start-column="5" selection-end-line="226" selection-end-column="5" />
+            <state relative-caret-position="169">
+              <caret line="358" column="5" lean-forward="true" selection-start-line="358" selection-start-column="5" selection-end-line="358" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#17994#17995#0" expanded="true" />
+                <element signature="e#18042#18043#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recinto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="74" column="19" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
+            <state relative-caret-position="529">
+              <caret line="96" column="65" selection-start-line="96" selection-start-column="65" selection-end-line="96" selection-end-column="65" />
               <folding>
                 <element signature="e#1028#1029#0" expanded="true" />
                 <element signature="e#1092#1093#0" expanded="true" />
@@ -92,20 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Serializador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="12" column="85" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="77" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -126,13 +118,22 @@
     <findStrings>
       <find>WallE</find>
       <find>botonInicio</find>
+      <find>setonmo</find>
+      <find>system.out</find>
+      <find>Posicion</find>
+      <find>resolver</find>
+      <find>boolean[</find>
+      <find>System.out</find>
+      <find>boolean[][]</find>
+      <find>Posicion Fila Siguiente 8 Posicion Columna SIGUIENTE 3</find>
+      <find>System</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -157,7 +158,6 @@
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/SceneHandler.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/WallEFX.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Main.java" />
-        <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/sample.fxml" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/Grid.java" />
@@ -166,6 +166,7 @@
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerJuego.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/Main.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml" />
+        <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" />
       </list>
     </option>
@@ -188,7 +189,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -217,7 +218,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -256,6 +257,11 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\hugoc\Documents\GitHub\RecuperativaProyecto3\Wall-EFX\src\wall\efx" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="?" />
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -413,7 +419,11 @@
       <workItem from="1562644413881" duration="41286000" />
       <workItem from="1562732065000" duration="1202000" />
       <workItem from="1562892913336" duration="11450000" />
-      <workItem from="1562908104606" duration="5959000" />
+      <workItem from="1562908104606" duration="6181000" />
+      <workItem from="1562967620915" duration="46000" />
+      <workItem from="1563035713946" duration="26059000" />
+      <workItem from="1563123023422" duration="843000" />
+      <workItem from="1563144416897" duration="6025000" />
     </task>
     <task id="LOCAL-00001" summary="Se creó la base de la nueva interfaz. Ya funciona correctamente la solicitud de datos al inicio del programa.">
       <created>1562652458446</created>
@@ -437,13 +447,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169536000" />
+    <option name="totallyTimeSpent" value="202731000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13388805" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.13691376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -452,8 +462,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.3747954" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.34042552" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49848714" visible="true" weight="0.3747954" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.42062193" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -461,7 +471,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.95090014" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50075644" side_tool="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5015129" side_tool="true" weight="0.3747954" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -476,7 +486,7 @@
       <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32980332" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18229954" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13691376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -485,8 +495,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.3289689" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.5319149" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.3747954" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.34042552" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -561,33 +571,27 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>402</line>
+          <line>501</line>
           <properties />
-          <option name="timeStamp" value="44" />
+          <option name="timeStamp" value="128" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>409</line>
+          <line>500</line>
           <properties />
-          <option name="timeStamp" value="51" />
+          <option name="timeStamp" value="129" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>413</line>
+          <line>499</line>
           <properties />
-          <option name="timeStamp" value="52" />
+          <option name="timeStamp" value="130" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>417</line>
+          <line>498</line>
           <properties />
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>421</line>
-          <properties />
-          <option name="timeStamp" value="54" />
+          <option name="timeStamp" value="131" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -676,28 +680,59 @@
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Cell.java" />
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerJuego.java" />
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/JuegoWallE.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java">
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="42" column="96" selection-start-line="42" selection-start-column="96" selection-end-line="42" selection-end-column="96" />
+        <state relative-caret-position="529">
+          <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="77" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#traductorInstrucciones#0;class#Recorredor#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="492" column="12" lean-forward="true" selection-start-line="492" selection-start-column="12" selection-end-line="492" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="86" column="26" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Serializador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recinto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="74" column="19" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
+        <state relative-caret-position="529">
+          <caret line="96" column="65" selection-start-line="96" selection-start-column="65" selection-end-line="96" selection-end-column="65" />
           <folding>
             <element signature="e#1028#1029#0" expanded="true" />
             <element signature="e#1092#1093#0" expanded="true" />
@@ -707,47 +742,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Serializador.java">
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="12" column="85" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+        <state relative-caret-position="1116">
+          <caret line="354" column="69" selection-start-line="354" selection-start-column="69" selection-end-line="354" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#repetidoChecker#0;class#Recorredor#0" />
+            <element signature="e#17896#17897#0" expanded="true" />
+            <element signature="e#14990#14991#0" expanded="true" />
+            <element signature="e#15027#15028#0" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="77" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="86" column="43" selection-start-line="86" selection-start-column="43" selection-end-line="86" selection-end-column="43" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="226" column="5" lean-forward="true" selection-start-line="226" selection-start-column="5" selection-end-line="226" selection-end-column="5" />
+        <state relative-caret-position="169">
+          <caret line="358" column="5" lean-forward="true" selection-start-line="358" selection-start-column="5" selection-end-line="358" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#17994#17995#0" expanded="true" />
+            <element signature="e#18042#18043#0" expanded="true" />
           </folding>
         </state>
       </provider>
