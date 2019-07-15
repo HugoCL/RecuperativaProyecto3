@@ -82,7 +82,7 @@
                         <Font size="22.0" />
                      </font>
                   </Text>
-                  <Button layoutX="466.0" layoutY="540.0" mnemonicParsing="false" text="Reanuda tu juego" />
+                  <Button fx:id="botonDesSerializar" layoutX="466.0" layoutY="540.0" mnemonicParsing="false" onMouseClicked="#reanudarJuego" text="Reanuda tu juego" />
                   <Text fx:id="alertaRepetido" fill="RED" layoutX="366.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Has seleccionado una casilla que ya contenia algo, selecciona otra" visible="false" />
                </children>
             </AnchorPane>
@@ -90,10 +90,11 @@
          <top>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <buttons>
-                  <Text fx:id="alertaRecalcular" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Te saliste de la ruta que elegiste. Si quieres recalcular, presiona la ruta nuevamente" visible="false" />
+                  <Text fx:id="alertaRecalcular" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Te saliste de la ruta que elegiste. Presiona en Recalcular para generar nuevas rutas" visible="false" />
                   <Button fx:id="botonRandomRuta" disable="true" mnemonicParsing="false" onMouseClicked="#mostrarRutaRandom" text="Ruta aleatoria" />
                   <Button fx:id="botonRutaFast" disable="true" mnemonicParsing="false" onMouseClicked="#mostrarRutaRapida" text="Ruta más rápida" />
                   <MenuButton fx:id="botonAllRutas" disable="true" mnemonicParsing="false" text="Todas las rutas" />
+                  <Button fx:id="botonRecalcular" disable="true" mnemonicParsing="false" onMouseClicked="#recalcular" text="Recalcular" />
               </buttons>
                <padding>
                   <Insets right="400.0" />
@@ -104,7 +105,7 @@
             <ListView fx:id="listaRutas" prefHeight="640.0" prefWidth="42.0" BorderPane.alignment="CENTER" />
          </left>
          <right>
-            <Text fx:id="textMensajes"  fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="No hay rutas disponibles para la Planta y/o la Zona segura :(" visible="false" wrappingWidth="111.4375" BorderPane.alignment="CENTER" />
+            <Text fx:id="textMensajes" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="No hay rutas disponibles para la Planta y/o la Zona segura :(" visible="false" wrappingWidth="111.4375" BorderPane.alignment="CENTER" />
          </right>
       </BorderPane>
    </children>

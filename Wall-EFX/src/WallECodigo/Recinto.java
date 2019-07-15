@@ -1,6 +1,7 @@
 package WallECodigo;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 
 /***
  *
@@ -19,6 +20,14 @@ public class Recinto implements Serializable {
     private Posicion pActual;
 
     private char orientacion;
+
+    private int numBombas;
+
+    private boolean plantaAlcanzada = false;
+
+    private boolean zonaAlcanzada = false;
+
+    private LocalTime inicioRecorrido;
 
     public Recinto(int limiteFilas, int limiteColumnas, char orientacion) {
         this.limiteFilas = limiteFilas;
@@ -173,5 +182,36 @@ public class Recinto implements Serializable {
     public void setRecintoCompleto(int[][] recintoCompleto) {
         this.recintoCompleto = recintoCompleto;
     }
-    
+
+    public int getNumBombas() {
+        return numBombas;
+    }
+
+    public void setNumBombas(int numBombas) {
+        this.numBombas = numBombas;
+    }
+
+    public boolean isPlantaAlcanzada() {
+        return plantaAlcanzada;
+    }
+
+    public void setPlantaAlcanzada(boolean plantaAlcanzada) {
+        this.plantaAlcanzada = plantaAlcanzada;
+    }
+
+    public boolean isZonaAlcanzada() {
+        return zonaAlcanzada;
+    }
+
+    public void setZonaAlcanzada(boolean zonaAlcanzada) {
+        this.zonaAlcanzada = zonaAlcanzada;
+    }
+
+    public LocalTime getInicioRecorrido() {
+        return inicioRecorrido;
+    }
+
+    public void setInicioRecorrido(LocalTime inicioRecorrido) {
+        this.inicioRecorrido = inicioRecorrido;
+    }
 }

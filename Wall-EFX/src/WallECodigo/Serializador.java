@@ -41,8 +41,8 @@ public class Serializador {
             return recinto;
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
 

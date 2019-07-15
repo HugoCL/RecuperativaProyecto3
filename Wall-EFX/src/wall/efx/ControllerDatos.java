@@ -2,6 +2,7 @@ package wall.efx;
 import WallECodigo.*;
 
 
+import com.sun.xml.internal.ws.api.FeatureConstructor;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +13,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -19,15 +24,24 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.junit.experimental.theories.FromDataPoints;
 
+import java.awt.*;
 import java.beans.EventHandler;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Time;
+import java.time.Clock;
+import java.time.Instant;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.List;
 
 
 public class ControllerDatos {
@@ -70,6 +84,10 @@ public class ControllerDatos {
     public Text alertaRecalcular;
     @FXML
     public Text textMensajes;
+    @FXML
+    public Button botonDesSerializar;
+    @FXML
+    public Button botonRecalcular;
     @FXML
     private Slider sliderColumnas;
     @FXML
@@ -116,6 +134,8 @@ public class ControllerDatos {
     private boolean noRutas = false;
     private boolean falloGeneral = false;
 
+    private LocalTime fechaInicio;
+
     @FXML
     public void mostrarValorFilas() {
         valorSFilas.setText(String.valueOf((int) sliderFilas.getValue()));
@@ -146,6 +166,7 @@ public class ControllerDatos {
         if (comprobarBombas() && Integer.valueOf(campoTextoBombas.getText()) < (getFilas() * getColumnas() - 3)) {
             alertaBombas.setVisible(false);
             numBombas = Integer.valueOf(campoTextoBombas.getText());
+            recinto.setNumBombas(numBombas);
             filas = getFilas();
             columnas = getColumnas();
             iniciarJuego();
@@ -154,6 +175,128 @@ public class ControllerDatos {
         }
     }
 
+    @FXML
+    public void reanudarJuego(){
+        try {
+            recinto = serializador.desSerializar();
+            WallE walleSeri = WallE.getWallE();
+            if (recinto == null && walleSeri == null){
+                textMensajes.setText("No hay un archivo serializado creado correctamente, " +
+                        "por lo que no podemos reanudar tu juego :(");
+                textMensajes.setVisible(true);
+            }
+            else if (recinto != null && walleSeri == null){
+                reanudarRecinto();
+            }
+            else{
+                reanudarRecinto();
+                reanudarWallE();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            textMensajes.setText("No hay un archivo serializado creado, por lo que no podemos reanudar tu juego :(");
+            textMensajes.setVisible(true);
+        }
+    }
+
+    private void reanudarRecinto() {
+        filas = recinto.getlimiteFilas();
+        columnas = recinto.getlimiteColumnas();
+        fechaInicio = recinto.getInicioRecorrido();
+        if (recinto.isPlantaAlcanzada()){
+            flag = 2;
+        }
+        grid = new GridPane();
+        grid.setOnMouseClicked(this::botonGridPresionado);
+        grid.setMaxSize(700, 500);
+        if (recinto.getpActual() != null){
+            posicionWallE = recinto.getpActual();
+        }
+        numBombas = recinto.getNumBombas();
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                if (recinto.getRecintoCompleto()[i][j] == 1){
+                    numBombas--;
+                    casillaSeleccionada = false;
+                    ImageView imagen = new ImageView();
+                    imagen.setImage(bomba);
+                    imagen.setFitWidth(700 / columnas);
+                    imagen.setFitHeight(500 / filas);
+                    Label label = new Label();
+                    label.setGraphic(imagen);
+                    grid.add(label, j, i);
+                    listBombas.add(new Posicion(i, j));
+                }
+                else if (recinto.getRecintoCompleto()[i][j] == 0){
+                    ImageView imagen = new ImageView();
+                    imagen.setImage(cuadrado);
+                    imagen.setFitWidth(700 / columnas);
+                    imagen.setFitHeight(500 / filas);
+                    Label label = new Label();
+                    label.setGraphic(imagen);
+                    grid.add(label, j, i);
+                }
+                else if (recinto.getRecintoCompleto()[i][j] == 3){
+                    numWallE = 0;
+                    ImageView imagen = new ImageView();
+                    if (recinto.getOrientacion() == 'N'){
+                        walle = new Image(getClass().getResourceAsStream("Wall-EN.png"));
+                    }
+                    else if (recinto.getOrientacion() == 'E'){
+                        walle = new Image(getClass().getResourceAsStream("Wall-EE.png"));
+                    }
+                    else if (recinto.getOrientacion() == 'S'){
+                        walle = new Image(getClass().getResourceAsStream("Wall-E.png"));
+                    }
+                    else if (recinto.getOrientacion() == 'O'){
+                        walle = new Image(getClass().getResourceAsStream("Wall-EO.png"));
+                    }
+                    imagen.setImage(walle);
+                    imagen.setFitWidth(700 / columnas);
+                    imagen.setFitHeight(500 / filas);
+                    Label label2 = new Label();
+                    label2.setGraphic(imagen);
+                    grid.add(label2, j, i);
+                }
+            }
+        }
+        ocultarElementos();
+        todoListo();
+        Borderpane.setCenter(grid);
+        textMensajes.setVisible(false);
+        Platform.runLater(() -> Borderpane.requestFocus());
+    }
+
+    private void reanudarWallE(){
+        WallE wallESerializado = WallE.getWallE();
+        if (wallESerializado != null){
+            posicionPlanta = wallESerializado.getpDPlanta();
+            numPlanta--;
+            if (!recinto.isPlantaAlcanzada()){
+                ImageView imagen1 = new ImageView();
+                imagen1.setImage(planta);
+                imagen1.setFitWidth(700 / columnas);
+                imagen1.setFitHeight(500 / filas);
+                Label label = new Label();
+                label.setGraphic(imagen1);
+                grid.add(label, posicionPlanta.getpColumna(), posicionPlanta.getpFila());
+            }
+            posicionZS = wallESerializado.getpDZonaSegura();
+            ImageView imagen2 = new ImageView();
+            imagen2.setImage(EVA);
+            imagen2.setFitWidth(700 / columnas);
+            imagen2.setFitHeight(500 / filas);
+            Label label2 = new Label();
+            label2.setGraphic(imagen2);
+            grid.add(label2, posicionZS.getpColumna(), posicionZS.getpFila());
+            numZonaSegura--;
+        }
+        juegoComenzado = true;
+        ocultarElementos();
+        todoListo();
+        textMensajes.setVisible(false);
+        Platform.runLater(() -> Borderpane.requestFocus());
+    }
     @FXML
     public void iniciarJuego() {
         grid = new GridPane();
@@ -171,6 +314,7 @@ public class ControllerDatos {
             }
         }
         Borderpane.setCenter(grid);
+        textMensajes.setVisible(false);
     }
 
     @FXML
@@ -338,6 +482,8 @@ public class ControllerDatos {
         settearRutaRandom();
         settearRutaRapida();
         settearAllRutas();
+        fechaInicio = LocalTime.now();
+        recinto.setInicioRecorrido(fechaInicio);
     }
 
     @FXML
@@ -472,7 +618,8 @@ public class ControllerDatos {
     }
 
     @FXML
-    public void movimiento(KeyEvent ke) {
+    public void movimiento(KeyEvent ke) throws FileNotFoundException {
+        System.out.println("Mi posicion antes de moverme es "+recinto.getpActual().getpFila()+" "+recinto.getpActual().getpColumna());
         if (todoListo() && !falloGeneral) {
             switch (ke.getCode()) {
                 case SPACE:
@@ -482,15 +629,22 @@ public class ControllerDatos {
                             avanzar();
                             if (listaObs.size() == 0) {
                                 flag = 2;
-                                recalcular();
+                                recinto.setPlantaAlcanzada(true);
+                                permitirRecalcular();
+                                for (int i = 0; i < filas; i++) {
+                                    for (int j = 0; j < columnas; j++) {
+                                        System.out.print(recinto.getRecintoCompleto()[i][j]);
+                                    }
+                                    System.out.println("");
+                                }
                             }
                         } else {
                             avanzar();
-                            recalcular();
+                            permitirRecalcular();
                         }
                     } else {
-                        recalcular();
                         avanzar();
+                        permitirRecalcular();
                     }
                     break;
                 case LEFT:
@@ -500,15 +654,22 @@ public class ControllerDatos {
                             izquierda();
                             if (listaObs.size() == 0) {
                                 flag = 2;
-                                recalcular();
+                                recinto.setPlantaAlcanzada(true);
+                                permitirRecalcular();
+                                for (int i = 0; i < filas; i++) {
+                                    for (int j = 0; j < columnas; j++) {
+                                        System.out.print(recinto.getRecintoCompleto()[i][j]);
+                                    }
+                                    System.out.println("");
+                                }
                             }
                         } else {
                             izquierda();
-                            recalcular();
+                            permitirRecalcular();
                         }
                     } else {
-                        recalcular();
                         izquierda();
+                        permitirRecalcular();
                     }
                     break;
                 case RIGHT:
@@ -518,39 +679,58 @@ public class ControllerDatos {
                             derecha();
                             if (listaObs.size() == 0) {
                                 flag = 2;
-                                recalcular();
+                                recinto.setPlantaAlcanzada(true);
+                                for (int i = 0; i < filas; i++) {
+                                    for (int j = 0; j < columnas; j++) {
+                                        System.out.print(recinto.getRecintoCompleto()[i][j]);
+                                    }
+                                    System.out.println("");
+                                }
+                                permitirRecalcular();
                             }
                         } else {
                             derecha();
-                            recalcular();
+                            permitirRecalcular();
                         }
                     } else {
-                        recalcular();
                         izquierda();
+                        permitirRecalcular();
                     }
                     break;
             }
         }
+        System.out.println("Mi posicion despues de moverme es "+recinto.getpActual().getpFila()+" "+recinto.getpActual().getpColumna());
     }
-
-    private void recalcular() {
+    @FXML
+    private void permitirRecalcular(){
         alertaRecalcular.setVisible(true);
+        botonRecalcular.setDisable(false);
         if (listaObs != null && !listaObs.isEmpty()){
             listaObs.clear();
         }
+    }
+    @FXML
+    private void recalcular() {
         settearRutaRandom();
         settearRutaRapida();
         clearAllRutas();
         settearAllRutas();
         Platform.runLater(() -> Borderpane.requestFocus());
+        alertaRecalcular.setVisible(false);
+        botonRecalcular.setDisable(true);
     }
 
     private void clearAllRutas() {
-        botonAllRutas.getItems().clear();
-        todaslasRutas.clear();
+        if (botonAllRutas.getItems().size() != 0){
+            botonAllRutas.getItems().clear();
+        }
+
+        if (todaslasRutas != null && !todaslasRutas.isEmpty()){
+            todaslasRutas.clear();
+        }
     }
 
-    public void avanzar() {
+    public void avanzar() throws FileNotFoundException {
         Posicion posicionActual = recinto.getpActual().clonarPosicion();
         if (recinto.getOrientacion() == 'S'){
             recinto.getpActual().setpFila(recinto.getpActual().getpFila()+1);
@@ -565,7 +745,8 @@ public class ControllerDatos {
             recinto.getpActual().setpColumna(recinto.getpActual().getpColumna()-1);
         }
 
-        if (recinto.esSeguro(recinto.getRecintoCompleto(), recinto.getpActual().getpFila(), recinto.getpActual().getpColumna())){
+        if (recinto.esSeguro(recinto.getRecintoCompleto(), recinto.getpActual().getpFila(), recinto.getpActual().getpColumna())
+                && !recinto.esMuroBomba(recinto, recinto.getpActual().getpFila(), recinto.getpActual().getpColumna())){
             grid.getChildren().remove(getNodo(grid, posicionActual.getpColumna(), posicionActual.getpFila()));
             grid.getChildren().remove(getNodo(grid, recinto.getpActual().getpColumna(), recinto.getpActual().getpFila()));
             // Se actualiza WALLE
@@ -584,9 +765,42 @@ public class ControllerDatos {
             Label label2 = new Label();
             label2.setGraphic(imagen2);
             grid.add(label2, posicionActual.getpColumna(), posicionActual.getpFila());
+            recinto.getRecintoCompleto()[posicionActual.getpFila()][posicionActual.getpColumna()] = 0;
+            if (posicionActual.getpFila() == posicionZS.getpFila() && posicionActual.getpColumna() == posicionZS.getpColumna()){
+                recinto.getRecintoCompleto()[posicionActual.getpFila()][posicionActual.getpColumna()] = 4;
+            }
+            recinto.getRecintoCompleto()[recinto.getpActual().getpFila()][recinto.getpActual().getpColumna()] = 3;
+            if (recinto.getpActual().getpFila() == posicionPlanta.getpFila() &&
+                    recinto.getpActual().getpColumna() == posicionPlanta.getpColumna()){
+                flag = 2;
+                recinto.setPlantaAlcanzada(true);
+            }
+            if (recinto.getpActual().getpFila() == posicionZS.getpFila() &&
+                    recinto.getpActual().getpColumna() == posicionZS.getpColumna() && flag == 2){
+                System.out.println("VICTORIA!!!!");
+                textMensajes.setFill(Color.GREEN);
+                LocalTime fechaFinal = LocalTime.now();
+                long segundosEntre = ChronoUnit.SECONDS.between(fechaInicio,fechaFinal);
+                int minutos = 0;
+                int segundos = 0;
+                do {
+                    if (segundosEntre-60 >= 60){
+                        segundosEntre = segundosEntre-60;
+                        minutos++;
+                    }
+                    if (segundosEntre-60 < 60){
+                        segundos = (int)segundosEntre;
+                    }
+                }while(segundosEntre >= 60);
+                textMensajes.setText("¡Has llegado sano y salvo con la planta!. Ahora le espera un futuro más verde a la Tierra." +
+                        "Te demoraste "+minutos+" minuto(s) y "+segundos+" segundo(s)");
+                textMensajes.setVisible(true);
+
+            }
+            serializador.serializar(recinto);
         }
         else{
-            textMensajes.setText("La tierra está condenada sin ti Wall-E. Reinicia el juego para salvar a la Tierra");
+            textMensajes.setText("¡Has muerto!. La tierra está condenada sin ti Wall-E. Reinicia el juego para salvar a la Tierra");
             textMensajes.setVisible(true);
             falloGeneral = true;
             ocultarOpcionesRutas();
@@ -603,7 +817,7 @@ public class ControllerDatos {
         return null;
     }
 
-    public void izquierda(){
+    public void izquierda() throws FileNotFoundException {
         if(recinto.getOrientacion() == 'N'){
             recinto.nuevaOrientacion('O');
             walle = new Image(getClass().getResourceAsStream("Wall-EO.png"));
@@ -629,9 +843,10 @@ public class ControllerDatos {
         Label label = new Label();
         label.setGraphic(imagen);
         grid.add(label, recinto.getpActual().getpColumna(), recinto.getpActual().getpFila());
+        serializador.serializar(recinto);
     }
 
-    public void derecha(){
+    public void derecha() throws FileNotFoundException {
         if(recinto.getOrientacion() == 'N'){
             recinto.nuevaOrientacion('E');
             walle = new Image(getClass().getResourceAsStream("Wall-EE.png"));
@@ -657,5 +872,6 @@ public class ControllerDatos {
         Label label = new Label();
         label.setGraphic(imagen);
         grid.add(label, recinto.getpActual().getpColumna(), recinto.getpActual().getpFila());
+        serializador.serializar(recinto);
     }
 }
