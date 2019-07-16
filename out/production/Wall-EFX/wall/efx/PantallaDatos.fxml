@@ -90,14 +90,14 @@
          <top>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <buttons>
-                  <Text fx:id="alertaRecalcular" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Te saliste de la ruta que elegiste. Presiona en Recalcular para generar nuevas rutas" visible="false" />
+                  <Text fx:id="alertaRecalcular" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Te saliste de la ruta que elegiste o no has elegido ninguna. Presiona en Calcular para generar las rutas." visible="false" />
                   <Button fx:id="botonRandomRuta" disable="true" mnemonicParsing="false" onMouseClicked="#mostrarRutaRandom" text="Ruta aleatoria" />
                   <Button fx:id="botonRutaFast" disable="true" mnemonicParsing="false" onMouseClicked="#mostrarRutaRapida" text="Ruta más rápida" />
                   <MenuButton fx:id="botonAllRutas" disable="true" mnemonicParsing="false" text="Todas las rutas" />
-                  <Button fx:id="botonRecalcular" disable="true" mnemonicParsing="false" onMouseClicked="#recalcular" text="Recalcular" />
+                  <Button fx:id="botonRecalcular" disable="true" mnemonicParsing="false" onMouseClicked="#recalcular" prefHeight="25.0" text="Calcular rutas" />
               </buttons>
                <padding>
-                  <Insets right="400.0" />
+                  <Insets right="20.0" />
                </padding>
             </ButtonBar>
          </top>

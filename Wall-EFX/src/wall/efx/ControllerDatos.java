@@ -473,17 +473,19 @@ public class ControllerDatos {
         grid.setOnMouseClicked(null);
         botonInicio.setDisable(true);
         setRecinto();
-        Platform.runLater(() -> Borderpane.requestFocus());
         listaRutas.setMouseTransparent(true);
         listaRutas.setFocusTraversable(false);
         juegoComenzado = true;
         listaRutas.setOnKeyPressed(null);
         listaRutas.setOnKeyReleased(null);
+        /*
         settearRutaRandom();
         settearRutaRapida();
-        settearAllRutas();
+        settearAllRutas();*/
+        botonRecalcular.setDisable(false);
         fechaInicio = LocalTime.now();
         recinto.setInicioRecorrido(fechaInicio);
+        Platform.runLater(() -> Borderpane.requestFocus());
     }
 
     @FXML
@@ -774,17 +776,20 @@ public class ControllerDatos {
                     recinto.getpActual().getpColumna() == posicionPlanta.getpColumna()){
                 flag = 2;
                 recinto.setPlantaAlcanzada(true);
+                textMensajes.setFill(Color.GREEN);
+                textMensajes.setText("¡Has llegado a la planta!. Si lo deseas, presiona en Calcular para encontrar la ruta" +
+                        "hacia EVA");
             }
             if (recinto.getpActual().getpFila() == posicionZS.getpFila() &&
                     recinto.getpActual().getpColumna() == posicionZS.getpColumna() && flag == 2){
                 System.out.println("VICTORIA!!!!");
-                textMensajes.setFill(Color.GREEN);
+
                 LocalTime fechaFinal = LocalTime.now();
                 long segundosEntre = ChronoUnit.SECONDS.between(fechaInicio,fechaFinal);
                 int minutos = 0;
                 int segundos = 0;
                 do {
-                    if (segundosEntre-60 >= 60){
+                    if (segundosEntre-60 >= 0){
                         segundosEntre = segundosEntre-60;
                         minutos++;
                     }
@@ -792,6 +797,7 @@ public class ControllerDatos {
                         segundos = (int)segundosEntre;
                     }
                 }while(segundosEntre >= 60);
+                textMensajes.setFill(Color.GREEN);
                 textMensajes.setText("¡Has llegado sano y salvo con la planta!. Ahora le espera un futuro más verde a la Tierra." +
                         "Te demoraste "+minutos+" minuto(s) y "+segundos+" segundo(s)");
                 textMensajes.setVisible(true);
@@ -800,6 +806,7 @@ public class ControllerDatos {
             serializador.serializar(recinto);
         }
         else{
+            textMensajes.setFill(Color.RED);
             textMensajes.setText("¡Has muerto!. La tierra está condenada sin ti Wall-E. Reinicia el juego para salvar a la Tierra");
             textMensajes.setVisible(true);
             falloGeneral = true;
