@@ -13,79 +13,10 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Fi_an
+ * @author Hugo
  */
 public class RecorredorTest {
-    /**
-     * Test of resolver method, of class Recorredor. Se testea que el recorrido 
-     * sea el correcto en una matriz 3*1, en donde walle comienza en {0,0} y el 
-     * objetivo en {2,0};
-     */
-    @Test
-    public void testResolver() {
-        System.out.println("resolver");
-        
-        Recinto instance = new Recinto();        
-        instance.newWallE(new Posicion(2,0), new Posicion(10,10));
-        Posicion posActual = new Posicion(0,0);
-        instance.setpActual(posActual);
-        
-        Recorredor recorredor = new Recorredor();
-        List<Posicion> result = recorredor.resolver(instance, 1);
-        
-        ArrayList<Posicion> posicionesDePrueba = new ArrayList<>();
-        Posicion pos0 = new Posicion(0,0);
-        Posicion pos1 = new Posicion(1,0);
-        Posicion pos2 = new Posicion(2,0);
-        posicionesDePrueba.add(pos0);
-        posicionesDePrueba.add(pos1);
-        posicionesDePrueba.add(pos2);
-        for (int i = 0; i < result.size(); i++) {
-            assertEquals(posicionesDePrueba.get(i).getpColumna(), result.get(i).getpColumna());
-            assertEquals(posicionesDePrueba.get(i).getpFila(), result.get(i).getpFila());
-        }
-        //resultado esperado arraylist(posiciones) en una matriz 3*1
-        //for   compar posiciones (asserEquals)
-        
-    }
 
-    /**
-     * Test of resolverRapido method, of class Recorredor. Comprueba que el
-     * recorrido en "posicionesDePrueba" sea igual al dado en el metodo resolverRapido
-     * Se compara en una matriz 4*3.
-     */
-    @Test
-    public void testResolverRapido() {
-        System.out.println("resolverRapido");
-        
-        Recinto instance = new Recinto();
-        
-        instance.newWallE(new Posicion(4,1), new Posicion(10,10));
-        Posicion posActual = new Posicion(0,1);
-        instance.setpActual(posActual);
-        
-        Recorredor recorredor = new Recorredor();
-        
-        ArrayList<Posicion> posicionesDePrueba = new ArrayList<>();
-        Posicion pos0 = new Posicion(0,1);
-        Posicion pos1 = new Posicion(1,1);
-        Posicion pos2 = new Posicion(2,1);
-        Posicion pos3 = new Posicion(3,1);
-        Posicion pos4 = new Posicion(4,1);
-        posicionesDePrueba.add(pos0);
-        posicionesDePrueba.add(pos1);
-        posicionesDePrueba.add(pos2);
-        posicionesDePrueba.add(pos3);
-        posicionesDePrueba.add(pos4);
-        boolean[][] visitado = new boolean[4][4];
-        List<Posicion> resul = recorredor.resolverRapido(instance,visitado,1);
-        for (int i = 0; i < resul.size(); i++) {
-            assertEquals(posicionesDePrueba.get(i).getpColumna(), resul.get(i).getpColumna());
-            assertEquals(posicionesDePrueba.get(i).getpFila(), resul.get(i).getpFila());
-        }
-        //resultado esperado arraylist(posiciones mas rapidas) en una matriz 4*2
-        //for(for   compar posiciones (asserEquals))
-    }
 
     /**
      * Test of traductorInstrucciones method, of class Recorredor. Se compara la 
