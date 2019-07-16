@@ -15,6 +15,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <GridPane alignment="center" hgap="10" prefHeight="720.0" prefWidth="1080.0" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wall.efx.Controller">
    <columnConstraints>
       <ColumnConstraints />
@@ -23,6 +25,11 @@
       <RowConstraints />
    </rowConstraints>
    <children>
+      <ImageView fitHeight="675.0" fitWidth="1180.0" opacity="0.66">
+         <image>
+            <Image url="@fondo.jpg" />
+         </image>
+      </ImageView>
       <BorderPane fx:id="Borderpane" onKeyPressed="#movimiento" prefHeight="725.0" prefWidth="1080.0">
          <bottom>
             <ButtonBar prefHeight="40.0" prefWidth="764.0" BorderPane.alignment="CENTER">
@@ -90,7 +97,7 @@
          <top>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <buttons>
-                  <Text fx:id="alertaRecalcular" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Te saliste de la ruta que elegiste o no has elegido ninguna. Presiona en Calcular para generar las rutas." visible="false" />
+                  <Text fx:id="alertaRecalcular" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Te saliste de la ruta que elegiste o no has elegido ninguna. Presiona en Calcular para generar las rutas." visible="false" />
                   <Button fx:id="botonRandomRuta" disable="true" mnemonicParsing="false" onMouseClicked="#mostrarRutaRandom" text="Ruta aleatoria" />
                   <Button fx:id="botonRutaFast" disable="true" mnemonicParsing="false" onMouseClicked="#mostrarRutaRapida" text="Ruta más rápida" />
                   <MenuButton fx:id="botonAllRutas" disable="true" mnemonicParsing="false" text="Todas las rutas" />
