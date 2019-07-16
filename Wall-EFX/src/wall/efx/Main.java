@@ -1,15 +1,10 @@
 package wall.efx;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class Main extends Application {
 
@@ -22,8 +17,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Main.primaryStage = primaryStage;
         Main.primaryStage.setTitle("Salvando a Wall-E 2.0");
-        Parent root = FXMLLoader.load(getClass().getResource("PantallaDatos.fxml"));
-        primaryStage.setScene(new Scene(root, 1180, 675));
+        Parent root = FXMLLoader.load(getClass().getResource("WallE2.fxml"));
+        Scene escena = new Scene(root, 1180, 675);
+        primaryStage.setScene(escena);
         primaryStage.setResizable(false);
         primaryStage.show();
     }

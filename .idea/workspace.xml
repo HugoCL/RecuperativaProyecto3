@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" line="116" />
-    <bookmark url="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" line="623" mnemonic="2" />
+    <bookmark url="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java" line="116" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2298c38c-970f-4dab-a790-2f636e67054e" name="Default Changelist" comment="Se creó la base de la nueva interfaz. Ya funciona correctamente la solicitud de datos al inicio del programa.">
-      <change beforePath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Serializacion.out" beforeDir="false" afterPath="$PROJECT_DIR$/Serializacion.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/JuegoWallE.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/WallE2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/ControllerDatos$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/ControllerDatos.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/JuegoWallE.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wall-EFX/wall/efx/PantallaDatos.fxml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +33,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="179">
+              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+            <state relative-caret-position="28">
+              <caret line="344" column="13" selection-start-line="344" selection-start-column="13" selection-end-line="344" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#repetidoChecker#0;class#Recorredor#0" />
@@ -46,22 +56,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java">
+        <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="632" column="41" lean-forward="true" selection-start-line="632" selection-start-column="41" selection-end-line="632" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="68">
+              <caret line="4" column="54" lean-forward="true" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml">
+        <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/WallE2.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1615">
-              <caret line="95" column="85" selection-start-line="95" selection-start-column="85" selection-end-line="95" selection-end-column="85" />
+            <state relative-caret-position="68">
+              <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -113,7 +120,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setonmo</find>
       <find>system.out</find>
       <find>Posicion</find>
       <find>resolver</find>
@@ -121,7 +127,6 @@
       <find>System.out</find>
       <find>boolean[][]</find>
       <find>Posicion Fila Siguiente 8 Posicion Columna SIGUIENTE 3</find>
-      <find>System</find>
       <find>focus</find>
       <find>allrutas</find>
       <find>noRuta</find>
@@ -143,6 +148,8 @@
       <find>tierra</find>
       <find>textmensajes</find>
       <find>textmensajes.setVisible</find>
+      <find>mi posicion</find>
+      <find>System</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,18 +179,18 @@
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/SceneHandler.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/WallEFX.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Main.java" />
-        <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/sample.fxml" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/Grid.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/Cell.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/JuegoWallE.fxml" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerJuego.java" />
-        <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/Main.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Serializador.java" />
-        <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml" />
-        <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recinto.java" />
+        <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/Main.java" />
+        <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml" />
         <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" />
+        <option value="$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java" />
+        <option value="$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java" />
       </list>
     </option>
   </component>
@@ -298,12 +305,12 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Main (1)">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="wall.efx.Main" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WallECodigo.Main" />
       <module name="Wall-EFX" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="wall.efx.*" />
+          <option name="PATTERN" value="WallECodigo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -312,11 +319,11 @@
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="WallECodigo.Main" />
+      <option name="MAIN_CLASS_NAME" value="wall.efx.Main" />
       <module name="Wall-EFX" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="WallECodigo.*" />
+          <option name="PATTERN" value="wall.efx.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -448,7 +455,7 @@
       <workItem from="1563144416897" duration="6626000" />
       <workItem from="1563163664486" duration="8629000" />
       <workItem from="1563204685946" duration="13587000" />
-      <workItem from="1563228218685" duration="3463000" />
+      <workItem from="1563228218685" duration="8149000" />
     </task>
     <task id="LOCAL-00001" summary="Se creó la base de la nueva interfaz. Ya funciona correctamente la solicitud de datos al inicio del programa.">
       <created>1562652458446</created>
@@ -472,13 +479,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229011000" />
+    <option name="totallyTimeSpent" value="233697000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.53107345" visible="true" weight="0.14145234" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.53107345" visible="true" weight="0.14145234" />
       <window_info id="Structure" order="1" sideWeight="0.46892655" side_tool="true" weight="0.13918306" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -487,7 +494,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49848714" visible="true" weight="0.3747954" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49848714" weight="0.3747954" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.42062193" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -601,43 +608,43 @@
           <option name="timeStamp" value="135" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>566</line>
           <properties />
           <option name="timeStamp" value="180" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>567</line>
           <properties />
           <option name="timeStamp" value="181" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>568</line>
           <properties />
           <option name="timeStamp" value="182" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>569</line>
           <properties />
           <option name="timeStamp" value="183" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>570</line>
           <properties />
           <option name="timeStamp" value="184" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>571</line>
           <properties />
           <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>572</line>
           <properties />
           <option name="timeStamp" value="186" />
@@ -655,254 +662,254 @@
           <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>180</line>
           <properties />
           <option name="timeStamp" value="197" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>181</line>
           <properties />
           <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>182</line>
           <properties />
           <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>187</line>
           <properties />
           <option name="timeStamp" value="202" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>191</line>
           <properties />
           <option name="timeStamp" value="203" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>192</line>
           <properties />
           <option name="timeStamp" value="204" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>188</line>
           <properties />
           <option name="timeStamp" value="205" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>498</line>
           <properties />
           <option name="timeStamp" value="211" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>499</line>
           <properties />
           <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>500</line>
           <properties />
           <option name="timeStamp" value="213" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>502</line>
           <properties />
           <option name="timeStamp" value="214" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>501</line>
           <properties />
           <option name="timeStamp" value="215" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>503</line>
           <properties />
           <option name="timeStamp" value="216" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>504</line>
           <properties />
           <option name="timeStamp" value="217" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>505</line>
           <properties />
           <option name="timeStamp" value="218" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>527</line>
           <properties />
           <option name="timeStamp" value="219" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>528</line>
           <properties />
           <option name="timeStamp" value="220" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>529</line>
           <properties />
           <option name="timeStamp" value="222" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>530</line>
           <properties />
           <option name="timeStamp" value="223" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>531</line>
           <properties />
           <option name="timeStamp" value="224" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>532</line>
           <properties />
           <option name="timeStamp" value="225" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>534</line>
           <properties />
           <option name="timeStamp" value="227" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>533</line>
           <properties />
           <option name="timeStamp" value="228" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>557</line>
           <properties />
           <option name="timeStamp" value="229" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>559</line>
           <properties />
           <option name="timeStamp" value="232" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>560</line>
           <properties />
           <option name="timeStamp" value="233" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
           <line>558</line>
           <properties />
           <option name="timeStamp" value="234" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>784</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>785</line>
           <properties />
           <option name="timeStamp" value="240" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>785</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>786</line>
           <properties />
           <option name="timeStamp" value="241" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>786</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>787</line>
           <properties />
           <option name="timeStamp" value="242" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>787</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>788</line>
           <properties />
           <option name="timeStamp" value="243" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>788</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>789</line>
           <properties />
           <option name="timeStamp" value="244" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>789</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>790</line>
           <properties />
           <option name="timeStamp" value="245" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>791</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>792</line>
           <properties />
           <option name="timeStamp" value="246" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>792</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>793</line>
           <properties />
           <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>793</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>794</line>
           <properties />
           <option name="timeStamp" value="248" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>795</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>796</line>
           <properties />
           <option name="timeStamp" value="249" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>796</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>797</line>
           <properties />
           <option name="timeStamp" value="250" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>798</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>799</line>
           <properties />
           <option name="timeStamp" value="251" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>799</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>800</line>
           <properties />
           <option name="timeStamp" value="252" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>800</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>801</line>
           <properties />
           <option name="timeStamp" value="253" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java</url>
-          <line>802</line>
+          <url>file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java</url>
+          <line>803</line>
           <properties />
           <option name="timeStamp" value="254" />
         </line-breakpoint>
@@ -989,14 +996,6 @@
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Grid.java" />
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Cell.java" />
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerJuego.java" />
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/JuegoWallE.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Main.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1022,35 +1021,6 @@
           <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#repetidoChecker#0;class#Recorredor#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="95" column="85" selection-start-line="95" selection-start-column="85" selection-end-line="95" selection-end-column="85" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/WallE.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1078,13 +1048,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java">
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="632" column="41" lean-forward="true" selection-start-line="632" selection-start-column="41" selection-end-line="632" selection-end-column="41" />
+        <state relative-caret-position="179">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/WallE2.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/JuegoWallE.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/WallECodigo/Recorredor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="344" column="13" selection-start-line="344" selection-start-column="13" selection-end-line="344" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#repetidoChecker#0;class#Recorredor#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="54" lean-forward="true" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
         </state>
       </provider>
     </entry>

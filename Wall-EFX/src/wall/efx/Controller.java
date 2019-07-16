@@ -1,50 +1,29 @@
 package wall.efx;
+
 import WallECodigo.*;
-
-
-import com.sun.xml.internal.ws.api.FeatureConstructor;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import org.junit.experimental.theories.FromDataPoints;
 
-import java.awt.*;
-import java.beans.EventHandler;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Time;
-import java.time.Clock;
-import java.time.Instant;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
-public class ControllerDatos {
+public class Controller {
 
     @FXML
     public TextField campoTextoBombas;
@@ -109,7 +88,6 @@ public class ControllerDatos {
     private int columnas;
     private boolean casillaSeleccionada = false;
     private Node ultimaCasilla;
-    private Node ultimaCasillaWallE;
     private Posicion ultimaCasillaPos;
     private Posicion posicionWallE = new Posicion(-1, -1);
     private Posicion posicionPlanta = new Posicion(-1, -1);
@@ -128,7 +106,6 @@ public class ControllerDatos {
     private List<Character> rutaAleatoriaT;
     private List<Character> rutaRapidaT;
     private List<List<Posicion>> todaslasRutas;
-    private int rutaElegida = 0; //1 PARA LA RANDOM, 2 PARA LA RAPIDA, 3 PARA LA LISTA DE RUTAS
     private ObservableList<Character> listaObs;
     private int flag = 1; // 1 para Wall-E -> Planta, 2 para Planta -> Zona Segura
     private boolean noRutas = false;
@@ -147,22 +124,22 @@ public class ControllerDatos {
     }
 
     @FXML
-    public int getFilas() {
+    private int getFilas() {
         return (int) sliderFilas.getValue();
     }
 
     @FXML
-    public int getColumnas() {
+    private int getColumnas() {
         return (int) sliderColumnas.getValue();
     }
 
     @FXML
-    public boolean comprobarBombas() {
+    private boolean comprobarBombas() {
         return campoTextoBombas.getText().matches("[0-9]+");
     }
 
     @FXML
-    public void comprobarInputBombas() throws IOException {
+    public void comprobarInputBombas() {
         if (comprobarBombas() && Integer.valueOf(campoTextoBombas.getText()) < (getFilas() * getColumnas() - 3)) {
             alertaBombas.setVisible(false);
             numBombas = Integer.valueOf(campoTextoBombas.getText());
@@ -298,7 +275,7 @@ public class ControllerDatos {
         Platform.runLater(() -> Borderpane.requestFocus());
     }
     @FXML
-    public void iniciarJuego() {
+    private void iniciarJuego() {
         grid = new GridPane();
         grid.setOnMouseClicked(this::botonGridPresionado);
         grid.setMaxSize(700, 500);
@@ -318,7 +295,7 @@ public class ControllerDatos {
     }
 
     @FXML
-    public void ingresarElementos() {
+    private void ingresarElementos() {
         if (numWallE != 0) {
             BotonWallE.setDisable(false);
         }
@@ -334,7 +311,7 @@ public class ControllerDatos {
     }
 
     @FXML
-    public void ocultarElementos() {
+    private void ocultarElementos() {
         BotonBombas.setDisable(true);
         BotonPlanta.setDisable(true);
         BotonZonaSegura.setDisable(true);
@@ -342,7 +319,7 @@ public class ControllerDatos {
     }
 
     @FXML
-    public void botonGridPresionado(javafx.scene.input.MouseEvent evento) {
+    private void botonGridPresionado(javafx.scene.input.MouseEvent evento) {
         Node clickedNode = evento.getPickResult().getIntersectedNode();
         if (clickedNode != grid && !todoListo()) {
             // click on descendant node
@@ -367,7 +344,6 @@ public class ControllerDatos {
             } else {
                 if (casillaSeleccionada) {
                     grid.getChildren().remove(ultimaCasilla);
-                    Label label2 = new Label();
                     ImageView imagen2 = new ImageView(cuadrado);
                     imagen2.setFitWidth(700 / columnas);
                     imagen2.setFitHeight(500 / filas);
@@ -381,7 +357,6 @@ public class ControllerDatos {
                 ultimaCasilla = clickedNode;
                 ultimaCasillaPos = new Posicion(rowIndex, colIndex);
                 ingresarElementos();
-                System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
             }
         }
     }
@@ -458,7 +433,7 @@ public class ControllerDatos {
     }
 
     @FXML
-    public boolean todoListo() {
+    private boolean todoListo() {
         if (numWallE == 0 && numBombas == 0 && numZonaSegura == 0 && numPlanta == 0) {
             if (!juegoComenzado){
                 botonInicio.setDisable(false);
@@ -489,13 +464,13 @@ public class ControllerDatos {
     }
 
     @FXML
-    public void ocultarOpcionesRutas(){
+    private void ocultarOpcionesRutas() {
         botonRandomRuta.setDisable(true);
         botonAllRutas.setDisable(true);
         botonRutaFast.setDisable(true);
     }
     @FXML
-    public void settearRutaRandom(){
+    private void settearRutaRandom() {
         botonRandomRuta.setDisable(false);
         boolean[][] visitado = new boolean[filas][columnas];
         List<Posicion> rutaAleatoria = recorredor.resolver(recinto, flag, visitado);
@@ -520,11 +495,10 @@ public class ControllerDatos {
         listaRutas.setItems(listaObs);
         Platform.runLater(() -> Borderpane.requestFocus());
         ocultarOpcionesRutas();
-        rutaElegida = 1;
         alertaRecalcular.setVisible(false);
     }
 
-    public void settearRutaRapida(){
+    private void settearRutaRapida() {
         botonRutaFast.setDisable(false);
         boolean[][] visitado = new boolean[filas][columnas];
         List<Posicion> rutaRapida = recorredor.resolverRapido(recinto, visitado, flag);
@@ -550,12 +524,11 @@ public class ControllerDatos {
         listaRutas.setItems(listaObs);
         Platform.runLater(() -> Borderpane.requestFocus());
         ocultarOpcionesRutas();
-        rutaElegida = 2;
         alertaRecalcular.setVisible(false);
     }
 
-    public void settearAllRutas(){
-        int cantRutas = 0;
+    private void settearAllRutas() {
+        int cantRutas;
         if (noRutas){
             textMensajes.setText("No hay una ruta entre Wall-E hacia la Planta o EVA :(");
             textMensajes.setVisible(true);
@@ -588,12 +561,11 @@ public class ControllerDatos {
         listaObs = FXCollections.observableArrayList(rutaElegidaT);
         listaRutas.setItems(listaObs);
         ocultarOpcionesRutas();
-        rutaElegida = 3;
         alertaRecalcular.setVisible(false);
         Platform.runLater(() -> Borderpane.requestFocus());
     }
 
-    public void setRecinto(){
+    private void setRecinto() {
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 recinto.crearRecinto(i, j, 0);
@@ -609,19 +581,11 @@ public class ControllerDatos {
             recinto.crearRecinto(bomba.getpFila(), bomba.getpColumna(), 1);
         }
         recinto.nuevaOrientacion('S');
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                System.out.print(recinto.getRecintoCompleto()[i][j]);
-            }
-            System.out.println("");
-        }
         recinto.setpActual(posicionWallE);
-        WallE wallE = WallE.getWallE();
     }
 
     @FXML
     public void movimiento(KeyEvent ke) throws FileNotFoundException {
-        System.out.println("Mi posicion antes de moverme es "+recinto.getpActual().getpFila()+" "+recinto.getpActual().getpColumna());
         if (todoListo() && !falloGeneral) {
             switch (ke.getCode()) {
                 case SPACE:
@@ -633,12 +597,6 @@ public class ControllerDatos {
                                 flag = 2;
                                 recinto.setPlantaAlcanzada(true);
                                 permitirRecalcular();
-                                for (int i = 0; i < filas; i++) {
-                                    for (int j = 0; j < columnas; j++) {
-                                        System.out.print(recinto.getRecintoCompleto()[i][j]);
-                                    }
-                                    System.out.println("");
-                                }
                             }
                         } else {
                             avanzar();
@@ -658,12 +616,6 @@ public class ControllerDatos {
                                 flag = 2;
                                 recinto.setPlantaAlcanzada(true);
                                 permitirRecalcular();
-                                for (int i = 0; i < filas; i++) {
-                                    for (int j = 0; j < columnas; j++) {
-                                        System.out.print(recinto.getRecintoCompleto()[i][j]);
-                                    }
-                                    System.out.println("");
-                                }
                             }
                         } else {
                             izquierda();
@@ -682,12 +634,6 @@ public class ControllerDatos {
                             if (listaObs.size() == 0) {
                                 flag = 2;
                                 recinto.setPlantaAlcanzada(true);
-                                for (int i = 0; i < filas; i++) {
-                                    for (int j = 0; j < columnas; j++) {
-                                        System.out.print(recinto.getRecintoCompleto()[i][j]);
-                                    }
-                                    System.out.println("");
-                                }
                                 permitirRecalcular();
                             }
                         } else {
@@ -701,7 +647,6 @@ public class ControllerDatos {
                     break;
             }
         }
-        System.out.println("Mi posicion despues de moverme es "+recinto.getpActual().getpFila()+" "+recinto.getpActual().getpColumna());
     }
     @FXML
     private void permitirRecalcular(){
@@ -732,7 +677,7 @@ public class ControllerDatos {
         }
     }
 
-    public void avanzar() throws FileNotFoundException {
+    private void avanzar() throws FileNotFoundException {
         Posicion posicionActual = recinto.getpActual().clonarPosicion();
         if (recinto.getOrientacion() == 'S'){
             recinto.getpActual().setpFila(recinto.getpActual().getpFila()+1);
@@ -778,7 +723,8 @@ public class ControllerDatos {
                 recinto.setPlantaAlcanzada(true);
                 textMensajes.setFill(Color.GREEN);
                 textMensajes.setText("¡Has llegado a la planta!. Si lo deseas, presiona en Calcular para encontrar la ruta" +
-                        "hacia EVA");
+                        " hacia EVA");
+                textMensajes.setVisible(true);
             }
             if (recinto.getpActual().getpFila() == posicionZS.getpFila() &&
                     recinto.getpActual().getpColumna() == posicionZS.getpColumna() && flag == 2){
@@ -824,7 +770,7 @@ public class ControllerDatos {
         return null;
     }
 
-    public void izquierda() throws FileNotFoundException {
+    private void izquierda() throws FileNotFoundException {
         if(recinto.getOrientacion() == 'N'){
             recinto.nuevaOrientacion('O');
             walle = new Image(getClass().getResourceAsStream("Wall-EO.png"));
@@ -853,7 +799,7 @@ public class ControllerDatos {
         serializador.serializar(recinto);
     }
 
-    public void derecha() throws FileNotFoundException {
+    private void derecha() throws FileNotFoundException {
         if(recinto.getOrientacion() == 'N'){
             recinto.nuevaOrientacion('E');
             walle = new Image(getClass().getResourceAsStream("Wall-EE.png"));
