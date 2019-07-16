@@ -6,10 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2298c38c-970f-4dab-a790-2f636e67054e" name="Default Changelist" comment="Se creó la base de la nueva interfaz. Ya funciona correctamente la solicitud de datos al inicio del programa.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serializacion.out" beforeDir="false" afterPath="$PROJECT_DIR$/Serializacion.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Wall-EFX/src/wall/efx/PantallaDatos.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,8 +48,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="556" column="34" lean-forward="true" selection-start-line="556" selection-start-column="34" selection-end-line="556" selection-end-column="34" />
+            <state relative-caret-position="40">
+              <caret line="632" column="41" lean-forward="true" selection-start-line="632" selection-start-column="41" selection-end-line="632" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -451,7 +448,7 @@
       <workItem from="1563144416897" duration="6626000" />
       <workItem from="1563163664486" duration="8629000" />
       <workItem from="1563204685946" duration="13587000" />
-      <workItem from="1563228218685" duration="2708000" />
+      <workItem from="1563228218685" duration="3463000" />
     </task>
     <task id="LOCAL-00001" summary="Se creó la base de la nueva interfaz. Ya funciona correctamente la solicitud de datos al inicio del programa.">
       <created>1562652458446</created>
@@ -475,7 +472,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228256000" />
+    <option name="totallyTimeSpent" value="229011000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -490,8 +487,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49848714" weight="0.3747954" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.42062193" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49848714" visible="true" weight="0.3747954" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.42062193" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1083,8 +1080,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Wall-EFX/src/wall/efx/ControllerDatos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="556" column="34" lean-forward="true" selection-start-line="556" selection-start-column="34" selection-end-line="556" selection-end-column="34" />
+        <state relative-caret-position="40">
+          <caret line="632" column="41" lean-forward="true" selection-start-line="632" selection-start-column="41" selection-end-line="632" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -695,7 +695,7 @@ public class ControllerDatos {
                             permitirRecalcular();
                         }
                     } else {
-                        izquierda();
+                        derecha();
                         permitirRecalcular();
                     }
                     break;
