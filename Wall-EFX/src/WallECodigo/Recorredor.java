@@ -293,13 +293,8 @@ public class Recorredor implements Serializable {
         ArrayList<Character> instrucciones = new ArrayList<>();
         for (int i = 1; i < ruta.size(); i++) {
             int mismaOrientacion = 0;
-            System.out.println("------------------------------------------------");
-            System.out.println("INSTRUCCION "+i);
             Posicion posicionI = ruta.get(i-1);
             Posicion posicionS = ruta.get(i);
-            System.out.println("Posicion Fila Inicial "+posicionI.getpFila()+" Posicion Columna "+posicionI.getpColumna());
-            System.out.println("Posicion Fila Siguiente "+posicionS.getpFila()+" Posicion Columna SIGUIENTE "+posicionS.getpColumna());
-            System.out.println("Mi orientacion es: "+ orientacion);
             if (posicionI.getpColumna() == posicionS.getpColumna()) {
                 if (posicionI.getpFila() > posicionS.getpFila()) {
                     nextMovimiento = 'N';
@@ -317,21 +312,17 @@ public class Recorredor implements Serializable {
             else{
                 nextMovimiento = orientacion;
             }
-            System.out.println("Mi siguiente movimiento es "+nextMovimiento);
             int valorOrientacionI = orientaciones.get(orientacion);
             int valorOrientacionS = orientaciones.get(nextMovimiento);
 
             if (valorOrientacionI == 1 && valorOrientacionS == 4){
                 instrucciones.add('I');
-                System.out.println("Me muevo a la izquierda");
             }
             else if (valorOrientacionS == 1 && valorOrientacionI == 4){
                 instrucciones.add('D');
-                System.out.println("Me muevo a la D");
             }
             else if (valorOrientacionI == valorOrientacionS){
                 instrucciones.add('A');
-                System.out.println("Avanzo");
                 mismaOrientacion = 1;
             }
             else{
@@ -339,13 +330,11 @@ public class Recorredor implements Serializable {
                      while (valorOrientacionI > valorOrientacionS){
                          instrucciones.add('I');
                          valorOrientacionI--;
-                         System.out.println("Me muevo a la izquierda");
                      }
                  }
                  else {
                      while (valorOrientacionI < valorOrientacionS){
                          instrucciones.add('D');
-                         System.out.println("Me muevo a la derecha");
                          valorOrientacionI++;
                      }
                  }
@@ -353,9 +342,7 @@ public class Recorredor implements Serializable {
             orientacion = orientacionesReversas.get(valorOrientacionS);
             if (orientacion == nextMovimiento && mismaOrientacion != 1){
                 instrucciones.add('A');
-                System.out.println("Avanzo");
             }
-            System.out.println("Mi orientacion es "+orientacion);
         }
         return instrucciones;
     }

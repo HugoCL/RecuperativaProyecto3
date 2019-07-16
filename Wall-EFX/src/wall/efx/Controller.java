@@ -44,7 +44,7 @@ import java.util.*;
 import java.util.List;
 
 
-public class ControllerDatos {
+public class Controller {
 
     @FXML
     public TextField campoTextoBombas;
@@ -381,7 +381,6 @@ public class ControllerDatos {
                 ultimaCasilla = clickedNode;
                 ultimaCasillaPos = new Posicion(rowIndex, colIndex);
                 ingresarElementos();
-                System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
             }
         }
     }
@@ -609,19 +608,12 @@ public class ControllerDatos {
             recinto.crearRecinto(bomba.getpFila(), bomba.getpColumna(), 1);
         }
         recinto.nuevaOrientacion('S');
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                System.out.print(recinto.getRecintoCompleto()[i][j]);
-            }
-            System.out.println("");
-        }
         recinto.setpActual(posicionWallE);
         WallE wallE = WallE.getWallE();
     }
 
     @FXML
     public void movimiento(KeyEvent ke) throws FileNotFoundException {
-        System.out.println("Mi posicion antes de moverme es "+recinto.getpActual().getpFila()+" "+recinto.getpActual().getpColumna());
         if (todoListo() && !falloGeneral) {
             switch (ke.getCode()) {
                 case SPACE:
@@ -633,12 +625,6 @@ public class ControllerDatos {
                                 flag = 2;
                                 recinto.setPlantaAlcanzada(true);
                                 permitirRecalcular();
-                                for (int i = 0; i < filas; i++) {
-                                    for (int j = 0; j < columnas; j++) {
-                                        System.out.print(recinto.getRecintoCompleto()[i][j]);
-                                    }
-                                    System.out.println("");
-                                }
                             }
                         } else {
                             avanzar();
@@ -658,12 +644,6 @@ public class ControllerDatos {
                                 flag = 2;
                                 recinto.setPlantaAlcanzada(true);
                                 permitirRecalcular();
-                                for (int i = 0; i < filas; i++) {
-                                    for (int j = 0; j < columnas; j++) {
-                                        System.out.print(recinto.getRecintoCompleto()[i][j]);
-                                    }
-                                    System.out.println("");
-                                }
                             }
                         } else {
                             izquierda();
@@ -682,12 +662,6 @@ public class ControllerDatos {
                             if (listaObs.size() == 0) {
                                 flag = 2;
                                 recinto.setPlantaAlcanzada(true);
-                                for (int i = 0; i < filas; i++) {
-                                    for (int j = 0; j < columnas; j++) {
-                                        System.out.print(recinto.getRecintoCompleto()[i][j]);
-                                    }
-                                    System.out.println("");
-                                }
                                 permitirRecalcular();
                             }
                         } else {
@@ -701,7 +675,6 @@ public class ControllerDatos {
                     break;
             }
         }
-        System.out.println("Mi posicion despues de moverme es "+recinto.getpActual().getpFila()+" "+recinto.getpActual().getpColumna());
     }
     @FXML
     private void permitirRecalcular(){
@@ -778,7 +751,8 @@ public class ControllerDatos {
                 recinto.setPlantaAlcanzada(true);
                 textMensajes.setFill(Color.GREEN);
                 textMensajes.setText("¡Has llegado a la planta!. Si lo deseas, presiona en Calcular para encontrar la ruta" +
-                        "hacia EVA");
+                        " hacia EVA");
+                textMensajes.setVisible(true);
             }
             if (recinto.getpActual().getpFila() == posicionZS.getpFila() &&
                     recinto.getpActual().getpColumna() == posicionZS.getpColumna() && flag == 2){
